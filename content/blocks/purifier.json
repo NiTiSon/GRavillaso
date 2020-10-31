@@ -1,0 +1,33 @@
+type: GenericSmelter 
+liquidCapacity: 50
+hasPower: true
+hasLiquids: true
+hasItems: true
+size: 2
+category: crafting
+name: "Purifier"
+description: "Are you missing a regular cleaner?"
+capacity: 300
+craftTime: 100
+playerUnmineable: false
+consumes: {
+  items: {
+    items: [
+        gravitium/3
+    ]
+  }
+  power: 5
+  liquid: {
+    liquid: cryofluid
+    amount: 0.25
+  }
+}
+requirements: [
+  lead/350
+  silicon/135
+  titanium/100
+]
+updateEffect: smeltsmoke
+idleSound: respawning
+idleSoundVolume: 0.5
+outputItem: gravitol/1

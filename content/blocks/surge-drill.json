@@ -1,0 +1,22 @@
+name: Surge Alloy Drill
+description: "PICKAXE?"
+type: Drill
+size: 3
+tier: 6
+drillTime: 220
+consumes: {
+  power: 2
+  liquid: {
+    liquid: water
+    amount: 0.1
+    booster: true
+  }
+}
+requirements: [
+  surge-alloy/50
+  silicon/40
+  graphite/20
+  titanium/120
+  thorium/80
+]
+category: production

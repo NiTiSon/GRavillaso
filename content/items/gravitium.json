@@ -1,0 +1,5 @@
+type: resource
+name: Gravitium
+description: Magnetic material.
+color: 4d7c99
+hardness: 6
