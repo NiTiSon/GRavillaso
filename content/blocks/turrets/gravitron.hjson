@@ -17,7 +17,7 @@ ammoTypes: [
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 		ammoMultiplier: 5 
-	}
+}
 ]
 requirements: [
 	copper/100	
