@@ -5,7 +5,7 @@ powerProduction: 21.0
 consumes: {
   items: {
     items: [
-        magneturn-alloy/3
+        magneturn/3
     ]
   }
   liquid: {
@@ -19,7 +19,7 @@ requirements: [
   thorium/200
   surge-alloy/105
   gravitol/105
-  magneturn-alloy/55
+  magneturn/55
 ]
 category: power
 research: magneturn-generator-mk2

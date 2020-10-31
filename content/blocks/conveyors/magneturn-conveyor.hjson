@@ -5,7 +5,7 @@ requirements: [
   copper/5
   lead/5
   gravitol/5
-  magneturn-alloy/1
+  magneturn/1
 ]
 activeSound: conveyor
 category: distribution

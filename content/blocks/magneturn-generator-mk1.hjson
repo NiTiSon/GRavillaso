@@ -13,7 +13,7 @@ requirements: [
   titanium/55
   thorium/35
   surge-alloy/20
-  magneturn-alloy/5
+  magneturn/5
 ]
 category: power
 research: thermal-generator

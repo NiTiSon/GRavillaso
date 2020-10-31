@@ -29,5 +29,5 @@ requirements: [
 updateEffect: smeltsmoke
 idleSound: respawning
 idleSoundVolume: 0.5
-outputItem: magneturn-alloy/1
+outputItem: magneturn/2
 research: purifier

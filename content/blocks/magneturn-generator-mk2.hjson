@@ -18,7 +18,7 @@ requirements: [
   thorium/75
   surge-alloy/55
   gravitol/50
-  magneturn-alloy/35
+  magneturn/35
 ]
 category: power
 research: magneturn-generator-mk1

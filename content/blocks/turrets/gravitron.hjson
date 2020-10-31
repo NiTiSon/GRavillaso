@@ -16,18 +16,7 @@ ammoTypes: [
     bulletHeight: 9
     shootEffect: shootSmall
     smokeEffect: shootSmallSmoke
-    ammoMultiplier: 5
-  }
-  metaglass: { 
-  	type: BasicBulletType
-  	lifetime: 120
-  	speed: 15
-  	damage:10
-	  bulletWidth: 7
-    bulletHeight: 10  	
-    shootEffect: shootSmall
-    smokeEffect: shootSmallSmoke
-    ammoMultiplier: 2
+    ammoMultiplier: 5 
   }
 ]
 requirements: [

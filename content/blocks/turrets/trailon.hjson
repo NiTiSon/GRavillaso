@@ -6,38 +6,6 @@ range: 370
 ammoUseEffect: shellEjectSmall
 inaccuracy: 0
 rotatespeed: 9
-ammo: {
-  gravitium: {
-  	lifetime: 180
-    speed: 12
-    damage: 15
-    bulletWidth: 5
-    bulletHeight: 15
-    shootEffect: shootSmall
-    smokeEffect: shootSmallSmoke
-    ammoMultiplier: 6
-  }
-  thorium: {
-  	lifetime: 120
-  	speed: 22
-  	damage:10
-	bulletWidth: 7
-    bulletHeight: 19  	
-    shootEffect: shootSmall
-    smokeEffect: shootSmallSmoke
-    ammoMultiplier: 4
-  }
-  copper: {
-  	lifetime:80
-  	speed: 1
-  	damage: 102
-	bulletWidth: 4
-    bulletHeight: 12 
-    shootEffect: shootSmall
-    smokeEffect: shootSmallSmoke
-    ammoMultiplier: 1
-  }
-}
 requirements: [
   copper/150
   lead/75
