@@ -1,0 +1,13 @@
+type: Junction
+size: 1
+speed: 9.5
+capacity: 16
+health: 50
+buildCostMultiplier: 5
+requirements: [
+  copper/3
+  silicon/3
+  gravitol/3
+]
+category: distribution
+research: junction

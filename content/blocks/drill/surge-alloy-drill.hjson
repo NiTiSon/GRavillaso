@@ -1,5 +1,3 @@
-name: Surge Alloy Drill
-description: "PICKAXE?"
 type: Drill
 size: 3
 tier: 6
@@ -7,9 +5,10 @@ drillTime: 220
 consumes: {
   power: 2
   liquid: {
-    liquid: water
-    amount: 0.1
+    liquid: cryofluid
+    amount: 0.05
     booster: true
+    optional: true
   }
 }
 requirements: [
@@ -19,4 +18,6 @@ requirements: [
   titanium/120
   thorium/80
 ]
+activeSound: drill
 category: production
+research: blast-drill

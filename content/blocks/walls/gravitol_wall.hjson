@@ -1,0 +1,9 @@
+type: Wall
+health: 1200
+size: 1
+requirements: [
+  gravitol/5
+  surge-alloy/1
+]
+category: defense
+research: surge-wall-large

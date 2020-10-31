@@ -1,0 +1,13 @@
+type: Conveyor
+requirements: [
+  titanium/5
+  thorium/5
+  copper/5
+  lead/5
+  gravitol/5
+  magneturn-alloy/1
+]
+activeSound: conveyor
+category: distribution
+speed: 0.30
+research: gravitol-conveyor

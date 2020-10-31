@@ -1,0 +1,9 @@
+type: Wall
+health: 4800
+size: 2
+requirements: [
+  gravitol/20
+  surge-alloy/4
+]
+category: defense
+research: gravitol_wall

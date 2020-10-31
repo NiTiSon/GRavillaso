@@ -1,0 +1,12 @@
+type: Router
+size: 1
+speed: 2.6
+health: 70
+buildCostMultiplier: 1.5
+category: distribution
+requirements: [
+  copper/3
+  silicon/3
+  gravitol/3
+]
+research: router

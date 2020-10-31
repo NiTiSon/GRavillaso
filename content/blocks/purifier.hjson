@@ -5,11 +5,7 @@ hasLiquids: true
 hasItems: true
 size: 2
 category: crafting
-name: "Purifier"
-description: "Are you missing a regular cleaner?"
-capacity: 300
 craftTime: 100
-playerUnmineable: false
 consumes: {
   items: {
     items: [
@@ -31,3 +27,4 @@ updateEffect: smeltsmoke
 idleSound: respawning
 idleSoundVolume: 0.5
 outputItem: gravitol/1
+research: alloy-smelter

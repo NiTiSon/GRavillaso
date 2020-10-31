@@ -1,0 +1,33 @@
+type: GenericSmelter 
+liquidCapacity: 175
+hasPower: true
+hasLiquids: true
+hasItems: true
+size: 2
+category: crafting
+craftTime: 170
+consumes: {
+  items: {
+    items: [
+        gravitol/3
+        titanium/5
+
+    ]
+  }
+  power: 7.5
+  liquid: {
+    liquid: cryofluid
+    amount: 0.10
+  }
+}
+requirements: [
+  gravitol/150
+  silicon/175
+  titanium/120
+  surge-alloy/55
+]
+updateEffect: smeltsmoke
+idleSound: respawning
+idleSoundVolume: 0.5
+outputItem: magneturn-alloy/1
+research: purifier

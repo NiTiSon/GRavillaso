@@ -1,0 +1,39 @@
+type: ItemTurret
+size: 1
+health: 350
+range: 100
+maxAmmo: 100
+inaccuracy: 30
+rotatespeed: 12
+reload: 1
+ammoTypes: [
+  gravitium: {
+    type: BasicBulletType
+  	lifetime: 180
+    speed: 5
+    damage: 17
+    bulletWidth: 7
+    bulletHeight: 9
+    shootEffect: shootSmall
+    smokeEffect: shootSmallSmoke
+    ammoMultiplier: 5
+  }
+  metaglass: { 
+  	type: BasicBulletType
+  	lifetime: 120
+  	speed: 15
+  	damage:10
+	  bulletWidth: 7
+    bulletHeight: 10  	
+    shootEffect: shootSmall
+    smokeEffect: shootSmallSmoke
+    ammoMultiplier: 2
+  }
+]
+requirements: [
+  copper/100	
+  gravitol/5
+  titanium/15
+  silicon/3
+]
+category: turret

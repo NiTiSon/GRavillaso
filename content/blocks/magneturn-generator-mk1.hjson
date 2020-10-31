@@ -1,0 +1,19 @@
+type: SingleTypeGenerator
+size: 2
+health: 220
+powerProduction: 5.5
+consumes: {
+  items: {
+    items: [
+    	gravitium/1
+    ]
+  }
+}  
+requirements: [
+  titanium/55
+  thorium/35
+  surge-alloy/20
+  magneturn-alloy/5
+]
+category: power
+research: thermal-generator

@@ -1,0 +1,24 @@
+type: SingleTypeGenerator
+size: 2
+health: 320
+powerProduction: 12.0
+consumes: {
+  items: {
+    items: [
+        gravitol/3
+    ]
+  }
+  liquid: {
+    liquid: cryofluid
+    amount: 0.05
+  }
+} 
+requirements: [
+  titanium/155
+  thorium/75
+  surge-alloy/55
+  gravitol/50
+  magneturn-alloy/35
+]
+category: power
+research: magneturn-generator-mk1
