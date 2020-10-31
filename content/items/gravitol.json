@@ -1,4 +1,5 @@
 type: material
 name: Gravitol
-description: Refined magnetic material. He's more magnetic now.
+description: Refined magnetic material, he's more magnetic now
 color: 294252
+research: gravitium
