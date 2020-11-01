@@ -1,0 +1,54 @@
+type: ItemTurret
+health: 450
+size: 2
+reload: 4
+range: 370
+ammoUseEffect: shellEjectSmall
+inaccuracy: 0
+rotatespeed: 9
+ammoTypes: {
+	gravitium: {
+		type: BasicBulletType
+		lifetime: 180
+		speed: 12
+		damage: 9
+		width: 7
+		height: 9
+		shootEffect: shootSmall
+		smokeEffect: shootSmallSmoke
+		ammoMultiplier: 4
+}
+	silicon: {
+		type: BasicBulletType
+		lifetime: 70
+		speed: 31
+		damage: 12
+		width: 3
+		height: 5
+		shootEffect: shootSmall
+		smokeEffect: shootSmallSmoke
+		ammoMultiplier: 3
+}
+	titanium: {
+		type: BasicBulletType
+		lifetime: 900
+		speed: 6
+		damage: 13
+		width: 1
+		height: 1.5
+		shootEffect: shootSmall
+		smokeEffect: shootSmallSmoke
+		ammoMultiplier: 1
+}
+}
+requirements: [
+  copper/150
+  lead/75
+  plastanium/25	
+  gravitol/50
+  titanium/150
+  thorium/75
+  silicon/70
+]
+category: turret
+research: gravitron

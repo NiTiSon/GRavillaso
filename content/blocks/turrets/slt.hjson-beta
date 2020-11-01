@@ -1,0 +1,17 @@
+type: LaserTurret
+health: 560
+size: 2
+reload: 4
+range: 1050
+rotatespeed: 9
+requirements: [
+  copper/150
+#  lead/75
+#  plastanium/25	
+#  gravitol/50
+#  titanium/150
+#  thorium/75
+#  silicon/70
+]
+category: turret
+research: lancer
