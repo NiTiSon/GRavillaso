@@ -5,19 +5,19 @@ hasLiquids: true
 hasItems: true
 size: 2
 category: crafting
-craftTime: 170
+craftTime: 120
 consumes: {
   items: {
     items: [
-        gravitol/3
-        titanium/5
+        gravitol/1
+        titanium/3
 
     ]
   }
   power: 7.5
   liquid: {
     liquid: cryofluid
-    amount: 0.10
+    amount: 0.1
   }
 }
 requirements: [
@@ -29,5 +29,5 @@ requirements: [
 updateEffect: smeltsmoke
 idleSound: respawning
 idleSoundVolume: 0.5
-outputItem: magneturn/2
+outputItem: magneturn/3
 research: purifier

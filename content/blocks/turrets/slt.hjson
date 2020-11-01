@@ -1,0 +1,26 @@
+type: PowerTurret
+health: 1250
+size: 2
+powerUse: 11
+range: 150
+reload: 90
+inaccuracy: 15
+targetAir: true
+targetGround: true
+shootType: {
+    type: MissileBulletType
+    speed: 5
+    damage: 120
+    lifetime: 340
+    frontColor: 483D8B
+    backColor: 4B0082
+}
+requirements: [
+  lead/150
+  titanium/75
+  plastanium/50	
+  gravitol/25
+  silicon/70ф
+]
+category: turret
+research: lancer

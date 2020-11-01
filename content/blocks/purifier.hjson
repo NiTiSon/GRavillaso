@@ -5,21 +5,21 @@ hasLiquids: true
 hasItems: true
 size: 2
 category: crafting
-craftTime: 100
+craftTime: 80
 consumes: {
   items: {
     items: [
         gravitium/3
     ]
   }
-  power: 5
+  power: 2.5
   liquid: {
     liquid: cryofluid
-    amount: 0.25
+    amount: 0.05
   }
 }
 requirements: [
-  lead/350
+  gravitium/350
   silicon/135
   titanium/100
 ]

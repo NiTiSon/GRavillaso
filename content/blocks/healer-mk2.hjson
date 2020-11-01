@@ -5,13 +5,10 @@ size: 2
 repairRadius: 125
 repairSpeed: 1.2
 requirements: [
-  copper/75
-  lead/50
-  silicon/50
   titanium/25
-  thorium/15
+  silicon/50
   plastanium/5
-  gravitol/17
+  gravitol/15
 ]
 category: units
 research: healer-mk1
