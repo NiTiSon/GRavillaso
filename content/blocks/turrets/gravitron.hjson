@@ -1,33 +1,33 @@
 type: ItemTurret
 size: 1
-health: 350
+health: 450
 range: 125
 maxAmmo: 100
-inaccuracy: 30
+inaccuracy: 5
 rotatespeed: 12
 reload: 0.75
 ammoTypes: {
 	gravitium: {
 		type: BasicBulletType
-		lifetime: 180
-		speed: 5
-		damage: 22
-		width: 7
-		height: 9
+		lifetime: 120
+		speed: 3
+		damage: 26
+		width: 10
+		height: 17
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 		ammoMultiplier: 2
 }
 	metaglass: {
 		type: BasicBulletType
-		lifetime: 70
-		speed: 12
-		damage: 13
-		width: 3
-		height: 5
+		lifetime: 280
+		speed: 7
+		damage: 17
+		width: 6
+		height: 10
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-		ammoMultiplier: 3
+		ammoMultiplier: 5
 }
 }
 requirements: [

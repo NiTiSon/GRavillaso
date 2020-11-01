@@ -1,7 +1,7 @@
 type: PowerTurret
 health: 1250
 size: 2
-powerUse: 11
+powerUse: 2.8
 range: 150
 reload: 90
 inaccuracy: 15
@@ -9,9 +9,9 @@ targetAir: true
 targetGround: true
 shootType: {
     type: MissileBulletType
-    speed: 5
-    damage: 120
-    lifetime: 340
+    speed: 3.2
+    damage: 30
+    lifetime: 290
     frontColor: 483D8B
     backColor: 4B0082
 }

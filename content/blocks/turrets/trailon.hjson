@@ -11,9 +11,9 @@ ammoTypes: {
 		type: BasicBulletType
 		lifetime: 180
 		speed: 12
-		damage: 9
-		width: 7
-		height: 9
+		damage: 29
+		width: 10
+		height: 17
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 		ammoMultiplier: 4
@@ -22,33 +22,30 @@ ammoTypes: {
 		type: BasicBulletType
 		lifetime: 70
 		speed: 31
-		damage: 12
-		width: 3
+		damage: 14
+		width: 5
 		height: 5
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-		ammoMultiplier: 3
+		ammoMultiplier: 1
 }
 	titanium: {
 		type: BasicBulletType
 		lifetime: 900
 		speed: 6
-		damage: 13
-		width: 1
-		height: 1.5
+		damage: 22
+		width: 9
+		height: 12
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-		ammoMultiplier: 1
+		ammoMultiplier: 2
 }
 }
 requirements: [
-  copper/150
-  lead/75
-  plastanium/25	
-  gravitol/50
-  titanium/150
-  thorium/75
-  silicon/70
+  plastanium/75	
+  gravitol/25
+  thorium/10
+  titanium/85
 ]
 category: turret
 research: gravitron
