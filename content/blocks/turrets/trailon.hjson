@@ -27,7 +27,6 @@ ammoTypes: {
 		height: 5
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-		ammoMultiplier: 1
 }
 	titanium: {
 		type: BasicBulletType
