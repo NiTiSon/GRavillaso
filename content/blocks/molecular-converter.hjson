@@ -1,38 +1,40 @@
-type: GenericSmelter 
-liquidCapacity: 80
+type: GenericCrafter
+liquidCapacity: 75
 hasPower: true
 hasLiquids: true
 hasItems: true
 size: 2
 category: crafting
-craftTime: 80
+craftTime: 60
 consumes: {
   items: {
     items: [
-        gravitium/1
-        thorium/1
+        titanium/1
+        lead/3
+        silicon/2
+
     ]
   }
-  power: 3.5
+  power: 2.75
   liquid: {
     liquid: water
-    amount: 0.20
+    amount: 0.15
   }
 }
 requirements: [
-  gravitium/350
-  silicon/135
-  titanium/100
+  silicon/175
+  titanium/10
+  surge-alloy/5
 ]
 updateEffect: smeltsmoke
 idleSound: respawning
 idleSoundVolume: 0.5
-outputItem: gravitol/1
+outputItem: gravitium/5
 research: {
-  parent: "molecular-converter"
+  parent: kiln
   requirements: [
-  gravitium/7000
-  silicon/2700
-  titanium/2000
+  silicon/3500
+  titanium/1000
+  surge-alloy/300
   ]
 }

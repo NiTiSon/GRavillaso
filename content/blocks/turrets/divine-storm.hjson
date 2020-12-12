@@ -1,6 +1,8 @@
 type: ItemTurret
 size: 1
 health: 450
+targetAir: True
+targetGround: False
 range: 290
 maxAmmo: 100
 inaccuracy: 2
