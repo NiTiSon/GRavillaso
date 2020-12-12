@@ -1,48 +1,48 @@
 type: ItemTurret
 size: 1
-health: 290
-range: 210
-maxAmmo: 10
-inaccuracy: 0
-rotatespeed: 60
-reload: 1.50
+health: 450
+range: 290
+maxAmmo: 100
+inaccuracy: 2
+rotatespeed: 12
+reload: 0.75
 ammoTypes: {
-	coal: {
+	gravitium: {
 		type: BasicBulletType
 		lifetime: 120
 		speed: 3
-		damage: 19
+		damage: 26
 		width: 10
 		height: 17
+		homingPower: 2
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 		ammoMultiplier: 2
 }
-	copper: {
+	metaglass: {
 		type: BasicBulletType
-		lifetime: 100
-		speed: 2
-		damage: 7
-		width: 5
-		height: 6
+		lifetime: 280
+		speed: 7
+		damage: 17
+		width: 6
+		height: 10
+		homingPower: 0.2
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-		ammoMultiplier: 1
+		ammoMultiplier: 5
 }
 }
 requirements: [
 	copper/35
-	gravitium/5
-	titanium/15
-	silicon/3
+	coal/15
+	silicon/25
 ]
 category: turret
 research: {
-  parent: duo
+  parent: scatter
   requirements: [
-    copper/600
-    gravitium/150
-    titanium/450
-    silicon/69
-	]
+    copper/2500
+    coal/150
+    silicon/1750
+  ]
 }

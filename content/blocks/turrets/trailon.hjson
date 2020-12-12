@@ -41,9 +41,17 @@ ammoTypes: {
 }
 requirements: [
   plastanium/75	
-  gravitol/25
-  thorium/10
+  gravitol/50
+  thorium/45
   titanium/85
 ]
 category: turret
-research: gravitron
+research: {
+  parent: gravitron
+  requirements: [
+    plastanium/750
+    gravitol/600
+    thorium/500
+    titanium/90
+  ]
+}

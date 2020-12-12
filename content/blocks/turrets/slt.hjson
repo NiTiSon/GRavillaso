@@ -18,9 +18,18 @@ shootType: {
 requirements: [
   lead/150
   titanium/75
+  silicon/70
   plastanium/50	
   gravitol/25
-  silicon/70
 ]
-category: turret
-research: lancer
+category: turret 
+research: {
+  parent: lancer
+  requirements: [
+    lead/3000
+    titanium/1500
+    silicon/1400    
+    plastanium/1000
+    gravitol/500
+  ]
+}
