@@ -1,5 +1,6 @@
 type: GenericCrafter
 liquidCapacity: 75
+itemCapaccity: 20
 hasPower: true
 hasLiquids: true
 hasItems: true

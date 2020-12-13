@@ -3,13 +3,15 @@ health: 9800
 ItemCapacity: 15000
 size: 6
 category: effect
+###unitType: realise
+unitType: gamma
 requirements: [
   gravitium/350
   silicon/135
   titanium/100
 ]
 research: {
-  parent: "molecular-converter"
+  parent: "core-nucleus"
   requirements: [
   gravitium/7000
   silicon/2700
