@@ -8,7 +8,15 @@ requirements: [
   titanium/25
   silicon/50
   plastanium/5
-  gravitol/15
+  gravitium/15
 ]
 category: units
-research: healer-mk1
+research: {
+  parent: healer-mk1
+  requirements: [
+  titanium/2500
+  silicon/5000
+  plastanium/500
+  gravitium/1800
+  ]
+}  

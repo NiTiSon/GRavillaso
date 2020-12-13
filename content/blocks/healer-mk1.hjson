@@ -8,7 +8,15 @@ requirements: [
   copper/30
   lead/30
   silicon/30
-  gravitium/15
+  thorium/15
 ]
 category: units
-research: repair-point
+research: {
+  parent: repair-point
+  requirements: [
+  copper/1000
+  lead/1000
+  silicon/1000
+  thorium/700
+  ]
+} 

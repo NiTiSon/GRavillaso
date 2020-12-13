@@ -1,0 +1,18 @@
+type: CoreBlock
+health: 9800
+ItemCapacity: 15000
+size: 6
+category: effect
+requirements: [
+  gravitium/350
+  silicon/135
+  titanium/100
+]
+research: {
+  parent: "molecular-converter"
+  requirements: [
+  gravitium/7000
+  silicon/2700
+  titanium/2000
+  ]
+}
