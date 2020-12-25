@@ -1,8 +1,7 @@
 type: GenericCrafter
-liquidCapacity: 75
 itemCapaccity: 20
 hasPower: true
-hasLiquids: true
+hasLiquids: false
 hasItems: true
 size: 2
 category: crafting
@@ -17,10 +16,6 @@ consumes: {
     ]
   }
   power: 2.75
-  liquid: {
-    liquid: water
-    amount: 0.15
-  }
 }
 requirements: [
   silicon/175
