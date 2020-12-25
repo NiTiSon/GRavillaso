@@ -36,7 +36,7 @@ ammoTypes: {
 }
 requirements: [
 	copper/35
-	coal/15
+	metaglass/15
 	silicon/25
 ]
 category: turret
@@ -44,7 +44,7 @@ research: {
   parent: scatter
   requirements: [
     copper/2500
-    coal/150
+    metaglass/150
     silicon/1750
   ]
 }
