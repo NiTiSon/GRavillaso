@@ -1,0 +1,22 @@
+type: PowerGenerator
+powerProduction: 160
+PowerGenerator: 1
+size:1
+hasPower: true
+hasItems: true
+health: 20
+liquidCapacity: 3
+itemDuration: 10
+category: power
+consumes: {
+items:{
+items:[
+gravitium/1
+]}}, 
+requirements: [
+gravitol/15
+lead/75
+titanium/25
+silicon/45
+]
+research: duo

@@ -2,12 +2,18 @@ type: Conveyor
 requirements: [
   titanium/5
   thorium/5
-  copper/5
-  lead/5
   gravitol/5
   magneturn/1
 ]
 activeSound: conveyor
 category: distribution
 speed: 0.30
-research: gravitol-conveyor
+research: {
+  parent: gravitol-conveyor
+  requirements: [
+    titanium/2500
+    thorium/2500
+    gravitol/2500
+    magneturn/1250
+  ]
+}

@@ -3,9 +3,16 @@ requirements: [
   titanium/3
   copper/3
   lead/3
-  gravitol/3
+  gravitol/1
 ]
 activeSound: conveyor
 category: distribution
 speed: 0.15
-research: titanium-conveyor
+research: {
+  parent: titanium-conveyor
+  requirements: [
+  	titanium/1500
+    copper/1500
+    lead/1500
+    gravitol/269
+]}

@@ -1,0 +1,6 @@
+type: material
+color: 3d0a78
+radioactivity: 0.42
+research: {
+  parent: gravitol
+}
