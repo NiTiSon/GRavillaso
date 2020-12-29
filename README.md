@@ -5,4 +5,4 @@ Adds
 * Drills [1]
 * Materials[3]
 * Liquids[0]  
-  [Vkontakte](https://vk.com/nickname_73)
+[Vkontakte](https://vk.com/nickname_73)
