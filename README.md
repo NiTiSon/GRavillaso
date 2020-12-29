@@ -6,6 +6,8 @@ Adds
 * Liquids[0]
 * Drills [1]
 * Conveyors[2]
+* Turrets [?]
+* Walls [1-Type]
 * Factory[3]
 * OtherBlock[3]  
 [Vkontakte](https://vk.com/nickname_73)  
