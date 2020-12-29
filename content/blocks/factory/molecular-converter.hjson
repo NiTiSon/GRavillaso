@@ -1,11 +1,12 @@
 type: GenericCrafter
-itemCapaccity: 20
+itemCapaccity: 12
 hasPower: true
 hasLiquids: false
 hasItems: true
-size: 2
+size: 3
 category: crafting
-craftTime: 60
+craftTime: 75
+health: 450
 consumes: {
   items: {
     items: [
@@ -15,22 +16,22 @@ consumes: {
 
     ]
   }
-  power: 2.75
+  power: 3.50
 }
 requirements: [
-  silicon/175
-  titanium/10
-  surge-alloy/5
+  lead/175
+  plastanium/120
+  silicon/80
 ]
 updateEffect: smeltsmoke
 idleSound: respawning
 idleSoundVolume: 0.5
-outputItem: gravitium/5
+outputItem: gravitium/1
 research: {
-  parent: kiln
+  parent: "plastanium-compressor"
   requirements: [
-  silicon/3500
-  titanium/1000
-  surge-alloy/300
+  lead/3500
+  plastanium/3600
+  silicon/1000
   ]
 }

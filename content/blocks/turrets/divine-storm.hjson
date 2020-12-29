@@ -1,37 +1,48 @@
 type: ItemTurret
 size: 1
-health: 450
+health: 230
 targetAir: True
 targetGround: False
-range: 290
-maxAmmo: 100
-inaccuracy: 2
-rotatespeed: 12
-reload: 0.75
+range: 285
+maxAmmo: 10
+inaccuracy: 7
+rotatespeed: 14
+reload: 1.25
 ammoTypes: {
-	gravitium: {
-		type: BasicBulletType
+	copper: {
+		type: MissileBulletType
 		lifetime: 120
 		speed: 3
-		damage: 26
-		width: 10
-		height: 17
-		homingPower: 2
+		damage: 6
+		width: 4
+		homingPower: 0
+		height: 7
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-		ammoMultiplier: 2
+		ammoMultiplier: 1
 }
 	metaglass: {
 		type: BasicBulletType
 		lifetime: 280
-		speed: 7
-		damage: 17
-		width: 6
-		height: 10
-		homingPower: 0.2
+		speed: 4.75
+		damage: 9
+		width: 3
+		height: 6
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-		ammoMultiplier: 5
+		ammoMultiplier: 2
+}
+	silicon: {
+		type: ArtilleryBulletType
+		lifetime: 280
+		speed: 5.25
+		damage: 8
+		width: 4
+		height: 7
+		homingPower: 0.3
+		shootEffect: shootSmall
+		smokeEffect: shootSmallSmoke
+		ammoMultiplier: 2
 }
 }
 requirements: [

@@ -1,35 +1,36 @@
 type: PowerTurret
-health: 1250
+health: 980
 size: 2
-powerUse: 2.8
-range: 150
-reload: 90
-inaccuracy: 15
-targetAir: true
+powerUse: 4
+range: 200
+shots: 1
+reloadTime: 20
+inaccuracy: 2
+rotateSpeed: 3.75
+targetAir: false
 targetGround: true
 shootType: {
-    type: MissileBulletType
-    speed: 3.2
-    damage: 30
-    lifetime: 290
-    frontColor: 483D8B
-    backColor: 4B0082
+    type: LaserBulletType
+    damage: 45
+    lifetime: 35
+    width: 8
+    shootEffect: lightningShoot
 }
 requirements: [
   lead/150
-  titanium/75
+  graphite/75
   silicon/70
-  plastanium/50	
-  gravitol/25
+  gravitium/25
 ]
+coolantMultiplier: 10
 category: turret 
+shootSound: laser
 research: {
   parent: lancer
   requirements: [
     lead/3000
-    titanium/1500
-    silicon/1400    
-    plastanium/1000
-    gravitol/500
+    graphite/1500
+    silicon/1400
+    gravitium/500
   ]
 }

@@ -5,7 +5,7 @@ hasLiquids: true
 hasItems: true
 size: 2
 category: crafting
-craftTime: 80
+craftTime: 90
 consumes: {
   items: {
     items: [
@@ -20,7 +20,7 @@ consumes: {
   }
 }
 requirements: [
-  gravitium/350
+  phase-fabric/350
   silicon/135
   titanium/100
 ]
@@ -29,9 +29,9 @@ idleSound: respawning
 idleSoundVolume: 0.5
 outputItem: gravitol/1
 research: {
-  parent: "molecular-converter"
+  parent: "phase-weaver"
   requirements: [
-  gravitium/7000
+  phase-fabric/7000
   silicon/2700
   titanium/2000
   ]

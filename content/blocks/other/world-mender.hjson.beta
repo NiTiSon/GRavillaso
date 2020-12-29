@@ -1,0 +1,21 @@
+type: MendProjector
+size: 3
+health: 640
+baseColor: 84f490
+phaseColor: b5ffbd
+range: 120
+healPercent: 15
+phaseBoost: 15
+phaseRangeBoost: 35
+hasItems: True
+itemCapacity: 10
+useTime: 540
+consumes:{
+	power: 4.5
+}
+requirements: [
+  silicon/175
+  titanium/10
+  surge-alloy/5
+]
+category: effect

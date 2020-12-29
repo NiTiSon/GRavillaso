@@ -10,33 +10,24 @@ ammoTypes: {
 		type: BasicBulletType
 		lifetime: 180
 		speed: 12
-		damage: 29
+		damage: 19
 		width: 10
 		height: 17
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
+		homingPower: 0.2
 		ammoMultiplier: 4
 }
 	silicon: {
 		type: BasicBulletType
 		lifetime: 70
 		speed: 31
-		damage: 14
+		damage: 9
 		width: 5
 		height: 5
+		homingPower: 0.1
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-}
-	titanium: {
-		type: BasicBulletType
-		lifetime: 900
-		speed: 6
-		damage: 22
-		width: 9
-		height: 12
-		shootEffect: shootSmall
-		smokeEffect: shootSmallSmoke
-		ammoMultiplier: 2
 }
 }
 requirements: [
@@ -47,7 +38,7 @@ requirements: [
 ]
 category: turret
 research: {
-  parent: gravitron
+  parent: divine-storm
   requirements: [
     plastanium/750
     gravitol/600
