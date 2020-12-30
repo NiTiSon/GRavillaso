@@ -1,5 +1,5 @@
 type: RepairPoint
-health: 120
+health: 320
 powerUse: 1.5
 size: 2
 repairRadius: 125
@@ -7,7 +7,7 @@ repairSpeed: 1.2
 requirements: [
   titanium/25
   silicon/50
-  plastanium/5
+  thorium/5
   gravitium/15
 ]
 category: units
@@ -16,7 +16,7 @@ research: {
   requirements: [
   titanium/2500
   silicon/5000
-  plastanium/500
+  thorium/500
   gravitium/1800
   ]
 }  

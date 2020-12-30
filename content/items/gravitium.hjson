@@ -3,5 +3,5 @@ color: 4d7c99
 hardness: 6
 radioactivity: 0.27
 research: {
-  parent: thorium
+  parent: plastanium
 }

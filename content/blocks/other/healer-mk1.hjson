@@ -5,10 +5,10 @@ size: 1
 repairRadius: 90
 repairSpeed: 0.8
 requirements: [
-  copper/30
-  lead/30
-  silicon/30
-  thorium/15
+  copper/45
+  lead/45
+  silicon/70
+  titanium/15
 ]
 category: units
 research: {
@@ -17,6 +17,6 @@ research: {
   copper/1000
   lead/1000
   silicon/1000
-  thorium/700
+  titanium/700
   ]
 } 

@@ -22,7 +22,7 @@ requirements: [
   silicon/70
   gravitium/25
 ]
-coolantMultiplier: 10
+coolantMultiplier: 6
 category: turret 
 shootSound: laser
 research: {
