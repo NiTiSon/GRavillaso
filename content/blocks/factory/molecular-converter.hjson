@@ -1,5 +1,5 @@
 type: GenericCrafter
-itemCapaccity: 12
+itemCapaccity: 20
 hasPower: true
 hasLiquids: false
 hasItems: true

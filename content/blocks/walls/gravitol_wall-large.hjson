@@ -1,5 +1,5 @@
 type: Wall
-health: 4800
+health: 5120
 size: 2
 requirements: [
   gravitol/20
