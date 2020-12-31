@@ -3,14 +3,14 @@ liquidCapacity: 175
 hasPower: true
 hasLiquids: true
 hasItems: true
-size: 2
+size: 3
 category: crafting
-craftTime: 120
+craftTime: 180
 consumes: {
   items: {
     items: [
         gravitol/1
-        titanium/3
+        surge-alloy/3
 
     ]
   }
@@ -27,7 +27,5 @@ requirements: [
   surge-alloy/55
 ]
 updateEffect: smeltsmoke
-idleSound: respawning
-idleSoundVolume: 0.5
-outputItem: magneturn/3
+outputItem: magneturn/2
 research: purifier

@@ -1,7 +1,8 @@
 type: ItemTurret
 health: 450
 size: 2
-reload: 4
+reload: 2
+shoots: 1
 range: 370
 inaccuracy: 0
 rotatespeed: 9
@@ -9,21 +10,21 @@ ammoTypes: {
 	gravitium: {
 		type: BasicBulletType
 		lifetime: 180
-		speed: 12
-		damage: 19
-		width: 10
-		height: 17
+		speed: 9
+		damage: 34
+		width: 7
+		height: 11
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-		homingPower: 0.2
-		ammoMultiplier: 4
+		homingPower: 0.3
+		ammoMultiplier: 3
 }
 	silicon: {
 		type: BasicBulletType
-		lifetime: 70
-		speed: 31
-		damage: 9
-		width: 5
+		lifetime: 90
+		speed: 11
+		damage: 14
+		width: 3
 		height: 5
 		homingPower: 0.1
 		shootEffect: shootSmall
@@ -38,7 +39,7 @@ requirements: [
 ]
 category: turret
 research: {
-  parent: divine-storm
+  parent: salvo
   requirements: [
     plastanium/750
     gravitol/600
