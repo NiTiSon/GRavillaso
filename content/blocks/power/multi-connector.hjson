@@ -7,8 +7,6 @@ requirements: [
   lead/35
   titanium/30
   silicon/100
-  surge-alloy/55
-  plastanium/10
   gravitol/7
 ]
 category: power
@@ -18,8 +16,6 @@ research: {
   	lead/3980
   	titanium/5750
   	silicon/3900
-  	surge-alloy/5500
-  	plastanium/1001
   	gravitol/780
   ]
 }

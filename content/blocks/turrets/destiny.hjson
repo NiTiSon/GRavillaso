@@ -1,8 +1,8 @@
 type: PowerTurret
 health: 980
 size: 2
-powerUse: 4
-range: 200
+powerUse: 7
+range: 190
 shots: 1
 reloadTime: 20
 inaccuracy: 2

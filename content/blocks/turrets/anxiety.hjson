@@ -3,7 +3,7 @@ health: 450
 size: 2
 reload: 2
 shoots: 1
-range: 370
+range: 320
 inaccuracy: 0
 rotatespeed: 9
 ammoTypes: {
