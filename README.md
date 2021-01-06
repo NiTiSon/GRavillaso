@@ -12,4 +12,5 @@ Adds
 * Power [1]
 * Factory[3]
 * OtherBlock[2]  
-[Vkontakte](https://vk.com/nickname_73) [VKgroup](https://vk.com/gravillaso)
+[Vkontakte](https://vk.com/nickname_73)  
+  [VKgroup](https://vk.com/gravillaso)
