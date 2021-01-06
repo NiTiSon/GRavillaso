@@ -1,0 +1,25 @@
+type: PowerNode
+size: 3
+health: 120
+maxNodes: 35
+laserRange: 22.5
+requirements: [
+  lead/35
+  titanium/30
+  silicon/100
+  surge-alloy/55
+  plastanium/10
+  gravitol/7
+]
+category: power
+research: {
+  parent: "surge-tower"
+  requirements: [
+  	lead/3980
+  	titanium/5750
+  	silicon/3900
+  	surge-alloy/5500
+  	plastanium/1001
+  	gravitol/780
+  ]
+}
