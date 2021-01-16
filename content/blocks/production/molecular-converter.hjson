@@ -24,8 +24,8 @@ requirements: [
   silicon/80
 ]
 updateEffect: smeltsmoke
-idleSound: respawning
-idleSoundVolume: 0.5
+loopSound: smelter
+loopSoundVolume: 0.5
 outputItem: gravitium/1
 research: {
   parent: "plastanium-compressor"

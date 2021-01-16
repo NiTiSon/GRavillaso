@@ -1,7 +1,7 @@
 type: ItemTurret
 health: 450
 size: 2
-reload: 2
+reloadTime: 60
 shoots: 1
 range: 320
 inaccuracy: 0
@@ -16,8 +16,9 @@ ammoTypes: {
 		height: 11
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-		homingPower: 0.3
+		homingPower: 0.009
 		ammoMultiplier: 3
+		trailChance: 0.5
 }
 	silicon: {
 		type: BasicBulletType
@@ -26,7 +27,7 @@ ammoTypes: {
 		damage: 14
 		width: 3
 		height: 5
-		homingPower: 0.1
+		homingPower: 0.07
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 }

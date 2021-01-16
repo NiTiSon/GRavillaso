@@ -1,4 +1,6 @@
-type: GenericSmelter 
+type: AttributeSmelter
+attribute: heat
+baseEfficiency: 1
 liquidCapacity: 175
 hasPower: true
 hasLiquids: true
