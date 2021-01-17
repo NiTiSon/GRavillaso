@@ -1,4 +1,5 @@
 type: Conveyor
+health: 120
 requirements: [
   titanium/3
   copper/3

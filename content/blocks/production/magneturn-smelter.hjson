@@ -29,5 +29,15 @@ requirements: [
   surge-alloy/55
 ]
 updateEffect: smeltsmoke
+ambientSound: smelter
+ambientSoundVolume: 0.3
 outputItem: magneturn/2
-research: purifier
+research: {
+  parent: "alloy-smelter"
+  requirements: [
+    gravitol/1500
+    silicon/2300
+    titanium/1900
+    surge-alloy/1255
+  ]
+}

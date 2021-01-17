@@ -1,4 +1,5 @@
 type: Conveyor
+health: 180
 requirements: [
   titanium/5
   thorium/5

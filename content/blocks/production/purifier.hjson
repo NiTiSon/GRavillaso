@@ -10,7 +10,6 @@ consumes: {
   items: {
     items: [
         gravitium/1
-        thorium/1
     ]
   }
   power: 3.5
@@ -20,16 +19,16 @@ consumes: {
   }
 }
 requirements: [
-  phase-fabric/350
+  thorium/350
   silicon/135
   titanium/100
 ]
 updateEffect: smeltsmoke
-idleSound: cutter.ogg
-idleSoundVolume: 0.9
+ambientSound: machine
+ambientSoundVolume: 0.3
 outputItem: gravitol/1
 research: {
-  parent: "phase-weaver"
+  parent: "molecular-converter"
   requirements: [
   phase-fabric/7000
   silicon/2700

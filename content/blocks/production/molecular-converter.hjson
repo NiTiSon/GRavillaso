@@ -11,27 +11,26 @@ consumes: {
   items: {
     items: [
         titanium/1
-        lead/3
+        lead/1
         silicon/2
-
     ]
   }
   power: 3.50
 }
 requirements: [
   lead/175
-  plastanium/120
+  titanium/120
   silicon/80
 ]
 updateEffect: smeltsmoke
-loopSound: smelter
-loopSoundVolume: 0.5
+ambientSound: cutter
+ambientSoundVolume: 0.2
 outputItem: gravitium/1
 research: {
-  parent: "plastanium-compressor"
+  parent: "kiln"
   requirements: [
   lead/3500
-  plastanium/3600
+  titanium/3600
   silicon/1000
   ]
 }
