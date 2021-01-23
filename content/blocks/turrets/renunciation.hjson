@@ -98,8 +98,8 @@ requirements: [
   titanium/390
   thorium/230
   gravitol/420
-  surge-alloy/340
-  magneturn/190
+  surge-alloy/320
+  magneturn/140
 ]
 category: turret
 research: {
@@ -109,6 +109,6 @@ research: {
   thorium/9600
   gravitol/2340
   surge-alloy/2980
-  magneturn/1920
+  magneturn/1620
   ]
 }

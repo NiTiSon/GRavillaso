@@ -1,0 +1,38 @@
+type: LiquidConverter
+category: crafting
+hasLiquids: true
+size: 2
+craftTime: 45
+outputsItems: false
+health: 340
+liquidCapacity: 30
+consumes: {
+  power: 8.5
+  items:{
+  	items:[
+  		titanium/1
+  	]
+  }
+  liquid: {
+    liquid: water
+    amount: 0.60
+  }
+}
+requirements: [
+  copper/90
+  gravitol/40
+  graphite/120
+  silicon/90
+  metaglass/70
+]
+outputLiquid: cryofluid/27
+research: {
+  parent: "cryofluid-mixer"
+  requirements: [
+  copper/9000
+  gravitol/4000
+  graphite/12000
+  silicon/9000
+  metaglass/7000
+  ]
+}

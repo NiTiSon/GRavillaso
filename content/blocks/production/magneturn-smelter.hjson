@@ -7,7 +7,7 @@ hasLiquids: true
 hasItems: true
 size: 3
 category: crafting
-craftTime: 180
+craftTime: 140
 consumes: {
   items: {
     items: [

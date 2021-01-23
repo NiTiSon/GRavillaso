@@ -5,7 +5,7 @@ hasLiquids: false
 hasItems: true
 size: 3
 category: crafting
-craftTime: 75
+craftTime: 65
 health: 450
 consumes: {
   items: {

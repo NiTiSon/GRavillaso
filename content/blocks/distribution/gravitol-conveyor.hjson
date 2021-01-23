@@ -1,14 +1,15 @@
 type: Conveyor
 health: 120
 requirements: [
-  titanium/3
-  copper/3
-  lead/3
+  titanium/1
+  copper/1
+  lead/1
   gravitol/1
 ]
 activeSound: conveyor
 category: distribution
 speed: 0.15
+displayedSpeed: 19
 research: {
   parent: titanium-conveyor
   requirements: [

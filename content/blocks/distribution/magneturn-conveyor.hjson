@@ -1,16 +1,18 @@
-type: Conveyor
-health: 180
+type: ArmoredConveyor
+health: 240
 requirements: [
-  titanium/5
-  thorium/5
-  gravitol/5
+  titanium/1
+  thorium/1
+  gravitol/1
   magneturn/1
 ]
 activeSound: conveyor
+expanded: true
 category: distribution
-speed: 0.30
+speed: 0.22
+displayedSpeed: 25.45
 research: {
-  parent: gravitol-conveyor
+  parent: armored-conveyor
   requirements: [
     titanium/2500
     thorium/2500
