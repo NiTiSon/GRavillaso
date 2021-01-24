@@ -4,7 +4,7 @@ hasLiquids: true
 size: 2
 craftTime: 45
 outputsItems: false
-health: 340
+health: 320
 liquidCapacity: 30
 consumes: {
   power: 8.5
