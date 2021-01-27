@@ -1,0 +1,13 @@
+type: Wall
+health: 1360
+size: 1
+requirements: [
+  magneturn/5
+  plastanium/1
+]
+category: defense
+research: gravitol-wall
+lightningColor: e3c7ff
+lightningLength: 12
+lightningDamage: 20
+lightningChance: 50

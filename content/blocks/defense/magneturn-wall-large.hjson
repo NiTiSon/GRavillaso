@@ -1,0 +1,13 @@
+type: Wall
+health: 5440
+size: 2
+requirements: [
+  magneturn/20
+  plastanium/4
+]
+category: defense
+research: magneturn-wall
+lightningColor: e3c7ff
+lightningLength: 12
+lightningDamage: 20
+lightningChance: 50
