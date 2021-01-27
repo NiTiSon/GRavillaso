@@ -1,5 +1,5 @@
 # Gravillaso V0.10.3
-![Gravillaso](https://i.imgur.com/rYuZZaO.png)
+![Gravillaso](https://imgur.com/jD5rk8r.png)
 Gravillaso - mod based on magnetic materials 
   PS: Due to the pile of generation in 6.0, new ores cannot be added
 Adds
