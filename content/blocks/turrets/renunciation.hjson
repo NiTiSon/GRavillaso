@@ -4,7 +4,7 @@ shootSound: missile
 health: 1780
 size: 3
 range: 340
-inaccuracy: 12
+inaccuracy: 11
 rotatespeed: 4.5
 xRand: 7
 reloadTime: 90
@@ -13,7 +13,7 @@ ammoTypes: {
 	gravitol: {
 		type: MissileBulletType
 		splashDamageRadius: 32
-		splashDamage: 45
+		splashDamage: 55
 		lifetime: 67
 		speed: 5
 		damage: 57
@@ -95,18 +95,18 @@ ammoTypes: {
 }
 }
 requirements: [
-  titanium/390
+  graphite/220
   thorium/230
-  gravitol/420
-  surge-alloy/320
-  magneturn/140
+  gravitol/120
+  surge-alloy/220
+  magneturn/120
 ]
 category: turret
 research: {
   parent: swarmer
   requirements: [
-  titanium/10500
-  thorium/9600
+  graphite/9500
+  thorium/7600
   gravitol/2340
   surge-alloy/2980
   magneturn/1620

@@ -15,8 +15,18 @@ ammoTypes: {
 		speed: 3
 		damage: 8
 		width: 4
-		homingPower: 0
 		height: 7
+		shootEffect: shootSmall
+		smokeEffect: shootSmallSmoke
+		ammoMultiplier: 1
+}
+	coal: {
+		type: BasicBulletType
+		lifetime: 100
+		speed: 1
+		damage: 3
+		width: 3
+		height: 6
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 		ammoMultiplier: 1
@@ -38,7 +48,7 @@ ammoTypes: {
 		damage: 14
 		width: 4
 		height: 7
-		homingPower: 0.3
+		homingPower: 0.05
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 }

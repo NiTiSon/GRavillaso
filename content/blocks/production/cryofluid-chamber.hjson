@@ -1,8 +1,9 @@
 type: LiquidConverter
 category: crafting
 hasLiquids: true
+drawer: DrawMixer
 size: 2
-craftTime: 45
+craftTime: 140
 outputsItems: false
 health: 320
 liquidCapacity: 30
@@ -19,20 +20,20 @@ consumes: {
   }
 }
 requirements: [
-  copper/90
+  copper/70
   gravitol/40
   graphite/120
-  silicon/90
+  silicon/35
   metaglass/70
 ]
 outputLiquid: cryofluid/27
 research: {
   parent: "cryofluid-mixer"
   requirements: [
-  copper/9000
-  gravitol/4000
-  graphite/12000
-  silicon/9000
-  metaglass/7000
+  copper/6000
+  gravitol/1200
+  graphite/8000
+  silicon/4500
+  metaglass/3200
   ]
 }
