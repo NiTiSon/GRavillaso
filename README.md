@@ -1,16 +1,16 @@
-# Gravillaso V0.9.7
-![Gravillaso](https://i.imgur.com/rYuZZaO.png)
+# Gravillaso V0.10.3
+![Gravillaso](https://imgur.com/jD5rk8r.png)
 Gravillaso - mod based on magnetic materials 
   PS: Due to the pile of generation in 6.0, new ores cannot be added
 Adds
 * Materials[3]
 * Liquids[0]
-* Drills [1]
+* Drills [0]
 * Conveyors[2]
-* Turrets [3]
-* Walls [2]
+* Turrets [4]
+* Walls [2*2]
 * Power [1]
 * Factory[3]
-* OtherBlock[2]  
+* OtherBlock[3]  
 [Vkontakte](https://vk.com/nickname_73)  
   [VKgroup](https://vk.com/gravillaso)
