@@ -4,6 +4,6 @@ barColor: dbd0af
 temperature: 0.25
 flammability: 2.10
 heatCapacity: 0.20
-viscosity: 0.8
+viscosity: 0.5
 effect: burning
 explosiveness: 1.9

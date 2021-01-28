@@ -1,9 +1,9 @@
 type: Liquid
-color: b8b28c
-barColor: b8b28c
-temperature: 0.45
-flammability: 1.80
-heatCapacity: 0.20
-viscosity: 0.9
+color: d6a787
+barColor: d6a787
+temperature: 1.65
+flammability: 3.80
+heatCapacity: 0.80
+viscosity: 0.7
 effect: burning
 explosiveness: 0.4

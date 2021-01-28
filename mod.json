@@ -1,6 +1,8 @@
 name: "gravillaso"
 displayName: "[purple]Gravillaso[white] Mod"
 author: "[orange]NickName73"
-description: "Mod by NNTs-NickName73"
+description: "Help with mod: TheSkyFather, CREAsTIVE"
 version: " 0.11.1b"
 minGameVersion: "120"
+dependencies: [
+]

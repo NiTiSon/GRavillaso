@@ -1,0 +1,44 @@
+type: LiquidTurret
+range: 190
+recoil: 3
+reload: 1
+shoots: 35
+inaccuracy: 2
+ammoTypes: {
+	benzine:{
+		type: LiquidBulletType
+		damage: 2.10
+		speed: 6
+		drag: 0.01 
+		knockback: 2
+		ammoMultiplier: 1.2
+		liquid: benzine
+	}
+	flammable-liquid:{
+		type: LiquidBulletType
+		damage: 0.9
+		drag: 0.01
+		speed: 9
+		liquid: flammable-liquid
+		}	
+	}
+}
+
+size: 3
+health: 1200
+requirements: [
+  lead/150
+  graphite/75
+  silicon/70
+  gravitium/25
+]
+category: turret
+research: {
+  parent: lancer
+  requirements: [
+    lead/3000
+    graphite/1500
+    silicon/1400
+    gravitium/500
+  ]
+}
