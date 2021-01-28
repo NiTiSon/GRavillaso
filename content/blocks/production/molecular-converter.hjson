@@ -25,7 +25,7 @@ requirements: [
 updateEffect: smeltsmoke
 ambientSound: cutter
 ambientSoundVolume: 0.2
-outputItem: gravitium/1
+outputItem: gravitium/4
 research: {
   parent: "kiln"
   requirements: [

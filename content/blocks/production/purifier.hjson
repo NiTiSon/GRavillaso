@@ -9,7 +9,7 @@ craftTime: 70
 consumes: {
   items: {
     items: [
-        gravitium/1
+        gravitium/2
     ]
   }
   power: 3.5

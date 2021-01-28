@@ -5,8 +5,8 @@ hasPower: true
 consumes:{
 powerBuffered: 22000
 }
-emptyLightColor: 
-fullLightColor:
+emptyLightColor: f8c266
+fullLightColor: fb9567
 category: power
 requirements: [
  copper/15

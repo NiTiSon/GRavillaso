@@ -1,0 +1,9 @@
+type: Liquid
+color: dbd0af
+barColor: dbd0af
+temperature: 0.25
+flammability: 2.10
+heatCapacity: 0.20
+viscosity: 0.8
+effect: burning
+explosiveness: 1.9
