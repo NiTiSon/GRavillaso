@@ -4,8 +4,8 @@ Gravillaso - mod based on magnetic materials
   PS: Due to the pile of generation in 6.0, new ores cannot be added
 Adds
 * Materials[3]
-* Liquids[0]
-* Drills [0]
+* Liquids[2]
+* Drills [1]
 * Conveyors[2]
 * Turrets [4]
 * Walls [2*2]
