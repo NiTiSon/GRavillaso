@@ -1,7 +1,7 @@
 type: resource
-color: 4d7c99
+color: 2f726d
 hardness: 6
-radioactivity: 0.27
+radioactivity: 0.09
 research: {
   parent: titanium
 }

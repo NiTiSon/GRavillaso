@@ -1,5 +1,5 @@
 type: ItemTurret
-health: 450
+health: 1480
 size: 2
 reloadTime: 50
 shoots: 3

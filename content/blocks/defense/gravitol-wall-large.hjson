@@ -3,7 +3,7 @@ health: 5120
 size: 2
 requirements: [
   gravitol/20
-  surge-alloy/4
+  plastanium/4
 ]
 category: defense
 research: gravitol-wall

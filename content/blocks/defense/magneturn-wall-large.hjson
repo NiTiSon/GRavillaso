@@ -3,11 +3,11 @@ health: 5440
 size: 2
 requirements: [
   magneturn/20
-  plastanium/4
+  surge-alloy/4
 ]
 category: defense
 research: magneturn-wall
 lightningColor: e3c7ff
-lightningLength: 12
+lightningLength: 11
 lightningDamage: 20
-lightningChance: 50
+lightningChance: 0.2

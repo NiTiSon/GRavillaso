@@ -1,29 +1,31 @@
 type: LiquidTurret
-range: 190
+
+range: 140
 recoil: 3
-reload: 1
-shoots: 35
+spread: 7.0
+reload: 0.02
+shoots: 20
 inaccuracy: 2
 ammoTypes: {
 	benzine:{
 		type: LiquidBulletType
-		damage: 2.10
-		speed: 6
-		drag: 0.01 
+		damage: 0.7
+		speed: 3
+		drag: 0.03 
 		knockback: 2
 		ammoMultiplier: 1.2
 		liquid: benzine
+		puddleSize: 5.5
+		orbSize: 5.5
 	}
 	flammable-liquid:{
 		type: LiquidBulletType
 		damage: 0.9
-		drag: 0.01
-		speed: 9
+		drag: 0.02
+		speed: 3
 		liquid: flammable-liquid
 		}	
-	}
 }
-
 size: 3
 health: 1200
 requirements: [

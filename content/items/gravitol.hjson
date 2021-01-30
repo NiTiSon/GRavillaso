@@ -1,6 +1,6 @@
 type: material
-color: 294252
-radioactivity: 0.12
+color: 73babc
+radioactivity: 0
 research: {
   parent: thorium
 }

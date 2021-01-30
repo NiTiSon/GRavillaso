@@ -3,7 +3,7 @@ health: 1280
 size: 1
 requirements: [
   gravitol/5
-  surge-alloy/1
+  plastanium/1
 ]
 category: defense
-research: surge-wall-large
+research: surge-wall

@@ -1,0 +1,28 @@
+type: SolidPump
+size: 3
+health: 380
+consumes: {
+	power: 7.5
+}
+###LiquidBlock
+liquidCapacity: 72
+###Pump
+pumpAmount: 0.40
+result: oil
+rotateSpeed: 1.8
+baseEfficiency: 0.75
+attribute: spores
+updateEffect: pulverize
+requirements: [
+  copper/180
+  lead/25
+  gravitium/65
+  graphite/120
+  thorium/145
+  silicon/35
+  plastanium/70
+]
+category: production
+research: {
+  parent: "oil-extractor"
+}
