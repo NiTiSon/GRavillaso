@@ -1,8 +1,0 @@
-type: Floor
-variants: 1
-liquidDrop: flammable-liquid
-isLiquid: true
-name: Flammable Liquid
-research: {
-  parent: slag
-} 
