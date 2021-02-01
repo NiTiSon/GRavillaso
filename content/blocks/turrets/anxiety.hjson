@@ -1,43 +1,44 @@
 type: ItemTurret
 health: 1480
 size: 2
-reloadTime: 50
-shoots: 3
-range: 320
-inaccuracy: 0
-rotatespeed: 7
+reloadTime: 60
+alternate: false
+shots: 1
+range: 290
+inaccuracy: 2
+rotatespeed: 10
 ammoTypes: {
 	gravitium: {
 		type: BasicBulletType
-		lifetime: 110
-		speed: 9
-		damage: 34
-		width: 7
-		height: 11
+		lifetime: 60
+		speed: 8
+		damage: 39
+		width: 9
+		height: 16
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-		homingPower: 0.009
+		homingPower: 0.1
 		ammoMultiplier: 2
 		trailChance: 0.5
 }
 	silicon: {
 		type: BasicBulletType
-		lifetime: 80
-		speed: 11
-		damage: 14
-		width: 5
-		height: 9
+		lifetime: 60
+		speed: 7
+		damage: 12
+		width: 7
+		height: 12
 		homingPower: 0.07
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 }
 	thorium: {
 		type: BasicBulletType
-		lifetime: 80
-		speed: 9
-		damage: 19
-		width: 4
-		height: 11
+		lifetime: 65
+		speed: 6
+		damage: 32
+		width: 9
+		height: 19
 		homingPower: 0
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke

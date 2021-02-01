@@ -1,0 +1,17 @@
+type: ItemLiquidGenerator
+size: 3
+explosiveness: 0.0
+heat: 0.0
+totalTime: 1
+generateTime: 80.0
+productionEfficiency: 4.0
+powerProduction
+
+requirements: [
+thorium/90
+metaglass/400
+titanium/100
+lead/70
+]
+category: power
+research: duo

@@ -1,0 +1,6 @@
+name: Obsidian Block
+type: StaticWall
+breakable: false
+alwaysReplace: false
+solid: true
+variants: 1

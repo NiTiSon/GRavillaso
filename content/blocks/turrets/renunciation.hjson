@@ -4,11 +4,12 @@ shootSound: missile
 health: 1780
 size: 3
 range: 340
-inaccuracy: 11
+inaccuracy: 9
 rotatespeed: 4.5
 xRand: 7
+alternate: true
 reloadTime: 90
-shoots: 3
+shots: 3
 ammoTypes: {
 	gravitol: {
 		type: MissileBulletType
