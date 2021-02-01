@@ -9,4 +9,5 @@ Adds
 * Many other cool blocks
 
 [Vkontakte](https://vk.com/nickname_73)  
-  [VKgroup](https://vk.com/gravillaso)
+[VKgroup](https://vk.com/gravillaso)  
+[Trello](https://trello.com/b/wT73AZQq/gravillaso)
