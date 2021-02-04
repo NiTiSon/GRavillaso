@@ -15,13 +15,26 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const ui = require("library");
-require("areas");
-require("effects");
-require("clicks");
-require("errors");
-require("selection");
+const ui = global.ui;
 
-Events.on(ClientLoadEvent, ui.load);
+ui.onLoad(() => {
+	const dialog = extend(BaseDialog, "<title>", {
+		rebuild(title, values, selector, names) {
+			this.cont.clear();
+			this.title.text = title;
 
-require("newButton")
+			this.cont.pane(t => {
+				for (var i in values) {
+					const key = i;
+					t.button(names(i, values[i]), () => {
+						selector(values[key]);
+						this.hide();
+					}).growX().pad(8);
+					t.row();
+				}
+			}).size(400, 350);
+		}
+	});
+	dialog.addCloseButton();
+	ui.selection = dialog;
+});

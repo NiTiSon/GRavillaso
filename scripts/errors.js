@@ -15,13 +15,29 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const ui = require("library");
-require("areas");
-require("effects");
-require("clicks");
-require("errors");
-require("selection");
+const ui = global.ui;
 
-Events.on(ClientLoadEvent, ui.load);
+ui.onLoad(() => {
+	var error;
+	const dialog = extend(Dialog, "", {
+		set(msg) {
+			error.text = msg;
+		}
+	});
 
-require("newButton")
+	const table = dialog.cont;
+	table.fillParent = true;
+	table.margin(15);
+	table.add("$error.title");
+	table.row();
+	table.image().size(300, 4).pad(2).color(Color.scarlet);
+	table.row();
+	table.pane(t => {
+		error = t.add("Success").pad(2).growX().wrap().get();
+		error.alignment = Align.center;
+	}).size(400, 300);
+	table.row();
+	table.button("$ok", () => dialog.hide()).size(120, 50).pad(4);
+
+	ui.errors = dialog;
+});

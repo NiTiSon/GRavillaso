@@ -15,13 +15,19 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const ui = require("library");
-require("areas");
-require("effects");
-require("clicks");
-require("errors");
-require("selection");
+const ui = global.ui;
 
-Events.on(ClientLoadEvent, ui.load);
+Events.run(Trigger.uiDrawBegin, () => {
+	const w = Core.graphics.width, h = Core.graphics.height;
 
-require("newButton")
+	Draw.proj(Core.scene.camera);
+
+	for (var i in ui.effects) {
+		var effect = ui.effects[i];
+		if (effect.visible()) {
+			effect.draw(w, h);
+		}
+	}
+
+	Draw.flush();
+});

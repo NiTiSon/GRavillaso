@@ -15,13 +15,27 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const ui = require("library");
-require("areas");
-require("effects");
-require("clicks");
-require("errors");
-require("selection");
+const ui = global.ui;
 
-Events.on(ClientLoadEvent, ui.load);
+const world = new Vec2();
 
-require("newButton")
+Events.run(Trigger.update, () => {
+	if (!Core.input.justTouched()) {
+		return;
+	}
+
+	// Position in the mindustry world
+	world.set(Core.input.mouseWorld());
+	// 0, 0 to w, h
+	const pos = Core.input.mouse();
+	const hasMouse = Core.scene.hasMouse();
+
+	ui.clickEvents = ui.clickEvents.filter(event => {
+		// Mod cancelled the event
+		if (!event) return;
+		// Clicked over a UI element, try again next time
+		if (event.world && hasMouse) return true;
+
+		return event.handler(pos, world, hasMouse);
+	});
+});
