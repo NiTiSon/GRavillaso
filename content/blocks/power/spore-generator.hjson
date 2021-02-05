@@ -6,13 +6,13 @@ category: power
 requirements: [
   copper/65
   lead/45
-  plastanium/80
+  plastanium/40
   graphite/20
   silicon/ 90
 ]
 outputsPower: true
 hasPower: true
-powerProduction: 4.5
+powerProduction: 2.5
 generateEffect: fuelburn
 attribute: spores
 ambientSound: respawning

@@ -3,11 +3,11 @@ size: 1
 health: 230
 targetAir: True
 targetGround: False
-range: 285
+range: 185
 maxAmmo: 12
 inaccuracy: 4
-rotatespeed: 14
-reload: 1.25
+rotateSpeed: 14
+reloadTime: 17.5
 ammoTypes: {
 	copper: {
 		type: MissileBulletType
@@ -22,8 +22,8 @@ ammoTypes: {
 }
 	coal: {
 		type: BasicBulletType
-		lifetime: 100
-		speed: 1
+		lifetime: 120
+		speed: 2
 		damage: 3
 		width: 3
 		height: 6
@@ -43,7 +43,7 @@ ammoTypes: {
 }
 	silicon: {
 		type: ArtilleryBulletType
-		lifetime: 280
+		lifetime: 380
 		speed: 4.25
 		damage: 14
 		width: 4

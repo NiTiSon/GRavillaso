@@ -11,6 +11,7 @@ targetAir: false
 targetGround: true
 shootType: {
     type: LaserBulletType
+    buildingDamageMultiplier: 0.75
     damage: 45
     lifetime: 35
     width: 8

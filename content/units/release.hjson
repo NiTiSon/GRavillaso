@@ -1,0 +1,44 @@
+type: flying
+hitSize: 6.0
+accel: 5.0
+fallSpeed: 0.028
+drawOutline: true
+engineOffset: 9
+engineSize: 3.2
+commandLimit: 6
+flying: true
+health: 380
+speed: 4
+drag: 0.1
+range: 18
+buildSpeed: 1.25
+mineSpeed: 9.0
+rotateSpeed: 9.5
+mineTier: 3
+itemCapacity: 90
+weapons: [
+{
+  name: ambience
+  rotate: false
+  rotateSpeed: 60
+  flipSprite: false
+  x: 3
+  inaccuracy: 1
+  y: 4.7
+  reload: 12
+  shots: 2
+  mirror: true
+  bullet: {
+  	type: BasicBulletType
+  	buildingDamageMultiplier: 0.02
+		lifetime: 40
+		speed: 5
+		damage: 19
+		width: 5
+		height: 9
+		shootEffect: shootSmall
+		smokeEffect: shootSmallSmoke
+		homingPower: 0.1
+  }
+}
+]

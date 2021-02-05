@@ -1,0 +1,18 @@
+type: CoreBlock
+health: 8600
+unitCapModifier: 34
+size:6
+unitType: release
+hasItems: true
+itemCapacity: 19000
+resupplyItem: titanium
+category: effect
+requirements: [
+copper/12000
+lead/12000
+gravitium/6000
+thorium/8000
+silicon/10000
+surge-alloy/3000
+]
+research: "core-nucleus"

@@ -1,5 +1,6 @@
-type: material
+type: Item
 color: 73babc
+cost: 2
 radioactivity: 0
 research: {
   parent: thorium

@@ -1,0 +1,13 @@
+type: Floor
+variants: 0
+speedMultiplier: 0.4
+damageTaken: 1.8
+drownTime: 360
+walkEffect: melting
+status: burning
+statusDuration: 240
+blendGroup: water
+cacheLayer: water
+liquidDrop: flammable-liquid
+liquidMultiplier: 0.2
+isLiquid: true

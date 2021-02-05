@@ -1,0 +1,10 @@
+type: Floor
+variants: 0
+damageTaken: 0
+itemDrop: sand
+liquidDrop: water
+isLiquid: true
+blendGroup: water
+cacheLayer: water
+playerUnmineable: true 
+#Player cant mine this

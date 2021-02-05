@@ -3,7 +3,7 @@ type: LiquidTurret
 range: 140
 recoil: 3
 spread: 7.0
-reload: 0.02
+reloadTime: 0.02
 shoots: 20
 inaccuracy: 2
 ammoTypes: {
@@ -11,7 +11,7 @@ ammoTypes: {
 		type: LiquidBulletType
 		damage: 0.7
 		speed: 3
-		drag: 0.03 
+		drag: 0.009
 		knockback: 2
 		ammoMultiplier: 1.2
 		liquid: benzine
@@ -20,7 +20,7 @@ ammoTypes: {
 	}
 	flammable-liquid:{
 		type: LiquidBulletType
-		damage: 0.9
+		damage: 0.009
 		drag: 0.02
 		speed: 3
 		liquid: flammable-liquid

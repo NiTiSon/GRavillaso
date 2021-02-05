@@ -1,8 +1,8 @@
 name: "gravillaso"
 displayName: "[purple]Gravillaso[white] Mod"
 author: "[orange]NickName73"
-description: "Gravillaso - mod based on magnetic materials\n\n\nHelp with mod: \nTheSkyFather, \nCREAsTIVE, \nRadmir Yakupov"
-version: " 0.11.3r"
+description: "Gravillaso - mod based on magnetic materials\n\n\nDevelopers: \nNickName73\nCREAsTIVE\nSpriters:\nRadmir Yakupov\nCat fat"
+version: " 0.12.1b"
 minGameVersion: "120"
 dependencies: [
 ]

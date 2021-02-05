@@ -1,0 +1,8 @@
+type: Floor
+variants: 3
+damageTaken: 0
+itemDrop: sand
+#decoration: air
+wall: red-sand-wall
+playerUnmineable: true 
+#Player cant mine this

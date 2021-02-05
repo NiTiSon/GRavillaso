@@ -6,7 +6,6 @@ requirements: [
   gravitol/1
   magneturn/1
 ]
-activeSound: conveyor
 expanded: true
 category: distribution
 speed: 0.22

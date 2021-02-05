@@ -6,7 +6,6 @@ requirements: [
   lead/1
   gravitol/1
 ]
-activeSound: conveyor
 category: distribution
 speed: 0.15
 displayedSpeed: 19

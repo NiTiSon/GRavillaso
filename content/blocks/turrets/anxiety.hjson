@@ -1,12 +1,12 @@
 type: ItemTurret
 health: 1480
 size: 2
-reloadTime: 60
+reloadTime: 10
 alternate: false
 shots: 1
-range: 290
+range: 200
 inaccuracy: 2
-rotatespeed: 10
+rotateSpeed: 10
 ammoTypes: {
 	gravitium: {
 		type: BasicBulletType

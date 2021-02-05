@@ -1,6 +1,7 @@
-type: material
+type: Item
 color: 3d0a78
 radioactivity: 0
+cost: 4
 research: {
   parent: surge-alloy
 }
