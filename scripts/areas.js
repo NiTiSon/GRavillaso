@@ -122,7 +122,7 @@ ui.addArea("bottom", {
 /* Button to open a dialog only visible from the menu screen */
 ui.addArea("menu", {
 	init(table) {
-		this.dialog = new BaseDialog("Gravillaso");
+		this.dialog = new BaseDialog("Gravilasso");
 		this.dialog.addCloseButton();
 
 		const pane = new ScrollPane(table);
@@ -151,7 +151,7 @@ ui.addArea("menu", {
 		// menufrag.container's first table
 		const buttons = parent.children.get(1).cells.get(1).get();
 		/* Specialized version of menufrag.buttons(buttons, new Buttoni(...)) */
-		buttons.button("Gravillaso", Icon.link, style, () => {
+		buttons.button("$ui.more", Icon.link, style, () => {
 			this.dialog.show();
 		}).marginLeft(11);
 	},
@@ -182,7 +182,7 @@ ui.addArea("menu", {
 
 		parent.fill(cons(button => {
 			button.button("$ui.more", () => this.dialog.show())
-				.top().left().grow().size(84, 45).get().setStyle(style);
+				.top().left().grow().size(110, 45).get().setStyle(style);
 		}));
 	},
 
