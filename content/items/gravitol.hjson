@@ -5,3 +5,4 @@ radioactivity: 0
 research: {
   parent: thorium
 }
+alwaysUnlocked: false

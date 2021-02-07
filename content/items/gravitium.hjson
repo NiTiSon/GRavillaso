@@ -6,3 +6,4 @@ radioactivity: 0.09
 research: {
   parent: titanium
 }
+alwaysUnlocked: false

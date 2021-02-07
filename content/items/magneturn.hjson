@@ -5,3 +5,4 @@ cost: 4
 research: {
   parent: surge-alloy
 }
+alwaysUnlocked: false
