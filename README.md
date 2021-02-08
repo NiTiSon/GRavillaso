@@ -8,6 +8,11 @@ Adds
 * Additional maps
 * Many other cool blocks
 
+Available Languages
+* English (100%)
+* Russian (100%)
+
+
 [Vkontakte](https://vk.com/nickname_73)  
 [VKgroup](https://vk.com/gravillaso)  
 [Trello](https://trello.com/b/wT73AZQq/gravillaso)
