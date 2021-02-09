@@ -1,12 +1,12 @@
 type: GenericCrafter
-itemCapaccity: 20
+itemCapacity: 20
 hasPower: true
 hasLiquids: false
 hasItems: true
 size: 3
 category: crafting
 craftTime: 65
-health: 450
+health: 360
 consumes: {
   items: {
     items: [

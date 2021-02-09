@@ -1,11 +1,11 @@
 type: LiquidTurret
 
-range: 140
+range: 120
 recoil: 3
 spread: 7.0
 reloadTime: 0.02
 shoots: 20
-inaccuracy: 2
+inaccuracy: 9
 ammoTypes: {
 	benzine:{
 		type: LiquidBulletType
@@ -13,17 +13,16 @@ ammoTypes: {
 		speed: 3
 		drag: 0.009
 		knockback: 2
-		ammoMultiplier: 1.2
+		ammoMultiplier: 2.5
 		liquid: benzine
-		puddleSize: 5.5
-		orbSize: 5.5
 	}
 	flammable-liquid:{
 		type: LiquidBulletType
-		damage: 0.009
-		drag: 0.02
+		damage: 0.9
+		drag: 0.009
 		speed: 3
 		liquid: flammable-liquid
+		ammoMultiplier: 3.2
 		}	
 }
 size: 3
@@ -36,11 +35,5 @@ requirements: [
 ]
 category: turret
 research: {
-  parent: lancer
-  requirements: [
-    lead/3000
-    graphite/1500
-    silicon/1400
-    gravitium/500
-  ]
+  parent: tsunami
 }

@@ -1,0 +1,28 @@
+type: LiquidConverter
+category: crafting
+hasLiquids: true
+hasItems: false
+drawer: DrawMixer
+size: 3
+craftTime: 360
+outputsItems: false
+health: 260
+liquidCapacity: 40
+consumes: {
+  power: 6.5
+  liquid: {
+    liquid: oil
+    amount: 0.50
+  }
+}
+requirements: [
+  copper/90
+  plastanium/55
+  graphite/110
+  silicon/35
+  metaglass/70
+]
+outputLiquid: benzine/5
+research: {
+  parent: "cryofluid-mixer"
+}

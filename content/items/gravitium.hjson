@@ -1,6 +1,7 @@
 type: Item
 color: 2f726d
 hardness: 6
+charge: 0.02
 cost: 2
 radioactivity: 0.09
 research: {

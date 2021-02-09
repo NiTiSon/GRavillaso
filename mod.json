@@ -2,7 +2,7 @@ name: "gravillaso"
 displayName: "[purple]Gravillaso[white] Mod"
 author: "[orange]NickName73"
 description: "Gravillaso - mod based on magnetic materials\n\n\nDevelopers: \nNickName73\nCREAsTIVE\nSpriters:\nRadmir Yakupov\nCat fat"
-version: " 0.12.2b"
+version: " 0.12.3b"
 minGameVersion: "120"
 dependencies: [
 ]

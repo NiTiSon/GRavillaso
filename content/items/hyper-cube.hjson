@@ -1,0 +1,10 @@
+type: Item
+color: CAEDEDFF
+hardness: 6
+charge: 0.12
+cost: 2
+radioactivity: 0
+research: {
+  parent: surge-alloy
+}
+alwaysUnlocked: false

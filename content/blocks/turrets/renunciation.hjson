@@ -3,7 +3,7 @@ type: ItemTurret
 shootSound: missile
 health: 1780
 size: 3
-range: 340
+range: 280
 inaccuracy: 9
 rotateSpeed: 4.5
 xRand: 7

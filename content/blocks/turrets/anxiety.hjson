@@ -4,7 +4,7 @@ size: 2
 reloadTime: 10
 alternate: false
 shots: 1
-range: 200
+range: 170
 inaccuracy: 2
 rotateSpeed: 10
 ammoTypes: {
