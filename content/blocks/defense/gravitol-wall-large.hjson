@@ -7,3 +7,5 @@ requirements: [
 ]
 category: defense
 research: gravitol-wall
+insulated: true
+absorbLasers: true

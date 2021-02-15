@@ -110,11 +110,4 @@ requirements: [
 category: turret
 research: {
   parent: swarmer
-  requirements: [
-  graphite/9500
-  thorium/7600
-  gravitol/2340
-  surge-alloy/2980
-  magneturn/1620
-  ]
 }

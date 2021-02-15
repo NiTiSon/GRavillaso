@@ -1,0 +1,6 @@
+type: StaticWall
+name: Burning Ground Wall
+variants: 2
+inEditor: true
+breakable: false
+targetable: false

@@ -1,6 +1,6 @@
-name: Obsidian Block
 type: StaticWall
-breakable: false
-alwaysReplace: false
-solid: true
 variants: 1
+inEditor: true
+breakable: false
+targetable: false
+name: TEST

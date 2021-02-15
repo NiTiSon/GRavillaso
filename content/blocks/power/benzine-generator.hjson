@@ -1,0 +1,27 @@
+type: SingleTypeGenerator
+health: 540
+size: 3
+itemCapacity: 20
+liquidCapacity: 45
+itemDuration: 80
+powerProduction: 26
+consumes: {
+  items: {
+  	items: [
+  		blast-compound/1
+  	]
+  }
+  liquid: {
+    liquid: benzine
+    amount: 0.12
+  }
+}
+requirements: [
+copper/90
+lead/70
+metaglass/100
+silicon/25
+thorium/40
+]
+category: power
+research: differential-generator

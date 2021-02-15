@@ -19,14 +19,15 @@ ammoTypes: {
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 		ammoMultiplier: 1
+		homingPower: 0
 }
-	coal: {
+	scrap: {
 		type: BasicBulletType
 		lifetime: 120
-		speed: 2
-		damage: 3
-		width: 3
-		height: 6
+		speed: 3
+		damage: 7
+		width: 4
+		height: 7
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 		ammoMultiplier: 1
@@ -36,8 +37,8 @@ ammoTypes: {
 		lifetime: 280
 		speed: 4.75
 		damage: 16
-		width: 3
-		height: 6
+		width: 4
+		height: 7
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 }
@@ -60,7 +61,7 @@ requirements: [
 ]
 category: turret
 research: {
-  parent: scatter
+  parent: duo
   requirements: [
     copper/2500
     metaglass/150

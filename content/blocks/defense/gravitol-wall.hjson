@@ -7,3 +7,5 @@ requirements: [
 ]
 category: defense
 research: surge-wall
+insulated: true
+absorbLasers: true

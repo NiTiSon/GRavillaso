@@ -1,0 +1,32 @@
+type: PowerTurret
+health: 1360
+size: 3
+reloadTime: 20
+inaccuracy: 0
+range: 165
+powerUse: 16
+heatColor: "5c5c02"
+shootType:{
+	type: LightningBulletType
+	lightningColor: "#f2f2c4"
+	lightningLength: 26
+	speed: 0.001
+	lifetime: 50
+	damage: 58
+	x: 0
+	y: 0
+	buildingDamageMultiplier: 0.75
+}
+requirements: [
+  graphite/220
+  metaglass/230
+  phase-fabric/120
+  surge-alloy/220
+]
+coolantMultiplier: 8
+shootSound: spark
+shootEffect: redgeneratespark
+targetAir: false
+targetGround: true
+category: turret
+research: destiny
