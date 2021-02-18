@@ -10,10 +10,5 @@ category: distribution
 speed: 0.15
 displayedSpeed: 19
 research: {
-  parent: titanium-conveyor
-  requirements: [
-  	titanium/1500
-    copper/1500
-    lead/1500
-    gravitol/269
-]}
+  parent: gravitol-bridge
+}

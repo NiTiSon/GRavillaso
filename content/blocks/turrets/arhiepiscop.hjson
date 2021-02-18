@@ -13,8 +13,6 @@ shootType:{
 	speed: 0.001
 	lifetime: 50
 	damage: 58
-	x: 0
-	y: 0
 	buildingDamageMultiplier: 0.75
 }
 requirements: [

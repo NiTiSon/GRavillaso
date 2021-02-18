@@ -1,5 +1,5 @@
 type: Battery
-heatlh: 450
+health: 450
 size: 2
 hasPower: true
 consumes:{

@@ -2,7 +2,6 @@ type: flying
 hitSize: 6.0
 accel: 5.0
 fallSpeed: 0.028
-drawOutline: true
 engineOffset: 9
 engineSize: 3.2
 commandLimit: 6

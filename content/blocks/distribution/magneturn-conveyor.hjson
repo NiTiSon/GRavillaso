@@ -11,7 +11,7 @@ category: distribution
 speed: 0.22
 displayedSpeed: 25.45
 research: {
-  parent: armored-conveyor
+  parent: gravitol-conveyor
   requirements: [
     titanium/2500
     thorium/2500

@@ -4,7 +4,6 @@ hasLiquids: true
 drawer: DrawMixer
 size: 2
 craftTime: 140
-outputsItems: false
 health: 320
 liquidCapacity: 30
 consumes: {

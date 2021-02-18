@@ -1,5 +1,5 @@
 type: GenericSmelter 
-liquidfCapacity: 80
+liquidCapacity: 80
 hasPower: true
 hasLiquids: true
 hasItems: true

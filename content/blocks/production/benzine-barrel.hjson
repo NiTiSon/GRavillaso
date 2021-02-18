@@ -5,14 +5,13 @@ hasItems: false
 drawer: DrawMixer
 size: 3
 craftTime: 360
-outputsItems: false
 health: 260
 liquidCapacity: 40
 consumes: {
-  power: 6.5
+  power: 7.5
   liquid: {
     liquid: oil
-    amount: 0.50
+    amount: 0.35
   }
 }
 requirements: [
@@ -22,7 +21,11 @@ requirements: [
   silicon/35
   metaglass/70
 ]
-outputLiquid: benzine/2.5
+outputLiquid: {
+  liquid: benzine
+  amount: 0.20
+}
+updateEffect: magmasmoke
 research: {
   parent: "cryofluid-mixer"
 }

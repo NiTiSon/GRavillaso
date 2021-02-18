@@ -87,7 +87,7 @@ ammoTypes: {
 		fragLifeMin:1.8
 		fragVelocityMax: 2
 		fragVelocityMin: 1.15
-		buildingDamageMultiplier: 0.7
+		buildingDamageMultiplier: 0.4
 		fragBullet: {
 			type: MissileBulletType
 			damage: 73
