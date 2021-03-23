@@ -1,0 +1,38 @@
+type: ItemTurret
+size: 4
+health: 1800
+shots: 4 
+reloadTime: 120
+range: 120
+shootShake: 5
+recoilAmount: 6
+spread: 20
+shootCone: 35
+shootSound: laser
+ammoTypes: {
+	phase-fabric: {
+   	type: ShrapnelBulletType
+   	length: 200
+   	damage: 220
+   	width: 20
+   	serrationLenScl: 3
+   	serrationSpaceOffset: 60
+  	serrationFadeOffset: 0
+    serrations: 22
+    serrationWidth: 10
+    ammoMultiplier: 1
+    lifetime: 40
+    toColor: f4ba6e
+    fromColor: f4ba6e
+    shootEffect: thoriumShoot
+    smokeEffect: sparkShoot
+}
+}
+consumes: {
+  power: 5.5
+}
+requirements: [
+  silicon/1800
+]
+research: fuse
+category: turret

@@ -5,7 +5,7 @@ health: 1780
 size: 3
 range: 280
 inaccuracy: 9
-rotateSpeed: 4.5
+rotateSpeed: 1.25
 xRand: 7
 alternate: true
 reloadTime: 90
@@ -13,11 +13,13 @@ shots: 3
 ammoTypes: {
 	gravitol: {
 		type: MissileBulletType
+		backColor: 6BA1A2FF
+		frontColor: B9ECEEFF
 		splashDamageRadius: 32
-		splashDamage: 55
+		splashDamage: 9
 		lifetime: 67
 		speed: 5
-		damage: 57
+		damage: 29
 		width: 7
 		height: 11
 		hitSound: explosion
@@ -26,31 +28,32 @@ ammoTypes: {
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 		homingPower: 0.04
-		ammoMultiplier: 1
 		fragBullets: 7
 		fragLifeMax:2
 		fragLifeMin:0.75
 		fragVelocityMax: 3
 		fragVelocityMin: 1.75
-		buildingDamageMultiplier: 0.5
+		buildingDamageMultiplier: 0.35
 		fragBullet: {
 			type: MissileBulletType
-			damage: 15
+			backColor: 6BA1A2FF
+			frontColor: B9ECEEFF
+			damage: 8
 			width: 6
 			height: 9.7
 			hitSound: explosion
 			smokeEffect: shootSmallSmoke
 			homingPower: 0.08
-			buildingDamageMultiplier: 0.25
+			buildingDamageMultiplier: 0.35
 		}
 }
 	surge-alloy: {
 		type: MissileBulletType
-		splashDamageRadius: 48
-		splashDamage: 78
+		splashDamageRadius: 49
+		splashDamage: 22
 		lifetime: 71
 		speed: 4.2
-		damage: 96
+		damage: 63
 		width: 6.1
 		height: 12.9
 		hitSound: explosion
@@ -58,21 +61,22 @@ ammoTypes: {
 		hitEffect: explosion
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-		ammoMultiplier: 2
 		lightning:6
 		lightningCone: 180
 		lightningDamage: 33
 		lightningLength: 12
 		lightningLengthRand: 12
-		buildingDamageMultiplier: 0.5
+		buildingDamageMultiplier: 0.35
 }
 	magneturn: {
 		type: MissileBulletType
-		splashDamageRadius: 78
-		splashDamage: 33
+		backColor: 9171A7FF
+		frontColor: AD8DC2FF
+		splashDamageRadius: 62
+		splashDamage: 29
 		lifetime: 89
 		speed: 5.8
-		damage: 127
+		damage: 87
 		width: 8.5
 		height: 16.7
 		hitSound: explosion
@@ -81,16 +85,18 @@ ammoTypes: {
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 		homingPower: 0.09
-		ammoMultiplier: 4
+		ammoMultiplier: 2
 		fragBullets: 8
 		fragLifeMax:3
 		fragLifeMin:1.8
 		fragVelocityMax: 2
 		fragVelocityMin: 1.15
-		buildingDamageMultiplier: 0.4
+		buildingDamageMultiplier: 0.35
 		fragBullet: {
 			type: MissileBulletType
-			damage: 73
+			backColor: 9171A7FF
+			frontColor: AD8DC2FF
+			damage: 12
 			width: 8
 			height: 11.7
 			hitSound: explosion
