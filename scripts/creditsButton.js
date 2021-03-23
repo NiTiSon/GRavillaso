@@ -8,6 +8,9 @@ ui.addMenuButton("$ui.vk", "link", () => {
 ui.addMenuButton("$ui.trello", "link", () => {
 	Core.app.openURI("https://trello.com/b/wT73AZQq/gravillaso")
 });
+ui.addMenuButton("$ui.discord", "link", () => {
+	Core.app.openURI("data:text/html,<b>Alpha</b>")
+});
 ui.onLoad(() => {
 
 });
