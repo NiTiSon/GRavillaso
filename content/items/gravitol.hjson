@@ -1,7 +1,0 @@
-color: 73babc
-cost: 2
-radioactivity: 0
-research: {
-  parent: thorium
-}
-alwaysUnlocked: false

@@ -46,17 +46,11 @@ ammoTypes: {
 }
 requirements: [
   plastanium/75	
-  gravitol/50
+  gravitium/50
   thorium/45
   titanium/85
 ]
 category: turret
 research: {
   parent: salvo
-  requirements: [
-    plastanium/750
-    gravitol/600
-    thorium/500
-    titanium/90
-  ]
 }

@@ -19,7 +19,7 @@ requirements: [
   lead/225
   titanium/225
   thorium/75
-  gravitol/25
+  gravitium/25
   silicon/75
 ]
 consumes: {
@@ -28,10 +28,4 @@ consumes: {
 category: distribution
 research: {
   parent: mass-driver
-requirements: [
-  lead/4465
-  titanium/4465
-  thorium/2905
-  gravitol/1225
-  silicon/2975
-]}
+}

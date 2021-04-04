@@ -28,10 +28,4 @@ category: turret
 shootSound: laser
 research: {
   parent: lancer
-  requirements: [
-    lead/3000
-    graphite/1500
-    silicon/1400
-    gravitium/500
-  ]
 }

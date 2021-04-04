@@ -3,7 +3,7 @@ health: 240
 requirements: [
   titanium/1
   thorium/1
-  gravitol/1
+  gravitium/1
   magneturn/1
 ]
 expanded: true
@@ -11,11 +11,5 @@ category: distribution
 speed: 0.22
 displayedSpeed: 25.45
 research: {
-  parent: gravitol-conveyor
-  requirements: [
-    titanium/2500
-    thorium/2500
-    gravitol/2500
-    magneturn/1250
-  ]
+  parent: gravitium-conveyor
 }

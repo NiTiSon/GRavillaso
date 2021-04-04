@@ -6,7 +6,7 @@ health: 90
 requirements: [
   copper/3
   metaglass/3
-  gravitol/3
+  gravitium/3
 ]
 category: distribution
 research: conveyor

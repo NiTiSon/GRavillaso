@@ -1,4 +1,4 @@
-print("Calc by NickName73\nUsed for math drillTime(Mindustry) V-0.1-Bugs+")
+print("Calc by NickName73\nUsed for math drillTime(Mindustry) V-0.1-Bugs+\nDont use this!!!")
 def invert(sec,items, out, out2, out3, type):
 	out = float(sec) / float(items)
 	out2 = 1 / float(out)

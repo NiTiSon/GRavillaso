@@ -20,7 +20,7 @@ consumes: {
 }
 requirements: [
   copper/70
-  gravitol/40
+  gravitium/40
   graphite/120
   silicon/35
   metaglass/70
@@ -28,11 +28,4 @@ requirements: [
 outputLiquid: cryofluid/27
 research: {
   parent: "cryofluid-mixer"
-  requirements: [
-  copper/6000
-  gravitol/1200
-  graphite/8000
-  silicon/4500
-  metaglass/3200
-  ]
 }

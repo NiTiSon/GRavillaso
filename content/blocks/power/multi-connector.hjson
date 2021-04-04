@@ -7,15 +7,9 @@ requirements: [
   lead/35
   titanium/30
   silicon/100
-  gravitol/7
+  gravitium/7
 ]
 category: power
 research: {
   parent: "surge-tower"
-  requirements: [
-  	lead/3980
-  	titanium/5750
-  	silicon/3900
-  	gravitol/780
-  ]
 }

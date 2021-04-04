@@ -6,6 +6,6 @@ category: distribution
 requirements: [
   copper/3
   metaglass/3
-  gravitol/3
+  gravitium/3
 ]
-research: gravitol-junction
+research: gravitium-junction

@@ -2,10 +2,10 @@ type: Wall
 health: 5120
 size: 2
 requirements: [
-  gravitol/20
+  gravitium/20
   plastanium/4
 ]
 category: defense
-research: gravitol-wall
+research: gravitium-wall
 insulated: true
 absorbLasers: true

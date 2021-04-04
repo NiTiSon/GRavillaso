@@ -28,9 +28,4 @@ ambientSoundVolume: 0.2
 outputItem: gravitium/4
 research: {
   parent: "kiln"
-  requirements: [
-  lead/3500
-  titanium/3600
-  silicon/1000
-  ]
 }

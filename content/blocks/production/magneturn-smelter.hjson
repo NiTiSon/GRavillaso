@@ -11,7 +11,7 @@ craftTime: 140
 consumes: {
   items: {
     items: [
-        gravitol/1
+        gravitium/1
         surge-alloy/3
 
     ]
@@ -23,7 +23,7 @@ consumes: {
   }
 }
 requirements: [
-  gravitol/150
+  gravitium/150
   silicon/175
   titanium/120
   surge-alloy/55
@@ -34,10 +34,4 @@ ambientSoundVolume: 0.3
 outputItem: magneturn/2
 research: {
   parent: "alloy-smelter"
-  requirements: [
-    gravitol/1500
-    silicon/2300
-    titanium/1900
-    surge-alloy/1255
-  ]
 }

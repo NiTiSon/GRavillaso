@@ -5,7 +5,7 @@ health: 180
 size: 2
 category: effect
 requirements: [
-gravitol/12
+gravitium/12
 graphite/30
 silicon/24
 ]

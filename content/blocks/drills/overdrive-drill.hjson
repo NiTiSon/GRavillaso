@@ -14,7 +14,7 @@ requirements: [
   copper/90
   thorium/75
   plastanium/55
-  gravitol/25
+  gravitium/25
   silicon/80
 ]
 consumes: {

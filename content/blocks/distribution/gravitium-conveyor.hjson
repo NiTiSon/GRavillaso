@@ -4,11 +4,11 @@ requirements: [
   titanium/1
   copper/1
   lead/1
-  gravitol/1
+  gravitium/1
 ]
 category: distribution
 speed: 0.15
 displayedSpeed: 19
 research: {
-  parent: gravitol-bridge
+  parent: gravitium-bridge
 }

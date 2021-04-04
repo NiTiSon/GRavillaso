@@ -8,12 +8,12 @@ transportTime: 2
 health: 130
 category: distribution
 research: {
-  parent: gravitol-router
+  parent: gravitium-router
 }
 itemCapacity: 15
 canOverdrive: true
 requirements: [
 	copper/10
 	lead/10
-	gravitol/10
+	gravitium/10
 ]

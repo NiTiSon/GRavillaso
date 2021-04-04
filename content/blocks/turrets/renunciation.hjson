@@ -11,7 +11,7 @@ alternate: true
 reloadTime: 90
 shots: 3
 ammoTypes: {
-	gravitol: {
+	gravitium: {
 		type: MissileBulletType
 		backColor: 6BA1A2FF
 		frontColor: B9ECEEFF
@@ -109,7 +109,7 @@ ammoTypes: {
 requirements: [
   graphite/220
   thorium/230
-  gravitol/120
+  gravitium/180
   surge-alloy/220
   magneturn/120
 ]

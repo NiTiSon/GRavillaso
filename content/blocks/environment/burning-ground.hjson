@@ -1,5 +1,4 @@
 type: Floor
-name: Burning ground
 variants: 4
 damageTaken: 2.75
 speedMultiplier: 0.8

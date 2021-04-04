@@ -2,7 +2,7 @@ type: Wall
 health: 1280
 size: 1
 requirements: [
-  gravitol/5
+  gravitium/5
   plastanium/1
 ]
 category: defense

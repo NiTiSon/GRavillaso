@@ -6,7 +6,7 @@ requirements: [
   surge-alloy/1
 ]
 category: defense
-research: gravitol-wall
+research: gravitium-wall
 lightningColor: e3c7ff
 lightningLength: 9
 lightningDamage: 19

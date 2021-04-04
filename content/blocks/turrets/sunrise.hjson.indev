@@ -1,0 +1,31 @@
+type: PowerTurret
+health: 1360
+size: 4
+reloadTime: 220
+inaccuracy: 0
+range: 205
+powerUse: 35
+heatColor: "5c5c02"
+shootType:{
+	type: LightningBulletType
+	lightningColor: "#f2f2c4"
+	lightningLength: 32
+	speed: 0.001
+	lightRadius: 2
+	lifetime: 60
+	damage: 283
+	buildingDamageMultiplier: 0.45
+}
+requirements: [
+  magneturn/220
+  phase-fabric/120
+  surge-alloy/220
+  hyper-cube/80
+]
+coolantMultiplier: 7
+shootSound: spark
+shootEffect: redgeneratespark
+targetAir: true
+targetGround: true
+category: turret
+research: arhiepiscop
