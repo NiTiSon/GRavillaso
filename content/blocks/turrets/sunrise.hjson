@@ -13,8 +13,8 @@ shootType:{
 	speed: 0.001
 	lightRadius: 2
 	lifetime: 60
-	damage: 283
-	buildingDamageMultiplier: 0.45
+	damage: 434
+	buildingDamageMultiplier: 0.10
 }
 requirements: [
   magneturn/220

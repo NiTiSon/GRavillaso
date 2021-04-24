@@ -9,5 +9,5 @@ category: defense
 research: gravitium-wall
 lightningColor: e3c7ff
 lightningLength: 9
-lightningDamage: 19
+lightningDamage: 35
 lightningChance: 0.2

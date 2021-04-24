@@ -9,5 +9,5 @@ category: defense
 research: magneturn-wall
 lightningColor: e3c7ff
 lightningLength: 11
-lightningDamage: 20
+lightningDamage: 35
 lightningChance: 0.2

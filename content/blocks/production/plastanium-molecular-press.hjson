@@ -1,0 +1,30 @@
+type: GenericCrafter
+category: crafting
+updateEffect: plasticburn
+hasLiquids: true
+size: 3
+craftTime: 90
+health: 550
+liquidCapacity: 80
+consumes: {
+  power: 4
+  items:{
+  	items:[
+  		titanium/4
+  	]
+  }
+  liquid: {
+    liquid: oil
+    amount: 0.40
+  }
+}
+requirements: [
+  lead/225
+  graphite/90
+  gravitium/60
+  silicon/120
+]
+outputItem: plastanium/3
+research: {
+  parent: "plastanium-compressor"
+}

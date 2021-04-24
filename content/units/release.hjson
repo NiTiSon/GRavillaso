@@ -21,9 +21,9 @@ weapons: [
   	rotate: false
   	rotateSpeed: 60
   	flipSprite: false
-  	x: 3
+  	x: 6
   	inaccuracy: 1
-  	y: 4.7
+  	y: 5.2
   	reload: 12
   	shots: 2
   	mirror: true
@@ -31,7 +31,7 @@ weapons: [
   		type: BasicBulletType
   		buildingDamageMultiplier: 0.02
 		lifetime: 40
-		speed: 5
+		speed: 5.7
 		damage: 19
 		width: 5
 		height: 9
@@ -45,8 +45,8 @@ weapons: [
 	rotate: false
 	rotateSpeed: 60
 	flipSprite: false
-	x:4.8
-	y:-3.2
+	x:7.5
+	y:-4.6
 	inaccuracy: 3.0
 	reload: 32
 	shoots: 4
