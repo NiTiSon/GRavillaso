@@ -2,43 +2,43 @@ type: flying
 hitSize: 6.0
 accel: 5.0
 fallSpeed: 0.028
-drawOutline: true
 engineOffset: 9
 engineSize: 3.2
-commandLimit: 7
+commandLimit: 6
 flying: true
-health: 460
-speed: 4.2
+health: 380
+speed: 4
 drag: 0.1
-range: 18
-buildSpeed: 1.75
-mineSpeed: 11.0
+range: 16
+buildSpeed: 1.25
+mineSpeed: 9.0
 rotateSpeed: 9.5
-mineTier: 4
-itemCapacity: 120
+mineTier: 3
+itemCapacity: 90
 weapons: [
 	{
 	name: ambience
   	rotate: false
   	rotateSpeed: 60
   	flipSprite: false
-  	x: 3
+  	x: 7.6
   	inaccuracy: 1
-  	y: 4.7
+  	y: 6.1
   	reload: 12
   	shots: 2
   	mirror: true
   	bullet: {
   		type: BasicBulletType
-  		buildingDamageMultiplier: 0.1
-		lifetime: 40
-		speed: 6
-		damage: 34
-		width: 6
-		height: 10
+  		buildingDamageMultiplier: 0.02
+		lifetime: 35
+		speed: 6.7
+		damage: 21
+		width: 5
+		height: 9
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
 		homingPower: 0.1
+		status: burning
 	}
 }
 	{	
@@ -46,23 +46,24 @@ weapons: [
 	rotate: false
 	rotateSpeed: 60
 	flipSprite: false
-	x:4.8
-	y:-3.2
+	x:6.9
+	y:-4.2
 	inaccuracy: 3.0
 	reload: 32
 	shoots: 4
 	mirror: true
 	bullet:{
-		type: LightningBulletType
+		type: MissileBulletType
 		lifetime: 40
-		lightningColor: dcabf5
-		lightningLength: 20
 		speed: 2
-		damage: 32
+		damage: 28
+		width: 6
+		height: 11.7
 		hitSound: explosion
 		smokeEffect: shootSmallSmoke
-		homingPower: 0.9
-		buildingDamageMultiplier: 0.4
+		homingPower: 0.8
+		buildingDamageMultiplier: 0.05
+		status: melting
 		}
 }
 ]

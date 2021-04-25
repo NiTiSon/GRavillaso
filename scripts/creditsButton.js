@@ -9,7 +9,7 @@ ui.addMenuButton("$ui.c-trello", "link", () => {
 	Core.app.openURI("https://trello.com/b/wT73AZQq/gravillaso")
 });
 ui.addMenuButton("$ui.d-discord", "link", () => {
-	Core.app.openURI("data:text/html,<b>Alpha</b>")
+	Core.app.openURI("https://discord.gg/SgsHm9KVNe")
 });
 ui.onLoad(() => {
 

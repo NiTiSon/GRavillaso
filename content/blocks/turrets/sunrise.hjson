@@ -1,5 +1,5 @@
 type: PowerTurret
-health: 1360
+health: 6260
 size: 4
 reloadTime: 220
 inaccuracy: 0
