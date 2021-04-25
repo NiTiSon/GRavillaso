@@ -13,10 +13,4 @@ requirements: [
 category: units
 research: {
   parent: repair-point
-  requirements: [
-  copper/1000
-  lead/1000
-  silicon/1000
-  titanium/700
-  ]
 } 

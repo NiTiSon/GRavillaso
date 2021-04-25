@@ -13,10 +13,4 @@ requirements: [
 category: units
 research: {
   parent: healer-mk1
-  requirements: [
-  titanium/2500
-  silicon/5000
-  thorium/500
-  gravitium/1800
-  ]
 }  
