@@ -17,7 +17,7 @@ Available Languages
 [VKgroup](https://vk.com/gravillaso)  
 [Trello](https://trello.com/b/wT73AZQq/gravillaso)
 
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+Name  | Type | Health
+------------- | ------------- | ----------
+Release ![Release](https://github.com/NickName73/Gravillaso/blob/main/sprites/units/core/release.png)| Core Unit | 380
+Update (Coming soon) | Core Unit | ???
