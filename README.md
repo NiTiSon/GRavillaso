@@ -32,8 +32,9 @@ Icon | Size | Name | Health | Damage | Version
 ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur6.png)|4x4|Sunrise|????|???| Pre-Release(0.13)
 
 Units:
-Icon | Name | Health | Damage | Version
------|------|--------|--------|------
- coming soon|Release|380|21 -- 28| Pre-Release(0.12)
- coming soon|Update|???|?? -- ??| ???
+Icon | Name | Type | Health | Damage | Version
+-----|------|------|--------|--------|------
+ coming soon|Release|Core|380|21 -- 28| Pre-Release(0.12)
+ coming soon|Update|Core|???|?? -- ??| ???
+ coming soon|Coulomb|Naval|???|?? -- ??| ???
 
