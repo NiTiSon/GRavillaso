@@ -1,7 +1,7 @@
 # [Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo-smail.png) V0.12.5
 ![Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo_0.12-any.png)
 Gravillaso - mod based on magnetic materials 
-  PS: Due to the pile of generation in 6.0, new ores cannot be added  
+  
 Adds
 * A lot of new turrets
 * Useful factory
@@ -20,10 +20,10 @@ Available Languages
 Turrets:
 Icon | Size | Name | Health | Damage 
 -----|------|------|--------|-------
-   ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur1.png)  |    a  |  a    |     a   | 1
-  ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur2.png)  |    a  |    a  |     a   | 2
-  a   |   a   |    a  |     a   | 3
-  a   |   a   |   a   |     a   | 4
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur1.png)|1x1|Divine Storm|230|7 -- 16
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur2.png)|2x2|Destiny|1340|45
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur3.png)|2x2|Anxiety|1480|12--39
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur4.png)|3x3|Renucation|1780|29--87
 
 Units:
 Name  | Type | Health
