@@ -20,10 +20,10 @@ Available Languages
 Turrets:
 Icon | Size | Name | Health | Damage 
 -----|------|------|--------|-------
-   ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur1.png)|1x1|Divine Storm|a|1
-  ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur2.png)|2x2|Destiny|a|2
-  ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur2.png)|2x2|Anxiety|a|3
-  a   |   a   |   a   |     a   | 4
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur1.png)|1x1|Divine Storm|230|7 -- 16
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur2.png)|2x2|Destiny|1340|45
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur3.png)|2x2|Anxiety|1480|12--39
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur4.png)|3x3|Renucation|1780|29--87
 
 Units:
 Name  | Type | Health
