@@ -6,6 +6,10 @@ Adds
 * A lot of new turrets
 * Useful factory
 * Additional maps
+* Two additional cores (dev)
+* Two additional mechs (dev)
+* Naval unit line (dev)
+* New tech tier
 * Many other cool blocks
 
 Available Languages
@@ -18,12 +22,14 @@ Available Languages
 [Trello](https://trello.com/b/wT73AZQq/gravillaso)
 
 Turrets:
-Icon | Size | Name | Health | Damage 
------|------|------|--------|-------
-![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur1.png)|1x1|Divine Storm|230|7 -- 16
-![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur2.png)|2x2|Destiny|1340|45
-![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur3.png)|2x2|Anxiety|1480|12--39
-![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur4.png)|3x3|Renucation|1780|29--87
+Icon | Size | Name | Health | Damage | Version
+-----|------|------|--------|--------|----
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur1.png)|1x1|Divine Storm|230|7 -- 16| Alpha (<0.10)
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur2.png)|2x2|Destiny|1340|45| Alpha(<0.10)
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur3.png)|2x2|Anxiety|1480|12--39| Alpha(<0.10)
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur4.png)|3x3|Renucation|1780|29--87| Beta(0.10)
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur5.png)|3x3|Arhiepiscop|1360|58| Pre-Release(0.12)
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur6.png)|4x4|Sunrise|????|???| Pre-Release(0.13)
 
 Units:
 Name  | Type | Health
