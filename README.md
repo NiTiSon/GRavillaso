@@ -6,6 +6,10 @@ Adds
 * A lot of new turrets
 * Useful factory
 * Additional maps
+* Two additional cores (dev)
+* Two additional mechs (dev)
+* Naval unit line (dev)
+* New tech tier
 * Many other cool blocks
 
 Available Languages
