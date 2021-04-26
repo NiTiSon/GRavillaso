@@ -17,7 +17,17 @@ Available Languages
 [VKgroup](https://vk.com/gravillaso)  
 [Trello](https://trello.com/b/wT73AZQq/gravillaso)
 
+Turrets:
+Icon | Size | Name | Health | Damage 
+-----|------|------|--------|-------
+   ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur1.png)  |    a  |  a    |     a   | 1
+  ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur2.png)  |    a  |    a  |     a   | 2
+  a   |   a   |    a  |     a   | 3
+  a   |   a   |   a   |     a   | 4
+
+Units:
 Name  | Type | Health
 ------------- | ------------- | ----------
 Release ![Release](https://github.com/NickName73/Gravillaso/blob/main/sprites/units/core/release.png)| Core Unit | 380
 Update (Coming soon) | Core Unit | ???
+
