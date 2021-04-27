@@ -34,7 +34,7 @@ Icon | Size | Name | Health | Damage | Version
 Units:
 Icon | Name | Type | Health | Damage | Version
 -----|------|------|--------|--------|------
- coming soon|Release|Core|380|21 -- 28| Pre-Release(0.12)
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/units/core6.png)|Release|Core|380|21 -- 28| Pre-Release(0.12)
  coming soon|Update|Core|???|?? -- ??| ???
  coming soon|Coulomb|Naval|???|?? -- ??| ???
 
