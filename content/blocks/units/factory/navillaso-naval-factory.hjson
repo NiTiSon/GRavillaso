@@ -1,0 +1,31 @@
+type: UnitFactory
+//category: units
+size: 3
+name: test
+
+requirements: [
+  copper/45
+  lead/45
+  silicon/70
+  titanium/15
+]
+
+plans: [
+  {
+    unit: coulomb
+    requirements: [
+      silicon/60
+      titanium/25
+      metaglass/10
+    ]
+    time: 3200
+  }
+]
+
+//upgrades: [
+//  [
+//    coulomb, ampere
+//  ]
+//]
+
+research: naval-factory

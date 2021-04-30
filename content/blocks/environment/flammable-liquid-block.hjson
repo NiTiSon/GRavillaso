@@ -7,7 +7,7 @@ walkEffect: melting
 status: burning
 statusDuration: 240
 blendGroup: water
-cacheLayer: water
+cacheLayer: tar
 liquidDrop: flammable-liquid
 liquidMultiplier: 0.2
 isLiquid: true

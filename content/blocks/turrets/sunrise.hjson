@@ -15,6 +15,7 @@ shootType:{
 	lifetime: 60
 	damage: 434
 	buildingDamageMultiplier: 0.10
+	status: shocked
 }
 requirements: [
   magneturn/220

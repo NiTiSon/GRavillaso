@@ -1,2 +1,4 @@
 type: Floor
 variants: 1
+cacheLayer: walls
+edge: dark-medium

@@ -14,6 +14,7 @@ shootType:{
 	lifetime: 50
 	damage: 58
 	buildingDamageMultiplier: 0.75
+	status: shocked
 }
 requirements: [
   graphite/220
