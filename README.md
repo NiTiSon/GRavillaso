@@ -17,7 +17,7 @@ Available Languages
 * Russian (100%)
 
 
-[Discord](https://discord.com/invite/SgsHm9KVNe)
+[Discord](https://discord.com/invite/SgsHm9KVNe)  
 [Vkontakte](https://vk.com/nickname_73)  
 [VKgroup](https://vk.com/gravillaso)  
 [Trello](https://trello.com/b/wT73AZQq/gravillaso)
