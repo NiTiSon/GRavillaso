@@ -1,22 +1,24 @@
 type: UnitFactory
-//category: units
+category: units
 size: 3
-name: test
+health: 560
 
 requirements: [
-  copper/45
-  lead/45
+  copper/220
   silicon/70
-  titanium/15
+  plastanium/15
+  gravitium/60
 ]
-
+consumes: {
+  power: 2.4
+}
 plans: [
   {
     unit: coulomb
     requirements: [
-      silicon/60
-      titanium/25
-      metaglass/10
+      silicon/30
+      metaglass/45
+      gravitium/15
     ]
     time: 3200
   }

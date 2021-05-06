@@ -1,19 +1,19 @@
 type: ItemTurret
 size: 1
-health: 230
+health: 220
 targetAir: True
 targetGround: False
 range: 185
-maxAmmo: 12
+maxAmmo: 10
 inaccuracy: 4
-rotateSpeed: 14
-reloadTime: 17.5
+rotateSpeed: 13
+reloadTime: 16.5
 ammoTypes: {
 	copper: {
 		type: MissileBulletType
 		lifetime: 120
 		speed: 3
-		damage: 8
+		damage: 4
 		width: 4
 		height: 7
 		shootEffect: shootSmall
@@ -21,22 +21,11 @@ ammoTypes: {
 		ammoMultiplier: 1
 		homingPower: 0
 }
-	scrap: {
-		type: BasicBulletType
-		lifetime: 120
-		speed: 3
-		damage: 7
-		width: 4
-		height: 7
-		shootEffect: shootSmall
-		smokeEffect: shootSmallSmoke
-		ammoMultiplier: 1
-}
 	metaglass: {
 		type: BasicBulletType
 		lifetime: 280
 		speed: 4.75
-		damage: 16
+		damage: 7
 		width: 4
 		height: 7
 		shootEffect: shootSmall
@@ -46,7 +35,7 @@ ammoTypes: {
 		type: ArtilleryBulletType
 		lifetime: 380
 		speed: 4.25
-		damage: 14
+		damage: 9
 		width: 4
 		height: 7
 		homingPower: 0.05
@@ -62,9 +51,4 @@ requirements: [
 category: turret
 research: {
   parent: duo
-  requirements: [
-    copper/2500
-    metaglass/150
-    silicon/1750
-  ]
 }

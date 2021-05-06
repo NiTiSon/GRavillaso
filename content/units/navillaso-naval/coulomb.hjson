@@ -1,14 +1,42 @@
 type: naval
-hitSize: 6.0
+hitSize: 4.0
 accel: 5.0
-commandLimit: 6
+commandLimit: 8
 flying: false
-health: 380
-armor: 6
-speed: 4
+health: 320
+armor: 4
+speed: 1.75
 drag: 0.1
-range: 16
+range: 24
 buildSpeed: 0
 mineSpeed: 0
-rotateSpeed: 9.5
+rotateSpeed: 6.5
 itemCapacity: 30
+weapons: [
+	{
+	name: phis
+	rotate: true
+  	rotateSpeed: 20
+  	flipSprite: false
+  	x: 0
+  	inaccuracy: 0
+  	y: -4
+  	reload: 44
+  	shots: 2
+  	mirror: false
+
+	shootSound: spark
+	shootEffect: redgeneratespark
+	bullet: {
+  		type: LightningBulletType
+		lifetime: 29
+		speed: 6.7
+		damage: 13
+		width: 5
+		height: 9
+		shootSound: spark
+		shootEffect: redgeneratespark
+		status: shocked
+	}
+}
+]

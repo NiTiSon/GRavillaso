@@ -6,3 +6,6 @@ heatCapacity: 0.20
 viscosity: 0.5
 effect: burning
 explosiveness: 1.9
+research: {
+  parent: oil
+}
