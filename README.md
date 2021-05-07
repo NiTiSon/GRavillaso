@@ -1,5 +1,5 @@
-# [Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo-smail.png) V0.12.5
-![Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo_0.12-any.png)
+# [Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo-smail.png) V0.13.7
+![Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo_0.13-any.png)
 Gravillaso - mod based on magnetic materials 
   
 Adds
@@ -17,6 +17,7 @@ Available Languages
 * Russian (100%)
 
 
+[Discord](https://discord.com/invite/SgsHm9KVNe)  
 [Vkontakte](https://vk.com/nickname_73)  
 [VKgroup](https://vk.com/gravillaso)  
 [Trello](https://trello.com/b/wT73AZQq/gravillaso)
@@ -24,7 +25,7 @@ Available Languages
 Turrets:
 Icon | Size | Name | Health | Damage | Version
 -----|------|------|--------|--------|----
-![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur1.png)|1x1|Divine Storm|230|7 -- 16| Alpha (<0.10)
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur1.png)|1x1|Divine Storm|220|4 -- 9| Alpha (<0.10)
 ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur2.png)|2x2|Destiny|1340|45| Alpha(<0.10)
 ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur3.png)|2x2|Anxiety|1480|12 -- 39| Alpha(<0.10)
 ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur4.png)|3x3|Renucation|1780|29 -- 87| Beta(0.10)
