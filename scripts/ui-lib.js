@@ -426,7 +426,7 @@ ui.addArea("menu", {
 		// menufrag.container's first table
 		const buttons = parent.children.get(1).cells.get(1).get();
 		/* Specialized version of menufrag.buttons(buttons, new Buttoni(...)) */
-		buttons.button("$ui.more", Icon.link, style, () => {
+		buttons.button("$uigravillaso.more", Icon.link, style, () => {
 			this.dialog.show();
 		}).marginLeft(11);
 	},
@@ -548,5 +548,5 @@ ui.onLoad(() => {
 });
 
 
-global.ui = ui;
+global.uigravillaso = ui;
 Events.on(ClientLoadEvent, ui.load);

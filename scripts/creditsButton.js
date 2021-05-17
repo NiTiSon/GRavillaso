@@ -1,14 +1,14 @@
-const ui = global.ui;
-ui.addMenuButton("$ui.b-github", "link", () => {
+const ui = global.uigravillaso;
+ui.addMenuButton("$uigravillaso.b-github", "link", () => {
 	Core.app.openURI("https://github.com/NickName73/Gravillaso")
 });
-ui.addMenuButton("$ui.a-vk", "link", () => {
+ui.addMenuButton("$uigravillaso.a-vk", "link", () => {
 	Core.app.openURI("https://vk.com/gravillaso")
 });
-ui.addMenuButton("$ui.c-trello", "link", () => {
+ui.addMenuButton("$uigravillaso.c-trello", "link", () => {
 	Core.app.openURI("https://trello.com/b/wT73AZQq/gravillaso")
 });
-ui.addMenuButton("$ui.d-discord", "link", () => {
+ui.addMenuButton("$uigravillaso.d-discord", "link", () => {
 	Core.app.openURI("https://discord.gg/SgsHm9KVNe")
 });
 ui.onLoad(() => {
