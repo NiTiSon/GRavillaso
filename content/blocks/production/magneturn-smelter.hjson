@@ -29,7 +29,7 @@ requirements: [
   surge-alloy/55
 ]
 updateEffect: smeltsmoke
-ambientSound: smelter
+ambientSound: magneturn-work
 ambientSoundVolume: 0.3
 outputItem: magneturn/2
 research: {

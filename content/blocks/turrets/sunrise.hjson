@@ -2,6 +2,7 @@ type: PowerTurret
 health: 6260
 size: 4
 reloadTime: 220
+rotateSpeed: 1.70
 inaccuracy: 0
 range: 205
 powerUse: 35
@@ -23,7 +24,7 @@ requirements: [
   surge-alloy/220
   hyper-cube/80
 ]
-coolantMultiplier: 7
+coolantMultiplier: 0.035
 shootSound: spark
 shootEffect: redgeneratespark
 targetAir: true

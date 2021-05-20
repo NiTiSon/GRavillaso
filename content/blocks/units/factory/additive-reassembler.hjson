@@ -1,0 +1,28 @@
+type: Reconstructor
+category: units
+size: 3
+health: 560
+
+requirements: [
+  copper/220
+  silicon/70
+  plastanium/15
+  gravitium/60
+]
+consumes: {
+  power: 3.25
+  items: {
+    items: [
+      silicon/60
+      titanium/40
+    ]
+  }
+}
+
+upgrades: [
+  [
+    coulomb, minke 
+  ]
+]
+constructTime: 750
+research: advanced-naval-factory

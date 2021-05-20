@@ -1,6 +1,6 @@
 type: SolidPump
 size: 3
-health: 380
+health: 620
 consumes: {
 	power: 7.5
 }

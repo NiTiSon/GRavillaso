@@ -6,7 +6,7 @@ targetGround: False
 range: 185
 maxAmmo: 10
 inaccuracy: 4
-rotateSpeed: 13
+rotateSpeed: 5.45
 reloadTime: 16.5
 ammoTypes: {
 	copper: {

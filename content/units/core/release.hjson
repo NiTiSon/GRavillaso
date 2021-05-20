@@ -9,7 +9,7 @@ flying: true
 health: 380
 speed: 4
 drag: 0.1
-range: 16
+range: 30
 buildSpeed: 1.25
 mineSpeed: 9.0
 rotateSpeed: 9.5

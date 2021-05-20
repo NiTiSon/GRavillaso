@@ -5,7 +5,7 @@ health: 1780
 size: 3
 range: 280
 inaccuracy: 9
-rotateSpeed: 1.25
+rotateSpeed: 2.75
 xRand: 7
 alternate: true
 reloadTime: 90
@@ -106,6 +106,9 @@ ammoTypes: {
 		}
 }
 }
+
+coolantUsage: 0.075
+
 requirements: [
   graphite/220
   thorium/230

@@ -1,0 +1,32 @@
+type: GenericCrafter
+health: 480
+size: 3
+drawer: DrawWeave
+hasPower: true
+hasLiquids: false
+itemCapacity: 35
+hasItems: true
+craftTime: 110
+consumes: {
+  power: 7.5
+    items:{
+     items:[
+      thorium/5
+      sand/12
+      ]
+   }
+  liquid: {
+    liquid: cryofluid
+    amount: 0.08
+  }
+}
+requirements: [
+  silicon/220
+  lead/140
+  thorium/95
+  surge-alloy/70
+]
+craftEffect: smeltsmoke
+category: crafting
+research: phase-weaver
+outputItem: phase-fabric/3

@@ -5,7 +5,7 @@ hasItems: false
 drawer: DrawMixer
 size: 3
 craftTime: 360
-health: 260
+health: 420
 liquidCapacity: 40
 consumes: {
   power: 7.5

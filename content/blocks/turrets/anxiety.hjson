@@ -1,16 +1,16 @@
 type: ItemTurret
-health: 1480
+health: 720
 size: 2
-reloadTime: 10
+reloadTime: 12
 alternate: false
 shots: 1
-range: 170
-inaccuracy: 2
-rotateSpeed: 10
+range: 215
+inaccuracy: 4
+rotateSpeed: 4.5
 ammoTypes: {
 	gravitium: {
 		type: BasicBulletType
-		lifetime: 60
+		lifetime: 35
 		speed: 8
 		damage: 39
 		width: 9
@@ -23,7 +23,7 @@ ammoTypes: {
 }
 	silicon: {
 		type: BasicBulletType
-		lifetime: 60
+		lifetime: 25
 		speed: 7
 		damage: 12
 		width: 7
@@ -34,7 +34,7 @@ ammoTypes: {
 }
 	thorium: {
 		type: BasicBulletType
-		lifetime: 65
+		lifetime: 30
 		speed: 6
 		damage: 32
 		width: 9
@@ -44,6 +44,7 @@ ammoTypes: {
 		smokeEffect: shootSmallSmoke
 }
 }
+coolantUsage: 0.085
 requirements: [
   plastanium/75	
   gravitium/50

@@ -22,7 +22,7 @@ requirements: [
   phase-fabric/120
   surge-alloy/220
 ]
-coolantMultiplier: 8
+coolantUsage: 0.065
 shootSound: spark
 shootEffect: redgeneratespark
 targetAir: false
