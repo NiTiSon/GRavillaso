@@ -30,8 +30,8 @@ Icon | Size | Name | Health | Damage | Version
 ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur3.png)|2x2|Anxiety|1480|12 -- 39| Alpha(<0.10)
 ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur4.png)|3x3|Renucation|1780|29 -- 87| Beta(0.10)
 ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur5.png)|3x3|Arhiepiscop|1360|58| Pre-Release(0.12)
-![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur6.png)|4x4|Sunrise|????|???| Pre-Release(0.13)
-![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur7.png)|4x4|Phase Fuse|????|???| Pre-Release(0.13)
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur6.png)|4x4|Sunrise|6260|434| Pre-Release(0.13)
+![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/tur7.png)|4x4|Phase Fuse|2880|220| Pre-Release(0.13)
 
 Units:
 Icon | Name | Type | Health | Damage | Version
