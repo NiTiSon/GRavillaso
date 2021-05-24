@@ -1,7 +1,13 @@
 # [Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo-smail.png) V0.13.9
 ![Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo_0.13-any.png)
-Gravillaso - mod based on magnetic materials 
+Gravillaso - mod based on magnetic materials  
+---
+[Trello board that project](https://trello.com/b/wT73AZQq/gravillaso)  
+[Discord](https://discord.gg/SgsHm9KVNe)  
+[Vkontakle](https://vk.com/gravillaso)  
+[Steam-NickName73](https://steamcommunity.com/id/nickname_73/)  
   
+---
 Adds
 * A lot of new turrets
 * Useful factory
@@ -36,8 +42,3 @@ Icon | Name | Type | Health | Damage | Version
 ![](https://github.com/NickName73/Gravillaso/blob/main/sprites-override/sprites/error.png)|Ampere|Naval|???|?? -- ??|???
 
 ---
-![https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/links/discord](https://discord.com/invite/SgsHm9KVNe)  
-[Vkontakte](https://vk.com/nickname_73)  
-[VKgroup](https://vk.com/gravillaso)  
-[Trello](https://trello.com/b/wT73AZQq/gravillaso)  
-[Steam](https://steamcommunity.com/id/nickname_73/)
