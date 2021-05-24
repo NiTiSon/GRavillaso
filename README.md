@@ -20,7 +20,8 @@ Available Languages
 [Discord](https://discord.com/invite/SgsHm9KVNe)  
 [Vkontakte](https://vk.com/nickname_73)  
 [VKgroup](https://vk.com/gravillaso)  
-[Trello](https://trello.com/b/wT73AZQq/gravillaso)
+[Trello](https://trello.com/b/wT73AZQq/gravillaso)  
+[Steam](https://steamcommunity.com/id/nickname_73/)
 
 Turrets:
 Icon | Size | Name | Health | Damage | Version
