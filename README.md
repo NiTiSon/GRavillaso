@@ -1,4 +1,4 @@
-# [Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo-smail.png) V0.13.7
+# [Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo-smail.png) V0.13.9
 ![Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo_0.13-any.png)
 Gravillaso - mod based on magnetic materials 
   
@@ -15,13 +15,6 @@ Adds
 Available Languages
 * English (100%)
 * Russian (100%)
-
-
-[Discord](https://discord.com/invite/SgsHm9KVNe)  
-[Vkontakte](https://vk.com/nickname_73)  
-[VKgroup](https://vk.com/gravillaso)  
-[Trello](https://trello.com/b/wT73AZQq/gravillaso)  
-[Steam](https://steamcommunity.com/id/nickname_73/)
 
 Turrets:
 Icon | Size | Name | Health | Damage | Version
@@ -41,3 +34,10 @@ Icon | Name | Type | Health | Damage | Version
 ![](https://github.com/NickName73/Gravillaso/blob/main/sprites-override/sprites/error.png)|Update|Core|???|?? -- ??| ???
 ![](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/units/naval1.png)|Coulomb|Naval|320|13| Pre-Release(0.13)
 ![](https://github.com/NickName73/Gravillaso/blob/main/sprites-override/sprites/error.png)|Ampere|Naval|???|?? -- ??|???
+
+---
+![https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/icons/links/discord](https://discord.com/invite/SgsHm9KVNe)  
+[Vkontakte](https://vk.com/nickname_73)  
+[VKgroup](https://vk.com/gravillaso)  
+[Trello](https://trello.com/b/wT73AZQq/gravillaso)  
+[Steam](https://steamcommunity.com/id/nickname_73/)
