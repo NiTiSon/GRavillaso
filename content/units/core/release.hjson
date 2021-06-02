@@ -7,7 +7,7 @@ engineSize: 3.2
 commandLimit: 6
 flying: true
 health: 380
-speed: 4
+speed: 3.8
 drag: 0.1
 range: 30
 buildSpeed: 1.25
@@ -15,54 +15,30 @@ mineSpeed: 9.0
 rotateSpeed: 9.5
 mineTier: 3
 itemCapacity: 90
+rotateShooting: false 
 weapons: [
-	{
-	name: ambience
-  	rotate: false
-  	rotateSpeed: 60
-  	flipSprite: false
-  	x: 7.6
-  	inaccuracy: 1
-  	y: 6.1
-  	reload: 12
-  	shots: 2
-  	mirror: true
-  	bullet: {
-  		type: BasicBulletType
-  		buildingDamageMultiplier: 0.02
-		lifetime: 35
-		speed: 6.7
-		damage: 21
-		width: 5
-		height: 9
-		shootEffect: shootSmall
-		smokeEffect: shootSmallSmoke
-		homingPower: 0.1
-		status: burning
-	}
-}
 	{	
 	name: south
-	rotate: false
+	rotate: true
 	rotateSpeed: 60
 	flipSprite: false
 	x:6.9
-	y:-4.2
-	inaccuracy: 3.0
-	reload: 32
-	shoots: 4
+	y:-4.5
+	inaccuracy: 2.5
+	reload: 20
+	shoots: 1
 	mirror: true
 	bullet:{
 		type: MissileBulletType
-		lifetime: 40
-		speed: 2
-		damage: 28
+		lifetime: 45
+		speed: 3.5
+		damage: 27
 		width: 6
 		height: 11.7
 		hitSound: explosion
 		smokeEffect: shootSmallSmoke
-		homingPower: 0.8
-		buildingDamageMultiplier: 0.05
+		homingPower: 0.25
+		buildingDamageMultiplier: 0.1
 		status: melting
 		}
 }

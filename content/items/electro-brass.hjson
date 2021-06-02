@@ -1,0 +1,14 @@
+color: f9ffb4
+hardness: 7
+charge: 0.85
+cost: 3
+radioactivity: 0
+research: {
+  parent: surge-alloy
+  requirements: [
+    surge-alloy/60
+    titanium/40
+    electro-brass/15
+  ]
+}
+alwaysUnlocked: false

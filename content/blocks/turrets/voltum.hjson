@@ -1,0 +1,38 @@
+type: PowerTurret
+
+targetAir: true
+targetGround: true
+
+health: 780
+size: 3
+reloadTime: 14
+inaccuracy: 2
+range: 150
+
+shots: 3
+shootType:{
+	type: LightningBulletType
+	lightningColor: "#a4ded0"
+	lightningRand: 5
+	speed: 2
+	lifetime: 50
+	damage: 14
+	reloadMultiplier: 1
+	recoilAmount: 2
+	bulletWidth: 4
+	bulletHeight: 8
+	shootEffect: lightningShoot
+}
+
+heatColor: Color.red
+shootSound: spark
+
+powerUse: 9.5
+requirements: [
+	copper/220
+	titanium/140
+	plastanium/90
+	electro-brass/80
+]
+research: fuse
+category: turret

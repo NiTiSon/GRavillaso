@@ -5,5 +5,10 @@ cost: 2
 radioactivity: 0.09
 research: {
   parent: titanium
+  requirements: [
+    lead/45
+    titanium/60
+    silicon/20
+  ]
 }
 alwaysUnlocked: false

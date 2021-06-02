@@ -1,7 +1,8 @@
-require("ui-lib")
-require("creditsButton")
-require("sector-changer")
-require("statuses")
+require("ui/ui-lib") // Libs
+require("ui/creditsButton") //Scripts
+require("game-elements/sector-changer")
+require("game-elements/statuses")
+require("game-elements/items") 
 
 var info = Vars.mods.locateMod("gravillaso");
 info.meta.displayName = "[#51158b]G[#4d2a97]r[#493fa3]a[#4554af]v[#4169bb]i[#3d7ec7]l[#3993d3]l[#35a8df]a[#31bdeb]s[#2dd2f7]o [#e5e5e5]Mod";

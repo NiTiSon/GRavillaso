@@ -3,5 +3,9 @@ radioactivity: 0
 cost: 4
 research: {
   parent: surge-alloy
+  requirements: [
+    gravitium/80
+    surge-alloy/45
+  ]
 }
 alwaysUnlocked: false

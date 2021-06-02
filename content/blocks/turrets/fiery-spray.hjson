@@ -1,0 +1,53 @@
+type: LiquidTurret
+
+size: 3
+health: 1200
+
+range: 120
+
+reloadTime: 1.5
+shots: 3
+velocityInaccuracy: 0.15
+inaccuracy: 5
+recoilAmount: 1
+restitution: 0.04
+shootCone: 45
+shootEffect: shootLiquid
+ammoTypes: {
+	benzine:{
+		type: LiquidBulletType
+		lifetime: 35
+		speed: 6
+		knockback: 1.5
+		puddleSize: 7
+		orbSize: 4
+		drag: 0.001
+		ammoMultiplier: 0.2
+		statusDuration: 240
+		damage: 1.5
+		liquid: benzine
+	}
+	flammable-liquid:{
+		type: LiquidBulletType
+		lifetime: 35
+		speed: 6
+		knockback: 1.5
+		puddleSize: 9
+		orbSize: 5
+		drag: 0.001
+		ammoMultiplier: 0.2
+		statusDuration: 240
+		damage: 1.2
+		liquid: flammable-liquid
+		}	
+}
+requirements: [
+  lead/150
+  graphite/75
+  silicon/70
+  gravitium/25
+]
+category: turret
+research: {
+  parent: tsunami
+}

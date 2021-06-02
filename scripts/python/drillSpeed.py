@@ -22,8 +22,10 @@ if category == str(1):
 	print(str("Second for one item: ") + str(invert(sec,items,1,1,1,1)))
 	print(str("Items per second: ") + str(invert(sec,items,1,1,1,2)))
 	print(str("Ticks for 1SB: ") + str(invert(sec,items,1,1,1,3)))
+	input("End")
 elif category == str(2):
 	itempersec = input("Input item per second {0.2}:")
 	print(str("Ticks for 1SB: ")+str(outvert(itempersec,1)))
+	input("End")
 else:
 	print("Only 1 or 2")

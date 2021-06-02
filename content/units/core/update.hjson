@@ -1,0 +1,78 @@
+type: flying
+hitSize: 10
+accel: 5.0
+fallSpeed: 0.058
+drawOutline: true
+engineOffset: 9
+engineSize: 3.2
+commandLimit: 7
+flying: true
+health: 460
+speed: 4.5
+drag: 0.125
+range: 45
+buildSpeed: 2.25
+mineSpeed: 11.0
+rotateSpeed: 9.5
+mineTier: 4
+itemCapacity: 120
+weapons: [
+	{
+	name: south
+  	rotate: true
+  	rotateSpeed: 40
+  	flipSprite: false
+  	x: 9
+  	inaccuracy: 4
+  	y: -5.5
+  	reload: 10
+  	mirror: true
+  	bullet: {
+  		type: BasicBulletType
+  		buildingDamageMultiplier: 0.25
+		lifetime: 40
+		speed: 8
+		damage: 22
+		width: 9
+		height: 9
+		shootEffect: shootSmall
+		smokeEffect: shootSmallSmoke
+		homingPower: 0.1
+		}
+	}	
+	{
+	name: violence
+	rotate: false
+	rotateSpeed: 60
+	flipSprite: false
+	x:0
+	y: 2
+	inaccuracy: 0.0
+	reload: 120
+	shoots: 1
+	mirror: false
+  	bullet: {
+  		type: BasicBulletType
+  		buildingDamageMultiplier: 0.25
+		lifetime: 40
+		speed: 2
+		//frontColor: "#124370"
+		//backColor: "#b1cbe3"
+		damage: 22
+		width: 9
+		height: 9
+		shootEffect: lightningShoot
+		//smokeEffect: shootSmallSmoke
+		homingPower: 0.1
+		fragCone: 360
+		fragBullet: {
+			type: LightningBulletType
+			damage: 4
+			status: shocked
+			lightningLength: 14
+			lightningLengthRand: 20
+			lightningColor: "#1995b0"
+			}
+		}
+	}
+]

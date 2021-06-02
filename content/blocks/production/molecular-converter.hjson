@@ -5,7 +5,7 @@ hasLiquids: false
 hasItems: true
 size: 3
 category: crafting
-craftTime: 65
+craftTime: 72
 health: 360
 consumes: {
   items: {
@@ -15,7 +15,7 @@ consumes: {
         silicon/2
     ]
   }
-  power: 3.50
+  power: 2.4
 }
 requirements: [
   lead/175
@@ -25,7 +25,7 @@ requirements: [
 updateEffect: smeltsmoke
 ambientSound: cutter
 ambientSoundVolume: 0.2
-outputItem: gravitium/4
+outputItem: gravitium/3
 research: {
   parent: "kiln"
 }
