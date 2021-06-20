@@ -1,17 +1,20 @@
 type: naval
-hitSize: 4.0
-accel: 5.0
+hitSize: 9.5
+accel: 0.44
 commandLimit: 8
 flying: false
 health: 320
-armor: 4
-speed: 1.75
+armor: 3
+speed: 1.35
 drag: 0.1
 range: 24
 buildSpeed: 0
 mineSpeed: 0
-rotateSpeed: 6.5
+rotateSpeed: 5.25
 itemCapacity: 30
+
+trailLength: 20	
+
 weapons: [
 	{
 	name: phis
@@ -32,11 +35,9 @@ weapons: [
 		lifetime: 29
 		speed: 6.7
 		damage: 13
-		width: 5
-		height: 9
-		shootSound: spark
 		shootEffect: redgeneratespark
 		status: shocked
 	}
 }
 ]
+research: advanced-naval-factory

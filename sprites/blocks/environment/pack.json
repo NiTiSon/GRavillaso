@@ -2,7 +2,7 @@
   duplicatePadding: true,
   combineSubdirectories: true,
   flattenPaths: true,
-  maxWidth: 4096,
-  maxHeight: 4096,
-  fast: true
+  maxWidth: 128,
+  maxHeight: 128,
+  fast: false
 }

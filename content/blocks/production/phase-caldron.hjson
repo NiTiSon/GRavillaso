@@ -1,0 +1,33 @@
+type: LiquidConverter
+category: crafting
+hasLiquids: true
+hasItems: true
+drawer: DrawMixer
+size: 2
+craftTime: 90
+health: 210
+liquidCapacity: 20
+itemCapacity: 12
+consumes: {
+  power: 7.5
+  liquid: {
+    liquid: cryofluid
+    amount: 0.15
+  }
+  items:{
+    items:[
+      phase-fabric/1
+    ]
+  }
+}
+requirements: [
+  copper/1
+]
+outputLiquid: {
+  liquid: phase-liquid
+  amount: 0.15
+}
+updateEffect: magmasmoke
+research: {
+  parent: "phase-weaver"
+}

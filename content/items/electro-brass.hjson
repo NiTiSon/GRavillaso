@@ -2,4 +2,12 @@ color: f9ffb4
 hardness: 7
 charge: 0.85
 cost: 3
-radioactivity: 0
+research: {
+  parent: surge-alloy
+  requirements: [
+      copper/40
+      lead/20
+      silicon/10
+      surge-alloy/20
+  ]
+}

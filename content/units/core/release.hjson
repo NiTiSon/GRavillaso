@@ -26,7 +26,7 @@ weapons: [
 	y:-4.5
 	inaccuracy: 2.5
 	reload: 20
-	shoots: 1
+	shots: 1
 	mirror: true
 	bullet:{
 		type: MissileBulletType

@@ -11,5 +11,5 @@ category: distribution
 speed: 0.22
 displayedSpeed: 25.45
 research: {
-  parent: titanium-conveyor
+  parent: armored-conveyor
 }

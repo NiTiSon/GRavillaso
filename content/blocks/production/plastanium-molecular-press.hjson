@@ -21,7 +21,7 @@ consumes: {
 requirements: [
   lead/225
   graphite/90
-  gravitium/60
+  magneturn/60
   silicon/120
 ]
 outputItem: plastanium/3

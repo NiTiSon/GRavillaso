@@ -24,7 +24,7 @@ requirements: [
   silicon/220
   lead/140
   thorium/95
-  surge-alloy/70
+  electro-brass/70
 ]
 craftEffect: smeltsmoke
 category: crafting

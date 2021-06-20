@@ -11,5 +11,5 @@ requirements: [
 ]
 category: power
 research: {
-  parent: "surge-tower"
+  parent: "power-node-large"
 }

@@ -15,9 +15,4 @@ requirements: [
 ]
 research: {
   parent: battery
-  requirements: [
-  copper/3900
-  lead/6700
-  silicon/780
-  ]
 } 

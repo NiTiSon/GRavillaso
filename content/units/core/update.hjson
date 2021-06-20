@@ -2,7 +2,6 @@ type: flying
 hitSize: 10
 accel: 5.0
 fallSpeed: 0.058
-drawOutline: true
 engineOffset: 9
 engineSize: 3.2
 commandLimit: 7
@@ -49,7 +48,7 @@ weapons: [
 	y: 2
 	inaccuracy: 0.0
 	reload: 120
-	shoots: 1
+	shots: 1
 	mirror: false
   	bullet: {
   		type: BasicBulletType

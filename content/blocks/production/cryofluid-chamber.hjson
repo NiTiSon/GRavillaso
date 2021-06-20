@@ -20,7 +20,7 @@ consumes: {
 }
 requirements: [
   copper/70
-  gravitium/40
+  magneturn/40
   graphite/120
   silicon/35
   metaglass/70

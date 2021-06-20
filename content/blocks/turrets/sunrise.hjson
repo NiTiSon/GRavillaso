@@ -22,7 +22,7 @@ requirements: [
   magneturn/220
   phase-fabric/120
   surge-alloy/220
-  hyper-cube/80
+  electro-brass/80
 ]
 coolantMultiplier: 0.035
 shootSound: spark

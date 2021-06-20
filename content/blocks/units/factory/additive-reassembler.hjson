@@ -21,8 +21,8 @@ consumes: {
 
 upgrades: [
   [
-    coulomb, minke 
+    coulomb, ampere
   ]
 ]
-constructTime: 750
+constructTime: 2750
 research: advanced-naval-factory

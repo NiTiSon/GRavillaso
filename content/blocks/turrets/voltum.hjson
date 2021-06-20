@@ -13,14 +13,10 @@ shots: 3
 shootType:{
 	type: LightningBulletType
 	lightningColor: "#a4ded0"
-	lightningRand: 5
 	speed: 2
 	lifetime: 50
 	damage: 14
 	reloadMultiplier: 1
-	recoilAmount: 2
-	bulletWidth: 4
-	bulletHeight: 8
 	shootEffect: lightningShoot
 }
 
