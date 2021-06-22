@@ -1,5 +1,5 @@
 # [Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo-smail.png) V0.13.9
-![Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo_0.13-any.png)
+![Gravillaso](https://github.com/NickName73/Gravillaso/blob/main/sprites/.Social/logo_1.0-any.png)
 Gravillaso - mod based on magnetic materials  
 ---
 [Trello board that project](https://trello.com/b/wT73AZQq/gravillaso)  
