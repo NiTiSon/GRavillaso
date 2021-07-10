@@ -1,5 +1,5 @@
 type: flying
-hitSize: 10
+hitSize: 13.6
 accel: 5.0
 fallSpeed: 0.058
 engineOffset: 9
