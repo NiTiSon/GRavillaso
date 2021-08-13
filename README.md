@@ -20,4 +20,4 @@ Available Languages
 * English (100%)
 * Russian (100%)
 
-# [Official Wiki of mod](https://github.com/nickname73/gravillasowiki)
+# [Official Wiki of mod](https://github.com/NickName73/GravillasoWiki)
