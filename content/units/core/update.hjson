@@ -24,19 +24,27 @@ weapons: [
   	x: 9
   	inaccuracy: 4
   	y: -5.5
-  	reload: 10
+  	reload: 60
+  	shots: 1
   	mirror: true
-  	bullet: {
-  		type: BasicBulletType
-  		buildingDamageMultiplier: 0.25
-		lifetime: 40
-		speed: 8
-		damage: 22
-		width: 9
-		height: 9
+	bullet: {
+  		type: MissileBulletType
+  		speed: 3.8
+  		lifetime: 44
+  		width: 5.1
+		height: 9.2
+		splashDamageRadius: 12
+		splashDamage: 19
+		damage: 25
+		hitSound: explosion
+		despawnEffect: explosion
+		hitEffect: explosion
 		shootEffect: shootSmall
 		smokeEffect: shootSmallSmoke
-		homingPower: 0.1
+		lightning:2
+		lightningCone: 180
+		lightningDamage: 9
+		lightningLength: 7
 		}
 	}	
 	{
@@ -47,31 +55,14 @@ weapons: [
 	x:0
 	y: 2
 	inaccuracy: 0.0
-	reload: 120
+	reload: 90
 	shots: 1
 	mirror: false
-  	bullet: {
+  	bullet:{
   		type: BasicBulletType
-  		buildingDamageMultiplier: 0.25
-		lifetime: 40
-		speed: 2
-		//frontColor: "#124370"
-		//backColor: "#b1cbe3"
-		damage: 22
-		width: 9
-		height: 9
-		shootEffect: lightningShoot
-		//smokeEffect: shootSmallSmoke
-		homingPower: 0.1
-		fragCone: 360
-		fragBullet: {
-			type: LightningBulletType
-			damage: 4
-			status: shocked
-			lightningLength: 14
-			lightningLengthRand: 20
-			lightningColor: "#1995b0"
-			}
-		}
+  		width: 7
+  		height: 12
+  		
+  		}
 	}
 ]

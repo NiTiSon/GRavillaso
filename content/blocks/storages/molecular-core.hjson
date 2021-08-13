@@ -5,7 +5,6 @@ size:6
 unitType: release
 hasItems: true
 itemCapacity: 19000
-resupplyItem: titanium
 category: effect
 requirements: [
 copper/12000
