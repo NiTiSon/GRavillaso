@@ -1,0 +1,12 @@
+type : SolarGenerator
+powerProduction: 15
+size: 5
+health: 1800
+category: power
+research: solar-panel-large
+requirements: [
+	lead/450
+	titanium/320
+	plastanium/180
+	phase-fabric/80
+]

@@ -1,5 +1,0 @@
-type: Floor
-variants: 1
-cacheLayer: walls 
-edge: metal-floor
-//its turn off all smoth on title

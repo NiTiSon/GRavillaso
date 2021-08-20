@@ -6,8 +6,8 @@ drownTime: 360
 walkEffect: melting
 status: burning
 statusDuration: 240
-blendGroup: water
 cacheLayer: tar
 liquidDrop: flammable-liquid
 liquidMultiplier: 0.2
 isLiquid: true
+albedo: 0.5

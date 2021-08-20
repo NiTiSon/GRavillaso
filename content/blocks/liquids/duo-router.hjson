@@ -1,0 +1,11 @@
+type: LiquidRouter
+health: 80
+size: 2
+liquidCapacity: 250
+category: liquid
+research: liquid-router
+requirements: [
+	metaglass/10
+	graphite/15
+	silicon/5
+]
