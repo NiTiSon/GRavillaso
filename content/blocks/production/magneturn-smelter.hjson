@@ -1,4 +1,4 @@
-type: AttributeSmelter
+type: AttributeCrafter
 attribute: heat
 baseEfficiency: 1
 liquidCapacity: 175

@@ -6,7 +6,7 @@ info.meta.repo = "NickName73/Gravillaso"
 
 require("ui/ui-lib")
 require("ui/creditsButton") 
-require("game-elements/planets")
+//require("game-elements/planets")
 require("game-elements/statuses")
 //require("game-elements/items") 
 require("game-elements/techTree")

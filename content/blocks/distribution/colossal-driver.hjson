@@ -14,7 +14,6 @@ knockback: 4
 reloadTime: 260
 bulletSpeed: 12.5
 bulletLifetime: 600
-
 requirements: [
   lead/225
   titanium/225

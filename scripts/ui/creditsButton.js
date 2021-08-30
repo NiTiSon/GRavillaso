@@ -8,9 +8,6 @@ ui.addMenuButton("$uigravillaso.a-vk", "link", () => {
 ui.addMenuButton("$uigravillaso.c-trello", "link", () => {
 	Core.app.openURI("https://trello.com/b/wT73AZQq/gravillaso")
 });
-ui.addMenuButton("$uigravillaso.d-discord", "link", () => {
-	Core.app.openURI("https://discord.gg/SgsHm9KVNe")
-});
 ui.onLoad(() => {
 
 });
