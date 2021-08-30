@@ -18,3 +18,4 @@ Adds
 Available Languages
 * English (100%) _(Original translation)_
 * Russian (100%) _(Original translation)_
+* You can add your custom translation
