@@ -1,6 +1,6 @@
 # Gravillaso V2.0
-{logo}  
-Gravillaso - mod based on magnetic materials
+![logo](https://raw.githubusercontent.com/NickName73/NickName73/main/newGravillasoBanner.png)
+Gravillaso will improve your game content by adding more block and turret items. Version for Mindustry V7 You can download the version for V6 [here :)](https:google.com)
 ---
 [Trello board](https://trello.com/b/wT73AZQq/gravillaso)  
 [Vkontakle](https://vk.com/gravillaso)  
