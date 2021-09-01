@@ -21,7 +21,10 @@ consumes: {
   }
 }
 requirements: [
-  copper/1
+  titanium/75
+  metaglass/20
+  thorium/60
+  silicon/160
 ]
 outputLiquid: {
   liquid: phase-liquid

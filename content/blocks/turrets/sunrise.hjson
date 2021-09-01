@@ -24,7 +24,7 @@ requirements: [
   surge-alloy/220
   electro-brass/80
 ]
-coolantMultiplier: 0.035
+coolantMultiplier: 1.245
 shootSound: spark
 shootEffect: redgeneratespark
 targetAir: true

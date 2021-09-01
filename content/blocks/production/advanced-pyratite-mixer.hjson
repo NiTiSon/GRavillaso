@@ -1,0 +1,28 @@
+type: GenericCrafter
+category: crafting
+size: 3
+hasItems: true
+hasPower: true
+
+consumes: {
+  items: {
+    items: [
+        coal/2
+        lead/3
+        sand/5
+    ]
+  }
+  power: 0.8
+}
+
+requirements: [
+  metaglass/70
+  titanium/130
+  silicon/50
+  phase-fabric/15
+]
+
+research: {
+  parent: "pyratite-mixer"
+}
+outputItem: pyratite/3

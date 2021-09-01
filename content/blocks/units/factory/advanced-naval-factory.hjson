@@ -24,10 +24,4 @@ plans: [
   }
 ]
 
-//upgrades: [
-//  [
-//    coulomb, ampere
-//  ]
-//]
-
 research: naval-factory
