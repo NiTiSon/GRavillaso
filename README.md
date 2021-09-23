@@ -9,9 +9,9 @@ Adds
 * A lot of new turrets
 * Useful factory
 * Additional maps
-* Two additional cores (dev)
-* Two additional mechs (dev)
-* Naval unit line (dev)
+* Two additional cores
+* Two additional mechs
+* Naval unit line
 * New tech tier
 * Many other cool blocks
 
