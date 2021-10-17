@@ -1,6 +1,0 @@
-type: StaticWall
-variants: 1
-inEditor: true
-breakable: false
-targetable: false
-name: TEST

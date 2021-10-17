@@ -1,0 +1,8 @@
+displayName: "Gravillaso Java"
+name: "gravillaso-mod"
+author: "NickName73"
+main: "nitis.nickname73.Gravillaso.GravillasoJavaMod"
+description: "Gravillaso Java Mod"
+version: A1
+minGameVersion: 130
+java: true
