@@ -5,7 +5,7 @@ Gravillaso will improve your game content by adding more block and turret items.
 [Trello board](https://trello.com/b/wT73AZQq/gravillaso)  
 [Vkontakle](https://vk.com/gravillaso)   
 ---
-[Java Version](https://youtu.be/dQw4w9WgXcQ)
+[Java Version](https://github.com/NickName73/Gravillaso/tree/java)
 ---
 Adds
 * A lot of new turrets
