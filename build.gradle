@@ -2,8 +2,8 @@ apply plugin: "java"
 
 version '1.0'
 
-
-sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = 16
+sourceCompatibility = JavaVersion.VERSION_16
 
 sourceSets.main.java.srcDirs = ["src"]
 
@@ -13,7 +13,7 @@ repositories{
 }
 
 ext{
-    mindustryVersion = 'v131'
+    mindustryVersion = 'v133'
     jabelVersion = "0.6.0"
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
 }
