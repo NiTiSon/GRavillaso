@@ -2,11 +2,8 @@ package nitis.nickname73.Gravillaso;
 
 import arc.*;
 import arc.util.*;
-import mindustry.core.UI;
 import mindustry.game.EventType.*;
 import mindustry.mod.*;
-import mindustry.ui.Menus;
-import mindustry.ui.dialogs.*;
 import nitis.nickname73.Gravillaso.content.*;
 
 public class GravillasoJavaMod extends Mod{
@@ -22,9 +19,10 @@ public class GravillasoJavaMod extends Mod{
     public void loadContent(){
         Log.info("Gravillaso Mod Loading");
         try {
+            new ModLiquids().load();
             new ModItems().load();
-            new ModBlocks().load();
             new ModStatuses().load();
+            new ModBlocks().load();
             new ModPlanets().load();
             new ModSectorPresets().load();
             new ModTechTree().load();

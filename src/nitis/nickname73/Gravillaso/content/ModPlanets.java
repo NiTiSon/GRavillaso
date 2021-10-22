@@ -28,7 +28,7 @@ public class ModPlanets implements ContentList {
             atmosphereRadOut = 0.29f;
             alwaysUnlocked = true;
             landCloudColor = Pal.spore.cpy().a(0.5f);
-            orbitRadius = 12.3f;
+            orbitRadius = 42.3f;
             startSector = 20;
             alwaysUnlocked = false;
         }};

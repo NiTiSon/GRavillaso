@@ -1,8 +1,8 @@
 logs/
-/assets/mindustry-saves/
-/assets/mindustry-maps/
-/assets/bundles/output/
-/assets/.gifimages/
+/core/assets/mindustry-saves/
+/core/assets/mindustry-maps/
+/core/assets/bundles/output/
+/core/assets/.gifimages/
 /deploy/
 /desktop/packr-out/
 /desktop/packr-export/
@@ -25,9 +25,9 @@ logs/
 desktop-sdl/build/
 /android/assets/mindustry-maps/
 /android/assets/mindustry-saves/
-/assets/gifexport/
-/assets/version.properties
-/assets/locales
+/core/assets/gifexport/
+/core/assets/version.properties
+/core/assets/locales
 /ios/src/io/anuke/mindustry/gen/
 /core/src/io/anuke/mindustry/gen/
 ios/robovm.properties

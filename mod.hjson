@@ -1,8 +1,8 @@
 displayName: "Gravillaso Java"
-name: "gravillaso-mod"
+name: "gravillaso"
 author: "NickName73"
 main: "nitis.nickname73.Gravillaso.GravillasoJavaMod"
 description: "Gravillaso Java Mod"
-version: A3
+version: A5
 minGameVersion: 133
 java: true

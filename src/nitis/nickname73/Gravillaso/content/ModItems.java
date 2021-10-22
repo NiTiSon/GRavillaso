@@ -6,36 +6,31 @@ import mindustry.type.Item;
 
 public class ModItems implements ContentList {
 
-    public static final Color gravitiumColor = new Color(100, 151, 172);
-    public static final Color magneturnColor = new Color(61, 10, 120);
-    public static final Color quartzColor = new Color(235, 246, 247);
-    public static final Color electroBrassColor = new Color(249, 255, 180);
-
     public static Item
         gravitium, magneturn, quartz, electroBrass;
 
     @Override
     public void load() {
+        quartz = new Item("quartz"){{
+            cost = 1;
+            color = Color.valueOf("ebf6f7");
+        }};
         gravitium = new Item("gravitium"){{
            radioactivity = 0.09f;
            cost = 2;
            charge = 0.04f;
            hardness = 5;
-           color = gravitiumColor;
+           color = Color.valueOf("6497ac");
         }};
         magneturn = new Item("magneturn"){{
            cost = 4;
-           color = magneturnColor;
-        }};
-        quartz = new Item("quartz"){{
-           cost = 1;
-           color = quartzColor;
+           color = Color.valueOf("3d0a78");
         }};
         electroBrass = new Item("electro-brass"){{
            cost = 3;
            hardness = 7;
            charge = 0.85f;
-           color = electroBrassColor;
+           color = Color.valueOf("f9ffb4");
         }};
     }
 }
