@@ -6,9 +6,11 @@ import mindustry.content.*;
 import mindustry.ctype.ContentList;
 import mindustry.entities.bullet.*;
 import mindustry.gen.Sounds;
+import mindustry.graphics.CacheLayer;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.type.Liquid;
+import mindustry.type.LiquidStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.MendProjector;
 import mindustry.world.blocks.defense.Wall;
@@ -21,7 +23,17 @@ import mindustry.world.blocks.distribution.StackConveyor;
 import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.environment.StaticWall;
+import mindustry.world.blocks.power.*;
+import mindustry.world.blocks.production.AttributeCrafter;
+import mindustry.world.blocks.production.GenericCrafter;
+import mindustry.world.blocks.production.LiquidConverter;
+import mindustry.world.blocks.production.SolidPump;
 import mindustry.world.blocks.storage.CoreBlock;
+import mindustry.world.blocks.units.RepairPoint;
+import mindustry.world.draw.DrawMixer;
+import mindustry.world.draw.DrawWeave;
+import mindustry.world.meta.Attribute;
+import nitis.nickname73.Gravillaso.content.Blocks.OverdriveDrill;
 import nitis.nickname73.Gravillaso.content.Bullets.PhaseBulletType;
 
 public class ModBlocks implements ContentList {
@@ -31,18 +43,23 @@ public class ModBlocks implements ContentList {
 
     public static Block
             //Environment
-            redSand, redSandWall,
+            redSand,redSandWall,burningGround,burningGroundWall,flammableLiquidBlock,metalFloorDamagedOrange,
     //Defence
     hyperMender,colossalHealingDome,gravitiumWall,gravitiumWallLarge,magneturnWall,magneturnWallLarge,
     //Distribution
     magneturnConveyor,electroConveyor,colossalDriver,
     //Drills
+    deepOilPump,overdriveDrill,
+    //Power
+    gasolineGenerator,batteryBig,multiConnector,sporeGenerator,solarArray,sunshine,
     //Production
+    advancedPyratiteMixer,advancedBlastMixer,gasolineBarrel,cryofluidChamber,flammableLiquidChamber,phaseCaldron,molecularConverter,molecularReconstructor,magneturnSmelter,electroSmelter,molecularPhaseWeaver,plastaniumMolecularPress,
     //Turrets
     destiny,arhiepiscop,fierySpray,renunciation,phaseFuse,voltum,sunrise,saturn,
     //Storages
     molecularCore,coliseumCore,
     //Units
+    repairLaser,
     //Ores
     oreQuartz;
 
@@ -59,6 +76,38 @@ public class ModBlocks implements ContentList {
             variants = 2;
             inEditor = true;
             targetable = false;
+        }};
+        burningGround = new Floor("burning-ground"){{
+            variants = 4;
+            damageTaken = 2.75f;
+            speedMultiplier = 0.88f;
+            walkEffect = Fx.smeltsmoke;
+            status = StatusEffects.melting;
+            statusDuration = 247f;
+            wall = burningGroundWall;
+        }};
+        burningGroundWall = new StaticWall("burning-ground-wall"){{
+            variants = 2;
+            inEditor = true;
+            breakable = false;
+            targetable = false;
+        }};
+        flammableLiquidBlock = new Floor("flammable-liquid-block"){{
+            variants = 0;
+            speedMultiplier = 0.45f;
+            damageTaken = 0.9f;
+            drownTime = 360f;
+            walkEffect = Fx.melting;
+            status = StatusEffects.burning;
+            statusDuration = 240;
+            cacheLayer = CacheLayer.tar;
+            liquidDrop = ModLiquids.flammableLiquid;
+            liquidMultiplier = 0.2f;
+            isLiquid = true;
+            albedo = 0.5f;
+        }};
+        metalFloorDamagedOrange = new Floor("metal-floor-damaged-orange"){{
+            variants = 3;
         }};
         //endregion
         //region Defence
@@ -158,10 +207,238 @@ public class ModBlocks implements ContentList {
         }};
         //endregion
         //region Drills
-
+        deepOilPump = new SolidPump("deep-oil-pump"){{
+            requirements(Category.production, ItemStack.with(Items.lead,180,Items.titanium,25,Items.graphite,120,Items.silicon,65,Items.plastanium,90));
+            size = 3;
+            health = 90 * size * size;
+            consumes.power(7.5f);
+            liquidCapacity = 72;
+            pumpAmount = 0.4f;
+            result = Liquids.oil;
+            rotateSpeed = 1.8f;
+            baseEfficiency = 0.75f;
+            attribute = Attribute.spores;
+            updateEffect = Fx.pulverize;
+        }};
+        overdriveDrill = new OverdriveDrill("overdrive-drill"){{
+            requirements(Category.production, ItemStack.with(Items.titanium,90,Items.thorium,75,Items.plastanium,55,ModItems.gravitium,55,Items.silicon,120));
+            size = 4;
+            tier = 4;
+            health = 90 * size * size;
+            drawRim = true;
+            drillTime = 187;
+            itemCapacity = 20;
+            liquidCapacity = 20;
+            liquidBoostIntensity = 2;
+            warmupSpeed = 0.01f;
+            rotateSpeed = 7;
+            consumes.power(3.5f);
+            consumes.liquid(Liquids.water,0.18f).boost();
+        }};
+        //endregion
+        //region Power
+        gasolineGenerator = new SingleTypeGenerator("gasoline-generator"){{
+            requirements(Category.power,ItemStack.with(Items.copper,90,Items.lead,70,Items.metaglass,100,Items.silicon,25));
+            size = 3;
+            health = 70 * size * size;
+            itemCapacity = 20;
+            liquidCapacity = 20;
+            itemDuration = 90;
+            powerProduction = 26;
+            consumes.item(Items.blastCompound,1);
+            consumes.liquid(ModLiquids.gasoline,0.12f);
+        }};
+        batteryBig = new Battery("battery-big"){{
+            requirements(Category.power, ItemStack.with(Items.copper,15,Items.lead,30,Items.silicon,5));
+            fullLightColor = Color.valueOf("fb9567");
+            emptyLightColor = Color.valueOf("f8c266");
+            consumes.powerBuffered(22000);
+            size = 2;
+            health = 450;
+        }};
+        multiConnector = new PowerNode("multi-connector"){{
+            requirements(Category.power, ItemStack.with(Items.lead,35,Items.titanium,30,Items.silicon,100,ModItems.gravitium,15));
+            size = 3;
+            health = 40 * size * size;
+            maxNodes = 35;
+            laserRange = 22.5f;
+        }};
+        sporeGenerator = new ThermalGenerator("spore-generator"){{
+            requirements(Category.power, ItemStack.with(Items.lead,65,Items.plastanium,40,Items.graphite,20,Items.silicon,90));
+            size = 2;
+            placeableLiquid = true;
+            powerProduction = 2.5f;
+            generateEffect = Fx.fuelburn;
+            attribute = Attribute.spores;
+            ambientSound = Sounds.respawn;
+            ambientSoundVolume = 0.4f;
+        }};
+        solarArray = new SolarGenerator("solar-array"){{
+            requirements(Category.power, ItemStack.with(Items.lead,450,Items.titanium,320,Items.plastanium,180,Items.phaseFabric,80));
+            size = 5;
+            health = 90 * size * size;
+            powerProduction = 15;
+        }};
+        sunshine = new LightBlock("sunshine"){{
+            requirements(Category.effect, ItemStack.with(ModItems.gravitium,15,Items.graphite,30,Items.silicon,20));
+            size = 2;
+            radius = 180;
+            health = 60 * size * size;
+            brightness = 0.9f;
+            consumes.power(0.166667f);
+        }};
         //endregion
         //region Production
-
+        advancedPyratiteMixer = new GenericCrafter("advanced-pyratite-mixer"){{
+            requirements(Category.crafting, ItemStack.with(Items.metaglass,70,Items.titanium,130,Items.silicon,50,Items.phaseFabric,15));
+            size = 3;
+            health = 80 * size * size;
+            consumes.items(ItemStack.with(Items.coal,2,Items.lead,3,Items.sand,5));
+            consumes.power(0.8f);
+            outputItem = new ItemStack(Items.pyratite,3);
+        }};
+        advancedBlastMixer = new GenericCrafter("advanced-blast-mixer"){{
+            requirements(Category.crafting, ItemStack.with(Items.thorium,110,Items.silicon,50,Items.plastanium,60,Items.surgeAlloy,30));
+            size = 3;
+            health = 80 * size * size;
+            consumes.items(ItemStack.with(Items.pyratite,2,Items.sporePod,4));
+            consumes.power(1.2f);
+            outputItem = new ItemStack(Items.blastCompound,3);
+        }};
+        gasolineBarrel = new LiquidConverter("gasoline-barrel"){{
+            requirements(Category.crafting, ItemStack.with(Items.copper,90,Items.plastanium,55,Items.graphite,110,Items.silicon,35,Items.metaglass,70));
+            size = 3;
+            health = 90 * size * size;
+            hasItems = false;
+            craftTime = 360;
+            liquidCapacity = 40;
+            drawer = new DrawMixer();
+            consumes.power(7.5f);
+            consumes.liquid(Liquids.oil,0.35f);
+            outputLiquid = new LiquidStack(ModLiquids.gasoline,0.2f);
+            updateEffect = Fx.magmasmoke;
+        }};
+        cryofluidChamber = new LiquidConverter("cryofluid-chamber"){{
+            requirements(Category.crafting, ItemStack.with(Items.copper,70,ModItems.magneturn,40,Items.graphite,120,Items.silicon,35,Items.metaglass,70));
+            drawer = new DrawMixer();
+            size = 2;
+            craftTime = 140;
+            health = 70 * size * size;
+            liquidCapacity = 30;
+            consumes.power(8.5f);
+            consumes.item(Items.titanium,1);
+            consumes.liquid(Liquids.water,0.6f);
+            outputLiquid = new LiquidStack(Liquids.cryofluid,27);
+        }};
+        flammableLiquidChamber = new LiquidConverter("flammable-liquid-chamber"){{
+            requirements(Category.crafting, ItemStack.with(Items.copper,50,Items.lead,20,Items.thorium,40,Items.silicon,60));
+            size = 2;
+            health = 70 * size * size;
+            craftTime = 140;
+            drawer = new DrawMixer();
+            liquidCapacity = 30;
+            itemCapacity = 15;
+            consumes.power(7.5f);
+            consumes.item(Items.pyratite,1);
+            consumes.liquid(Liquids.water,0.2f);
+            outputLiquid = new LiquidStack(ModLiquids.flammableLiquid,4f);
+        }};
+        phaseCaldron = new LiquidConverter("phase-caldron"){{
+            requirements(Category.crafting, ItemStack.with(Items.titanium,75,Items.metaglass,20,Items.thorium,60,Items.silicon,160));
+            size = 2;
+            health = 60 * size * size;
+            drawer = new DrawMixer();
+            craftTime = 90;
+            liquidCapacity = 20;
+            itemCapacity = 15;
+            updateEffect = Fx.magmasmoke;
+            consumes.power(6.5f);
+            consumes.item(Items.phaseFabric,1);
+            consumes.liquid(Liquids.cryofluid,0.15f);
+            outputLiquid = new LiquidStack(ModLiquids.phaseLiquid,0.15f);
+        }};
+        molecularConverter = new GenericCrafter("molecular-converter"){{
+            requirements(Category.crafting, ItemStack.with(Items.lead,175,Items.titanium,120,Items.silicon,80));
+            size = 3;
+            health = 70 * size * size;
+            craftTime = 72;
+            itemCapacity = 20;
+            updateEffect = Fx.smeltsmoke;
+            ambientSound = Sounds.cutter;
+            ambientSoundVolume = 0.25f;
+            consumes.power(2.4f);
+            consumes.items(ItemStack.with(Items.titanium,1,Items.lead,1,Items.silicon,2));
+            outputItem = new ItemStack(ModItems.gravitium,3);
+        }};
+        molecularReconstructor = new GenericCrafter("molecular-reconstructor"){{
+            requirements(Category.crafting, ItemStack.with(Items.lead,240,Items.titanium,180,Items.silicon,120,Items.surgeAlloy,45));
+            size = 4;
+            health = 80 * size * size;
+            craftTime = 145;
+            itemCapacity = 32;
+            updateEffect = Fx.smeltsmoke;
+            ambientSound = Sounds.cutter;
+            ambientSoundVolume = 0.35f;
+            consumes.power(6.5f);
+            consumes.items(ItemStack.with(Items.titanium,3,Items.lead,3,Items.silicon,4));
+            consumes.liquid(Liquids.water,0.3f);
+            outputItem = new ItemStack(ModItems.gravitium,12);
+        }};
+        magneturnSmelter = new AttributeCrafter("magneturn-smelter"){{
+            requirements(Category.crafting, ItemStack.with(ModItems.gravitium,150,Items.silicon,175,Items.titanium,120,Items.surgeAlloy,55));
+            size = 3;
+            health = 90 * size * size;
+            attribute = Attribute.heat;
+            baseEfficiency = 1f;
+            craftTime = 140;
+            liquidCapacity = 30;
+            updateEffect = Fx.smeltsmoke;
+            //ambientSound = ModSounds.magneturnWork;
+            consumes.power(7.5f);
+            consumes.items(ItemStack.with(ModItems.gravitium,1,Items.surgeAlloy,3));
+            consumes.liquid(Liquids.cryofluid,0.1f);
+            outputItem = new ItemStack(ModItems.magneturn,2);
+        }};
+        electroSmelter = new GenericCrafter("electro-smelter"){{
+            requirements(Category.crafting, ItemStack.with(Items.copper,400,Items.titanium,225,Items.plastanium,80,Items.surgeAlloy,120,ModItems.magneturn,45));
+            size = 3;
+            health = 120 * size * size;
+            craftTime = 600;
+            itemCapacity = 30;
+            updateEffect = Fx.smeltsmoke;
+            ambientSound = Sounds.smelter;
+            ambientSoundVolume = 0.35f;
+            consumes.power(14.5f);
+            consumes.items(ItemStack.with(Items.copper,3,Items.lead,2,Items.silicon,1,Items.surgeAlloy,2));
+            consumes.liquid(Liquids.cryofluid,0.15f);
+            outputItem = new ItemStack(ModItems.electroBrass,3);
+        }};
+        molecularPhaseWeaver = new GenericCrafter("molecular-phase-weaver"){{
+            requirements(Category.crafting, ItemStack.with(Items.silicon,220,Items.lead,140,Items.thorium,95,ModItems.electroBrass,70));
+            size = 3;
+            health = 90 * size * size;
+            drawer = new DrawWeave();
+            itemCapacity = 35;
+            craftTime = 120;
+            craftEffect = Fx.smeltsmoke;
+            consumes.power(8.5f);
+            consumes.items(ItemStack.with(Items.thorium,5,Items.sand,12));
+            consumes.liquid(Liquids.cryofluid,0.08f);
+            outputItem = new ItemStack(Items.phaseFabric,3);
+        }};
+        plastaniumMolecularPress = new GenericCrafter("plastanium-molecular-press"){{
+            requirements(Category.crafting, ItemStack.with(Items.lead,225,Items.graphite,95,ModItems.magneturn,60,Items.silicon,120));
+            size = 3;
+            health = 70 * size * size;
+            craftTime = 90;
+            liquidCapacity = 40;
+            itemCapacity = 25;
+            updateEffect = Fx.plasticburn;
+            consumes.power(4f);
+            consumes.item(Items.titanium,4);
+            consumes.liquid(Liquids.oil,0.4f);
+            outputItem = new ItemStack(Items.plastanium,3);
+        }};
         //endregion
         //region Turrets
         destiny = new PowerTurret("destiny"){{
@@ -456,6 +733,16 @@ public class ModBlocks implements ContentList {
             this.researchCostMultiplier = 0.2F;
         }};
         //endregion
+        //region Units
+        repairLaser = new RepairPoint("repair-laser"){{
+            requirements(Category.units, ItemStack.with(Items.thorium,120,Items.silicon,160,Items.plastanium,75,ModItems.gravitium,45));
+            size = 3;
+            health = 70 * size * size;
+            powerUse = 2.5f;
+            repairRadius = 275;
+            repairSpeed = 3.5f;
+        }};
+        //endregion
         //region Ores
         oreQuartz = new OreBlock("quartz-ore"){{
             variants = 3;
@@ -465,7 +752,6 @@ public class ModBlocks implements ContentList {
             itemDrop = ModItems.quartz;
         }};
         //endregion
-
         //DO Override origin blocks
     }
 }

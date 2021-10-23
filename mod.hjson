@@ -2,7 +2,7 @@ displayName: "Gravillaso Java"
 name: "gravillaso"
 author: "NickName73"
 main: "nitis.nickname73.Gravillaso.GravillasoJavaMod"
-description: "Gravillaso Java Mod"
-version: A5
+description: "Gravillaso will improve your game content by adding more block and turret items. Version for Mindustry V7 You can download the version for V6 on the GitHub page"
+version: "2.1.0"
 minGameVersion: 133
 java: true

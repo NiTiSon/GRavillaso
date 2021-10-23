@@ -14,8 +14,6 @@ import javax.annotation.processing.SupportedAnnotationTypes;
 public class ModPlanets implements ContentList {
 
     public static Planet gravillo;
-    @Deprecated
-    public static Planet sunCenter;
 
     @Override
     public void load() {

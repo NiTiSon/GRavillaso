@@ -1,5 +1,6 @@
 package nitis.nickname73.Gravillaso.content;
 
+import arc.graphics.Color;
 import arc.math.Mathf;
 import mindustry.content.Fx;
 import mindustry.content.StatusEffects;
@@ -13,6 +14,7 @@ public class ModStatuses implements ContentList {
     @Override
     public void load() {
         broken = new StatusEffect("broken"){{
+            color = Color.valueOf("b099ff");
             healthMultiplier = 0.8f;
             transitionDamage = 15f;
             opposite(StatusEffects.shielded);
@@ -26,10 +28,11 @@ public class ModStatuses implements ContentList {
             }));
         }};
         pressure = new StatusEffect("pressure"){{
-           speedMultiplier = 0.75f;
-           damageMultiplier = 0.75f;
-           reloadMultiplier = 0.85f;
-           opposite(StatusEffects.overdrive,StatusEffects.overclock);
+            color = Color.valueOf("fd98ce");
+            speedMultiplier = 0.75f;
+            damageMultiplier = 0.75f;
+            reloadMultiplier = 0.85f;
+               opposite(StatusEffects.overdrive,StatusEffects.overclock);
         }};
     }
 }

@@ -29,6 +29,57 @@ public class ModTechTree implements ContentList {
                 });
             });
         });
+        Blocks.batteryLarge.node().remove();
+        margeNode(Blocks.battery, () ->{
+            node(ModBlocks.batteryBig, () ->{
+                node(Blocks.batteryLarge);
+            });
+        });
+        margeNode(Blocks.blastMixer, () ->{
+            node(ModBlocks.advancedBlastMixer);
+        });
+        margeNode(Blocks.pyratiteMixer, () ->{
+            node(ModBlocks.advancedPyratiteMixer);
+        });
+        margeNode(Blocks.cryofluidMixer, () ->{
+            node(ModBlocks.gasolineBarrel);
+            node(ModBlocks.cryofluidChamber);
+            node(ModBlocks.flammableLiquidChamber);
+        });
+        margeNode(Blocks.kiln, () ->{
+            node(ModBlocks.molecularConverter, () ->{
+                nodeSector(ModBlocks.molecularReconstructor, ModSectorPresets.logicalCenter);
+            });
+            //TODO: Advanced Kiln
+        });
+        margeNode(Blocks.phaseWeaver, () ->{
+            node(ModBlocks.phaseCaldron);
+            node(ModBlocks.molecularPhaseWeaver);
+        });
+        margeNode(Blocks.plastaniumCompressor, () ->{
+            node(ModBlocks.plastaniumMolecularPress);
+        });
+        margeNode(Blocks.surgeSmelter, () ->{
+            node(ModBlocks.magneturnSmelter, () ->{
+                nodeSector(ModBlocks.electroSmelter, ModSectorPresets.logicalCenter);
+            });
+        });
+        margeNode(Blocks.oilExtractor, () ->{
+            nodeSector(ModBlocks.deepOilPump,ModSectorPresets.logicalCenter);
+        });
+        margeNode(Blocks.differentialGenerator, () ->{
+            node(ModBlocks.gasolineGenerator, Seq.with(new Produce(ModLiquids.gasoline)), ()->{
+            });
+        });
+        margeNode(Blocks.powerNodeLarge, () ->{
+            node(ModBlocks.multiConnector);
+        });
+        margeNode(Blocks.largeSolarPanel, () ->{
+            node(ModBlocks.solarArray);
+        });
+        margeNode(Blocks.blastDrill, () ->{
+            nodeSector(ModBlocks.overdriveDrill,ModSectorPresets.logicalCenter, Seq.with(new Research(Blocks.coreNucleus), new Research(ModBlocks.colossalDriver)));
+        });
         margeNode(Liquids.oil, ()->{
             nodeProduce(ModLiquids.gasoline);
         });
@@ -43,6 +94,9 @@ public class ModTechTree implements ContentList {
                     node(ModBlocks.magneturnWallLarge);
                 });
             });
+        });
+        margeNode(Blocks.spectre, () ->{
+            //nodeSector(ModBlocks.saturn, ModSectorPresets.causticGorge); TODO: Saturn
         });
         margeNode(Blocks.swarmer, () ->{
             node(ModBlocks.renunciation);
@@ -88,6 +142,9 @@ public class ModTechTree implements ContentList {
                 nodeSector(ModSectorPresets.causticGorge,SectorPresets.desolateRift, Seq.with(new Research(ModBlocks.colossalDriver), new Research(ModBlocks.molecularCore)), ()->{
                 });
             });
+        });
+        margeNode(Blocks.repairTurret, () ->{
+            node(ModBlocks.repairLaser);
         });
     }
 
@@ -156,6 +213,9 @@ public class ModTechTree implements ContentList {
     }
     private static void nodeSector(UnlockableContent content, SectorPreset sector,Seq<Objectives.Objective> objectives, Runnable runnable){
         node(content, objectives.and( new SectorComplete(sector)),runnable);
+    }
+    private static void nodeSector(UnlockableContent content, SectorPreset sector,Seq<Objectives.Objective> objectives){
+        node(content, objectives.and( new SectorComplete(sector)), () ->{});
     }
     private static void nodeSector(UnlockableContent content){
         nodeSector(content, () -> {});
