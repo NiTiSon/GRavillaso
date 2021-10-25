@@ -9,7 +9,6 @@ import mindustry.gen.Sounds;
 import mindustry.graphics.CacheLayer;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
-import mindustry.type.Liquid;
 import mindustry.type.LiquidStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.MendProjector;
@@ -33,8 +32,9 @@ import mindustry.world.blocks.units.RepairPoint;
 import mindustry.world.draw.DrawMixer;
 import mindustry.world.draw.DrawWeave;
 import mindustry.world.meta.Attribute;
+import mindustry.world.meta.BuildVisibility;
 import nitis.nickname73.Gravillaso.content.Blocks.OverdriveDrill;
-import nitis.nickname73.Gravillaso.content.Bullets.PhaseBulletType;
+import nitis.nickname73.Gravillaso.content.Blocks.Distributor;
 
 public class ModBlocks implements ContentList {
 
@@ -48,6 +48,8 @@ public class ModBlocks implements ContentList {
     hyperMender,colossalHealingDome,gravitiumWall,gravitiumWallLarge,magneturnWall,magneturnWallLarge,
     //Distribution
     magneturnConveyor,electroConveyor,colossalDriver,
+    //Extra Distribution
+    spatialDistributor,
     //Drills
     deepOilPump,overdriveDrill,
     //Power
@@ -204,6 +206,15 @@ public class ModBlocks implements ContentList {
             bulletSpeed = 12.5f;
             bulletLifetime = 600;
             consumes.power(4f);
+        }};
+        //endregion
+        //region Extra Distribution
+        spatialDistributor = new Distributor("spatial-distributor"){{
+            requirements(Category.distribution, BuildVisibility.sandboxOnly, ItemStack.empty);
+            size = 2;
+            health = 140 * size * size;
+            range = 120f;
+            workSpeed = 5;
         }};
         //endregion
         //region Drills
