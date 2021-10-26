@@ -33,13 +33,14 @@ import mindustry.world.draw.DrawMixer;
 import mindustry.world.draw.DrawWeave;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BuildVisibility;
+import nitis.nickname73.Gravillaso.content.Blocks.DPSDisplay;
 import nitis.nickname73.Gravillaso.content.Blocks.OverdriveDrill;
 import nitis.nickname73.Gravillaso.content.Blocks.Distributor;
 
 public class ModBlocks implements ContentList {
 
     public static final int gravitiumDefence = 1280 ,magneturnDefence = 2300;
-    public static final Color baseHealColor = Color.valueOf("84F490"), phaseHealColor = Color.valueOf("B5FFBD");
+    public static final Color baseHealColor = Color.valueOf("84f490"), phaseHealColor = Color.valueOf("B5ffbd");
 
     public static Block
             //Environment
@@ -63,7 +64,9 @@ public class ModBlocks implements ContentList {
     //Units
     repairLaser,
     //Ores
-    oreQuartz;
+    oreQuartz,
+    //Creative
+    dpsDisplay;
 
     @Override
     public void load() {
@@ -211,6 +214,7 @@ public class ModBlocks implements ContentList {
         //region Extra Distribution
         spatialDistributor = new Distributor("spatial-distributor"){{
             requirements(Category.distribution, BuildVisibility.sandboxOnly, ItemStack.empty);
+            description = "[red]Warning!!!\nIts beta block of update 2.1"; //Dev
             size = 2;
             health = 140 * size * size;
             range = 120f;
