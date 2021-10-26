@@ -2,9 +2,11 @@ package nitis.nickname73.Gravillaso.Extra;
 
 import arc.graphics.Color;
 import arc.struct.Seq;
+import mindustry.Vars;
 import mindustry.core.World;
 import mindustry.gen.Building;
 import mindustry.ui.dialogs.BaseDialog;
+import mindustry.world.Tile;
 import mindustry.world.blocks.logic.LogicBlock;
 
 public class NiTiSON {
@@ -44,30 +46,6 @@ public class NiTiSON {
         }
         return numbers;
     }
-
-    public static Seq<BuildingTarget> parseToBuildingTargetArray(String array, World world){
-        return parseToBuildingTargetArray(world, parseToIntArray(array));
-    }
-
-    public static Seq<BuildingTarget> parseToBuildingTargetArray(World world, Integer... array){
-        Seq<BuildingTarget> targets = new Seq<BuildingTarget>();
-
-        Integer[] xs = new Integer[array.length / 2];
-        Integer[] ys = new Integer[array.length / 2];
-        Integer constructIndex = 0;
-
-        for(int i = 0; i < array.length; i++){
-            if(i % 2 == 1){ // 1,3,5 numbers Xs
-                xs[constructIndex] = array[i];
-            }else{ // 2,4,6 numbers Ys
-                ys[constructIndex] = array[i];
-                targets.add(new BuildingTarget( world.tile( xs[constructIndex], ys[constructIndex] ).build ));
-                constructIndex += 1;
-            }
-        }
-        return targets;
-    }
-
     public static String trimEnd( String s,  String suffix) {
         if (s.endsWith(suffix)) {
             return s.substring(0, s.length() - suffix.length());

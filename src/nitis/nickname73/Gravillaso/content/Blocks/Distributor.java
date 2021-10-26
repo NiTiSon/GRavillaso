@@ -5,42 +5,37 @@ import arc.graphics.Color;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.Font;
 import arc.graphics.g2d.Lines;
-import arc.graphics.g2d.TextureRegion;
 import arc.math.Mathf;
 import arc.scene.ui.layout.Scl;
-import arc.struct.*;
-import arc.util.Structs;
+import arc.struct.EnumSet;
+import arc.struct.Seq;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
-import mindustry.gen.*;
-import mindustry.graphics.*;
-import mindustry.io.TypeIO;
-import mindustry.logic.*;
+import mindustry.content.Blocks;
+import mindustry.gen.Building;
+import mindustry.gen.Unit;
+import mindustry.graphics.Drawf;
+import mindustry.graphics.Pal;
+import mindustry.logic.Ranged;
 import mindustry.type.ItemStack;
-import mindustry.ui.Bar;
 import mindustry.ui.Fonts;
 import mindustry.ui.dialogs.BaseDialog;
-import mindustry.world.*;
-import mindustry.world.blocks.logic.LogicBlock;
-import mindustry.world.meta.*;
+import mindustry.world.Block;
+import mindustry.world.Tile;
+import mindustry.world.meta.BlockFlag;
+import mindustry.world.meta.BlockStatus;
+import mindustry.world.meta.Stat;
+import mindustry.world.meta.StatUnit;
 import nitis.nickname73.Gravillaso.Extra.BuildingTarget;
 import nitis.nickname73.Gravillaso.Extra.ItemTarget;
 import nitis.nickname73.Gravillaso.Extra.NiTiSON;
+import nitis.nickname73.Gravillaso.Extra.NoPoint;
 
-import java.io.*;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.InflaterInputStream;
-
-import static mindustry.Vars.*;
+import static mindustry.Vars.tilesize;
+import static mindustry.Vars.world;
 
 public class Distributor extends Block{
-    public TextureRegion topRegion = Core.atlas.find(this.name +"-top");
     public float range = 80f;
-    @Deprecated
-    public float workSpeed = 1f;
-    public boolean deleteWhenDestroy = true;
-    //Add rotator on top
-    public boolean absurdRotator = false;
     public int linksAmount = 10;
 
     public Distributor(String name){
@@ -78,9 +73,10 @@ public class Distributor extends Block{
     public class DistributorBuild extends Building implements Ranged{
         public boolean inExist = false,outExist = false;
         public int linkAmount = 0;
-        public Seq<BuildingTarget> selected = new Seq<BuildingTarget>();
-        public Seq<ItemTarget> itemTargets = new Seq<ItemTarget>();
-        public Seq<ItemTarget> outputTargets = new Seq<ItemTarget>();
+        public Seq<BuildingTarget> selected = new Seq<>();
+        private Seq<NoPoint> selectedPoints = new Seq<>();
+        public Seq<ItemTarget> itemTargets = new Seq<>();
+        public Seq<ItemTarget> outputTargets = new Seq<>();
 
         @Override
         public float range(){
@@ -137,11 +133,9 @@ public class Distributor extends Block{
             return super.onConfigureTileTapped(other);
         }
 
-        int r = 0;
         @Override
         public void drawSelect(){
             Drawf.dashCircle(x, y, range, team.color);
-            if(absurdRotator){ Drawf.spinSprite(region,x,y,r); }
         }
         public boolean inRange(Tile tile){
             return Mathf.dst(x,y,tile.x,tile.y)/8f <= realRange();
@@ -162,22 +156,24 @@ public class Distributor extends Block{
             font.draw(linkAmount + "/"+ linksAmount, x,y);
             font.getData().setScale(1f);
         }
-
+        private boolean ab = true;
         @Override
         public void update(){
-            if(absurdRotator) {if(r > 360) { r = 0; } else{ r++; }}
-            // Check if block destroy
-            if(deleteWhenDestroy){
-                for(BuildingTarget target : selected){
-                    Building build = world.build((int) (target.x()-0.5f), (int) (target.y()-0.5f));
-                    for(BuildingTarget slot : selected){
-                        if(slot.target != world.build(slot.target.tileX(),slot.target.tileY())){
-                            untagBuild(slot);
-                        }
+            if(selectedPoints.size > 0){
+                for (NoPoint point:
+                     selectedPoints) {
+                    tagBuild( world.build( point.X,point.Y ) );
+                }
+                selectedPoints.clear();
+            }
+            for(BuildingTarget target : selected){
+                Building build = world.build(target.target.tileX(),target.target.tileY()); // To get block
+                for(BuildingTarget slot : selected){
+                    if(slot.target != world.build(slot.target.tileX(),slot.target.tileY())){
+                        untagBuild(slot);
                     }
                 }
             }
-            //Translate from output to input
             inExist = false;
             outExist = false;
             for (BuildingTarget target : selected){
@@ -233,15 +229,6 @@ public class Distributor extends Block{
         public Seq<BuildingTarget> getSelected(){
             return selected;
         }
-        public void setSelected(Seq<BuildingTarget> targets, boolean clear){
-            if(clear) { selected.clear(); selected = targets; }
-            else{
-                for (BuildingTarget target:
-                     targets) {
-                    selected.add(target);
-                }
-            }
-        }
         @Override
         public BlockStatus status() {
             if(outExist && !inExist){
@@ -261,27 +248,37 @@ public class Distributor extends Block{
         @Override
         public void write(Writes write){
             super.write(write);
-            write.str("d>");
-            write.str(NiTiSON.parseToString(NiTiSON.parseToIntArray(selected)));
-            write.str("d<");
+            String parsedIntArray = NiTiSON.parseToString(NiTiSON.parseToIntArray(selected));
+            String selectedSave = "N";
+            if (parsedIntArray.toCharArray().length != 0) {
+                selectedSave = parsedIntArray;
+            }
+            write.str(selectedSave);
         }
         @Override
         public void read(Reads read, byte revision){
             super.read(read, revision);
-            read.str(); // d>
-            String numbers = read.str();
-            read.str(); // d<
-            BaseDialog dialog = new BaseDialog("Save File: "+numbers);
-            for (Integer number:
-                 NiTiSON.parseToIntArray(numbers)) {
-                dialog.cont.add(number+" Int").row();
+            String number = read.str();
+            if(number.equals("N")){
+            }else{
+                Integer[] numbers = NiTiSON.parseToIntArray(number);
+                int constructIndex = 0;
+                NoPoint[] points = new NoPoint[numbers.length/2];
+                for(int i = 0; i < numbers.length; i++){
+                    if( i % 2 == 0 ){
+                        int x = numbers[constructIndex * 2];
+                        points[constructIndex] = new NoPoint(x,0);
+                    }else{
+                        int y = numbers[constructIndex * 2 + 1];
+                        points[constructIndex].Y = y;
+                        constructIndex += 1;
+                    }
+                }
+                for (NoPoint point:
+                        points) {
+                    selectedPoints.add(point);
+                }
             }
-            for (BuildingTarget target:
-                    NiTiSON.parseToBuildingTargetArray(numbers, world)){
-                dialog.cont.add(target.block.name).row();
-            }
-            dialog.addCloseButton();
-            dialog.show();
         }
     }
 }

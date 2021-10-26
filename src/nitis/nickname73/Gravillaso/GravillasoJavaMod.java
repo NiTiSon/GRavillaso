@@ -19,7 +19,7 @@ import static mindustry.Vars.mods;
 public class GravillasoJavaMod extends Mod{
 
     public static final boolean isBeta = true;
-    public static final boolean isDev = true;
+    public static final boolean isDev = false;
     public static final String githubLink = "https://github.com/NickName73/Gravillaso";
 
     public GravillasoJavaMod(){

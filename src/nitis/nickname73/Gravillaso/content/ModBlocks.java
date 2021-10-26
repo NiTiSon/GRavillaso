@@ -218,7 +218,6 @@ public class ModBlocks implements ContentList {
             size = 2;
             health = 140 * size * size;
             range = 120f;
-            workSpeed = 5;
         }};
         //endregion
         //region Drills
