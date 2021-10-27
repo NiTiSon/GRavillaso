@@ -14,12 +14,12 @@ import mindustry.type.ItemStack;
 import mindustry.type.Liquid;
 import mindustry.type.SectorPreset;
 import mindustry.world.blocks.defense.turrets.Turret;
+import nitis.nickname73.Gravillaso.GravillasoJavaMod;
 
 import static mindustry.content.TechTree.*;
 
 public class ModTechTree implements ContentList {
-    static TechTree.TechNode context = null;
-
+    static TechNode context = null;
     @Override
     public void load(){
         margeNode(Items.titanium, ()->{
@@ -146,6 +146,9 @@ public class ModTechTree implements ContentList {
         margeNode(Blocks.repairTurret, () ->{
             node(ModBlocks.repairLaser);
         });
+
+        if(GravillasoJavaMod.isDev){
+        }
     }
 
 

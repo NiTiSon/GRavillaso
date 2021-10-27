@@ -11,31 +11,20 @@ import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
 import mindustry.world.Block;
-import mindustry.world.blocks.defense.MendProjector;
-import mindustry.world.blocks.defense.Wall;
-import mindustry.world.blocks.defense.turrets.ItemTurret;
-import mindustry.world.blocks.defense.turrets.LiquidTurret;
-import mindustry.world.blocks.defense.turrets.PowerTurret;
-import mindustry.world.blocks.distribution.ArmoredConveyor;
-import mindustry.world.blocks.distribution.MassDriver;
-import mindustry.world.blocks.distribution.StackConveyor;
-import mindustry.world.blocks.environment.Floor;
-import mindustry.world.blocks.environment.OreBlock;
-import mindustry.world.blocks.environment.StaticWall;
+import mindustry.world.blocks.defense.*;
+import mindustry.world.blocks.defense.turrets.*;
+import mindustry.world.blocks.distribution.*;
+import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.power.*;
-import mindustry.world.blocks.production.AttributeCrafter;
-import mindustry.world.blocks.production.GenericCrafter;
-import mindustry.world.blocks.production.LiquidConverter;
-import mindustry.world.blocks.production.SolidPump;
-import mindustry.world.blocks.storage.CoreBlock;
-import mindustry.world.blocks.units.RepairPoint;
-import mindustry.world.draw.DrawMixer;
-import mindustry.world.draw.DrawWeave;
+import mindustry.world.blocks.production.*;
+import mindustry.world.blocks.storage.*;
+import mindustry.world.blocks.units.*;
+import mindustry.world.draw.*;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BuildVisibility;
-import nitis.nickname73.Gravillaso.content.Blocks.DPSDisplay;
-import nitis.nickname73.Gravillaso.content.Blocks.OverdriveDrill;
-import nitis.nickname73.Gravillaso.content.Blocks.Distributor;
+import nitis.nickname73.Gravillaso.content.Blocks.*;
+
+import static mindustry.type.ItemStack.with;
 
 public class ModBlocks implements ContentList {
 
@@ -65,6 +54,7 @@ public class ModBlocks implements ContentList {
     repairLaser,
     //Ores
     oreQuartz,
+    //PlanetUnlocks
     //Creative
     dpsDisplay;
 
@@ -701,7 +691,7 @@ public class ModBlocks implements ContentList {
             targetGround = true;
         }};
         sunrise = new PowerTurret("sunrise"){{
-            requirements(Category.turret, ItemStack.with(ModItems.magneturn,220,Items.phaseFabric,120,Items.surgeAlloy,220,ModItems.electroBrass,80));
+            requirements(Category.turret, BuildVisibility.lightingOnly , ItemStack.with(ModItems.magneturn,220,Items.phaseFabric,120,Items.surgeAlloy,220,ModItems.electroBrass,80));
             size = 4;
             health = 6260;
             reloadTime = 180;
@@ -766,6 +756,7 @@ public class ModBlocks implements ContentList {
             itemDrop = ModItems.quartz;
         }};
         //endregion
-        //DO Override origin blocks
+        //region PlanetUnlocks
+        //endregion
     }
 }

@@ -1,6 +1,5 @@
 package nitis.nickname73.Gravillaso.content.Blocks;
 
-import arc.Core;
 import arc.graphics.Color;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.Font;
@@ -11,7 +10,8 @@ import arc.struct.EnumSet;
 import arc.struct.Seq;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
-import mindustry.content.Blocks;
+import mindustry.content.Fx;
+import mindustry.entities.Effect;
 import mindustry.gen.Building;
 import mindustry.gen.Unit;
 import mindustry.graphics.Drawf;
@@ -37,6 +37,12 @@ import static mindustry.Vars.world;
 public class Distributor extends Block{
     public float range = 80f;
     public int linksAmount = 10;
+
+    public int reloadTime = 10;
+
+    public Effect outputEffect = Fx.itemTransfer;
+    public Effect inputEffect = Fx.dropItem;
+    public Effect successStoleEffect = Fx.smeltsmoke;
 
     public Distributor(String name){
         super(name);
@@ -73,10 +79,15 @@ public class Distributor extends Block{
     public class DistributorBuild extends Building implements Ranged{
         public boolean inExist = false,outExist = false;
         public int linkAmount = 0;
+
+        public int reloadActiveTime = 0;
+        public boolean reloaded = false;
+
         public Seq<BuildingTarget> selected = new Seq<>();
         private Seq<NoPoint> selectedPoints = new Seq<>();
-        public Seq<ItemTarget> itemTargets = new Seq<>();
-        public Seq<ItemTarget> outputTargets = new Seq<>();
+
+        private Seq<ItemTarget> itemTargetToGet = new Seq<>();
+        private Seq<ItemTarget> itemTargetToUse = new Seq<>();
 
         @Override
         public float range(){
@@ -88,7 +99,7 @@ public class Distributor extends Block{
 
         public void drawConfigure(){
             Draw.color(Pal.reactorPurple);
-            Drawf.dashCircle(x, y, range, team.color);
+            Drawf.dashCircle(x, y, range, this.enabled ? team.color : Color.gray );
             Lines.stroke(1.0F);
             Lines.square(this.x, this.y, (float)(this.block.size * 8) / 2.0F + 1.0F);
             for (BuildingTarget target : selected){
@@ -102,13 +113,16 @@ public class Distributor extends Block{
                 if(target.getter && target.sender){
                     Draw.color(Pal.lightishGray);
                 }
-                Lines.square(target.x(), target.y(), (float)(target.block.size * 8) / 2.0F + 1.0F);
+                Lines.square(target.x(), target.y(), (target.block.size * tilesize) / 2.0F + 1.0F);
             }
             Draw.reset();
         }
 
         @Override
         public boolean onConfigureTileTapped(Building other){
+            if(this.team != other.team){
+                return false;
+            }
             if(this == other) { //Click
                 deselect();
             }
@@ -149,63 +163,73 @@ public class Distributor extends Block{
         @Override
         public void draw(){
             super.draw();
+            if(!this.enabled){
+                Draw.color(Color.gray);
+            }
             //Draw.rect(topRegion, this.x, this.y, this.block.rotate ? this.rotdeg() : 0.0F);
+            Draw.reset();
             Font font = Fonts.outline;
             font.getData().setScale(0.3f / Scl.scl(1.f));
             font.setColor(Color.purple);
             font.draw(linkAmount + "/"+ linksAmount, x,y);
             font.getData().setScale(1f);
         }
-        private boolean ab = true;
         @Override
         public void update(){
             if(selectedPoints.size > 0){
                 for (NoPoint point:
-                     selectedPoints) {
+                        selectedPoints) {
                     tagBuild( world.build( point.X,point.Y ) );
                 }
                 selectedPoints.clear();
             }
-            for(BuildingTarget target : selected){
-                Building build = world.build(target.target.tileX(),target.target.tileY()); // To get block
-                for(BuildingTarget slot : selected){
-                    if(slot.target != world.build(slot.target.tileX(),slot.target.tileY())){
-                        untagBuild(slot);
-                    }
+            if(!reloaded){
+                if(reloadActiveTime < reloadTime){
+                    reloadActiveTime += 1;
+                }
+                if(reloadActiveTime >= reloadTime){
+                    reloaded = true;
                 }
             }
-            inExist = false;
-            outExist = false;
-            for (BuildingTarget target : selected){
-                if(target.getter){
-                    inExist = true;
-                }
-                if(target.sender){
-                    outExist = true;
+            for(BuildingTarget slot : selected){
+                if(slot.target != world.build(slot.target.tileX(),slot.target.tileY())){
+                    untagBuild(slot);
                 }
             }
-            if(inExist){ // Create a list of inputs
-                itemTargets.clear();
+            if(this.enabled && reloaded){
+                itemTargetToUse.clear();
+                itemTargetToGet.clear();
                 for (BuildingTarget target:
                      selected) {
                     if(target.getter){
-                        for (ItemStack itemStack:
+                        BaseDialog dialog = new BaseDialog("New item target");
+                        for (ItemStack itm:
                              target.consume.items) {
-                            itemTargets.add(new ItemTarget(target.target,itemStack.item));
+                            itemTargetToUse.add( new ItemTarget(target.target,itm.item));
+                            dialog.cont.add(itm.item.name);
+                        }
+                        dialog.addCloseButton();
+                        dialog.show();
+                    }
+                    if(target.sender){
+                        itemTargetToGet.add(new ItemTarget(target.target,target.output));
+                    }
+                }
+            }
+            for (ItemTarget user: itemTargetToUse) {
+                for (ItemTarget getter: itemTargetToGet) {
+                    if(user.target != getter.target){ // checks what blocks are different
+                        if(user.target.acceptItem(getter.target,getter.item)){ // checks item can enter
+                            getter.target.removeStack(getter.item,1); // removes if used
+                            outputEffect.at(getter.target.x,getter.target.y);
+                            inputEffect.at(user.target.x,user.target.y);
+                            successStoleEffect.at(this.x,this.y);
+                        }else{ //item not enter
+
                         }
                     }
                 }
             }
-            if(outExist){ // Create a list of outputs
-                outputTargets.clear();
-                for (BuildingTarget target:
-                        selected) {
-                    if(target.sender){
-                        outputTargets.add(new ItemTarget(target.target, target.output));
-                    }
-                }
-            }
-            //TODO: distribute from out to in;
         }
         public boolean tagBuild(Building building){
             return tagBuild(new BuildingTarget(building));
@@ -231,20 +255,20 @@ public class Distributor extends Block{
         }
         @Override
         public BlockStatus status() {
-            if(outExist && !inExist){
+            if(itemTargetToGet.size == 0){
+                return BlockStatus.noInput;
+            }
+            if(itemTargetToUse.size == 0){
                 return BlockStatus.noOutput;
-            }
-            if(!outExist && inExist){
-                return BlockStatus.noInput;
-            }
-            if(!outExist && !inExist){
-                return BlockStatus.noInput;
-            }
-            if(outExist && inExist){
-                return BlockStatus.active;
             }
             return BlockStatus.active;
         }
+
+        @Override
+        public boolean shouldConsume() {
+            return this.enabled;
+        }
+
         @Override
         public void write(Writes write){
             super.write(write);
