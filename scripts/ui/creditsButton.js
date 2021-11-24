@@ -8,6 +8,9 @@ ui.addMenuButton("$uigravillaso.a-vk", "link", () => {
 ui.addMenuButton("$uigravillaso.c-trello", "link", () => {
 	Core.app.openURI("https://trello.com/b/wT73AZQq/gravillaso")
 });
+ui.addMenuButton("$uigravillaso.d-v7download", "link", () => {
+        Core.app.openURL("https://github.com/NickName73/Gravillaso/releases/download/2.1.3/GravillasoDesktop.jar")
+});
 ui.onLoad(() => {
 
 });
