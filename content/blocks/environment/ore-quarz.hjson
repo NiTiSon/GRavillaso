@@ -1,6 +1,0 @@
-type: OreBlock
-variants: 3
-oreDefault: false
-oreThreshold: 0.884
-oreScale: 25.4209
-itemDrop: quarz

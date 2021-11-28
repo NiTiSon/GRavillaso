@@ -1,5 +1,0 @@
-type: StaticWall
-variants: 2
-inEditor: true
-breakable: false
-targetable: false
