@@ -1,3 +1,5 @@
+import java.awt.Desktop
+
 apply plugin: "java"
 
 version '1.0'
@@ -14,7 +16,7 @@ repositories{
 
 ext{
     //the build number that this mod is made for
-    mindustryVersion = 'v131'
+    mindustryVersion = 'v134'
     jabelVersion = "0.6.0"
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
 }
@@ -59,6 +61,7 @@ jar{
 
     from(rootDir){
         include "mod.hjson"
+        include "icon.png"
     }
 
     from("assets/"){
@@ -80,14 +83,18 @@ task deploy(type: Jar){
         }
     }
 }
-task ClientRun(){
-    dependsOn jar
+task secondWait {
     doLast{
-        jar
-        copy{
-            from 'build/libs/GravillasoDesktop.jar'
-            into "D:/Steam/steamapps/common/Mindustry/saves/mods"
-        }
-        java.awt.Desktop.desktop.browse "steam://rungameid/1127400".toURI()
+        sleep(3 * 1000)
     }
 }
+task steamLaunch {
+    doLast{
+        copy{
+            from "$buildDir/libs/${project.archivesBaseName}Desktop.jar"
+            into "D:/Steam/steamapps/common/Mindustry/saves/mods"
+        }
+        Desktop.desktop.browse "steam://rungameid/1127400".toURI()
+    }
+}
+

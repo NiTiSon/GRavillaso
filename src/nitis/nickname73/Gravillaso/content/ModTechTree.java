@@ -1,22 +1,18 @@
 package nitis.nickname73.Gravillaso.content;
 
-import arc.Core;
-import arc.struct.ObjectMap;
 import arc.struct.Seq;
-import arc.util.Nullable;
 import mindustry.content.*;
 import mindustry.ctype.ContentList;
 import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
-import mindustry.game.Objectives.*;
-import mindustry.mod.Mod;
+import mindustry.game.Objectives.Objective;
+import mindustry.game.Objectives.Produce;
+import mindustry.game.Objectives.Research;
+import mindustry.game.Objectives.SectorComplete;
 import mindustry.type.ItemStack;
-import mindustry.type.Liquid;
 import mindustry.type.SectorPreset;
-import mindustry.world.blocks.defense.turrets.Turret;
-import nitis.nickname73.Gravillaso.GravillasoJavaMod;
 
-import static mindustry.content.TechTree.*;
+import static mindustry.content.TechTree.TechNode;
 
 public class ModTechTree implements ContentList {
     static TechNode context = null;
@@ -146,9 +142,6 @@ public class ModTechTree implements ContentList {
         margeNode(Blocks.repairTurret, () ->{
             node(ModBlocks.repairLaser);
         });
-
-        if(GravillasoJavaMod.isDev){
-        }
     }
 
 

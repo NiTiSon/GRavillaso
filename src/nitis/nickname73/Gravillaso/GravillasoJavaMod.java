@@ -1,19 +1,17 @@
 package nitis.nickname73.Gravillaso;
 
-import arc.*;
+import arc.Core;
+import arc.Events;
 import arc.graphics.Color;
-import arc.util.*;
-import mindustry.Vars;
-import mindustry.game.EventType.*;
+import arc.util.Log;
+import arc.util.Time;
+import mindustry.game.EventType.ClientLoadEvent;
 import mindustry.gen.Icon;
-import mindustry.mod.*;
-import mindustry.mod.Mods.*;
+import mindustry.mod.Mod;
+import mindustry.mod.Mods.LoadedMod;
 import mindustry.ui.dialogs.BaseDialog;
 import nitis.nickname73.Gravillaso.content.*;
 
-import java.awt.*;
-
-import static mindustry.Vars.loadSettings;
 import static mindustry.Vars.mods;
 
 public class GravillasoJavaMod extends Mod{
@@ -83,6 +81,12 @@ public class GravillasoJavaMod extends Mod{
             new ModStatuses().load();
         }catch (Exception e){
             Log.err("Gravillaso Statuses loading failed");
+            Log.err(e);
+        }
+        try {
+            new ModUnitTypes().load();
+        }catch (Exception e){
+            Log.err("Gravillaso Units loading failed");
             Log.err(e);
         }
         try {

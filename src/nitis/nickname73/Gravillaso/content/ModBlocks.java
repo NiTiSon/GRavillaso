@@ -11,20 +11,31 @@ import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
 import mindustry.world.Block;
-import mindustry.world.blocks.defense.*;
-import mindustry.world.blocks.defense.turrets.*;
-import mindustry.world.blocks.distribution.*;
-import mindustry.world.blocks.environment.*;
+import mindustry.world.blocks.defense.MendProjector;
+import mindustry.world.blocks.defense.Wall;
+import mindustry.world.blocks.defense.turrets.ItemTurret;
+import mindustry.world.blocks.defense.turrets.LiquidTurret;
+import mindustry.world.blocks.defense.turrets.PowerTurret;
+import mindustry.world.blocks.distribution.ArmoredConveyor;
+import mindustry.world.blocks.distribution.MassDriver;
+import mindustry.world.blocks.distribution.StackConveyor;
+import mindustry.world.blocks.environment.Floor;
+import mindustry.world.blocks.environment.OreBlock;
+import mindustry.world.blocks.environment.StaticWall;
 import mindustry.world.blocks.power.*;
-import mindustry.world.blocks.production.*;
-import mindustry.world.blocks.storage.*;
-import mindustry.world.blocks.units.*;
-import mindustry.world.draw.*;
+import mindustry.world.blocks.production.AttributeCrafter;
+import mindustry.world.blocks.production.GenericCrafter;
+import mindustry.world.blocks.production.LiquidConverter;
+import mindustry.world.blocks.production.SolidPump;
+import mindustry.world.blocks.storage.CoreBlock;
+import mindustry.world.blocks.units.RepairPoint;
+import mindustry.world.draw.DrawMixer;
+import mindustry.world.draw.DrawWeave;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BuildVisibility;
-import nitis.nickname73.Gravillaso.content.Blocks.*;
-
-import static mindustry.type.ItemStack.with;
+import nitis.nickname73.Gravillaso.content.Blocks.Distributor;
+import nitis.nickname73.Gravillaso.content.Blocks.OverdriveDrill;
+import nitis.nickname73.Gravillaso.content.Blocks.SLT;
 
 public class ModBlocks implements ContentList {
 
@@ -47,7 +58,7 @@ public class ModBlocks implements ContentList {
     //Production
     advancedPyratiteMixer,advancedBlastMixer,gasolineBarrel,cryofluidChamber,flammableLiquidChamber,phaseCaldron,molecularConverter,molecularReconstructor,magneturnSmelter,electroSmelter,molecularPhaseWeaver,plastaniumMolecularPress,
     //Turrets
-    destiny,arhiepiscop,fierySpray,renunciation,phaseFuse,voltum,sunrise,saturn,
+    destiny,arhiepiscop,fierySpray,renunciation,phaseFuse,slt,voltum,sunrise,   saturn,
     //Storages
     molecularCore,coliseumCore,
     //Units
@@ -667,6 +678,14 @@ public class ModBlocks implements ContentList {
                        smokeEffect = Fx.sparkShoot;
                    }}
             );
+        }};
+        slt = new SLT("slt"){{
+            requirements(Category.turret, BuildVisibility.sandboxOnly, ItemStack.empty);
+            size = 3;
+            health = 720;
+            reloadTime = 14;
+            range = 220;
+            shootType = new LaserBulletType(14);
         }};
         voltum = new PowerTurret("voltum"){{
             requirements(Category.turret, ItemStack.with(Items.copper,220,Items.titanium,140,Items.plastanium,90,ModItems.electroBrass,80));
