@@ -33,9 +33,7 @@ import mindustry.world.draw.DrawMixer;
 import mindustry.world.draw.DrawWeave;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BuildVisibility;
-import nitis.nickname73.Gravillaso.content.Blocks.Distributor;
 import nitis.nickname73.Gravillaso.content.Blocks.OverdriveDrill;
-import nitis.nickname73.Gravillaso.content.Blocks.SLT;
 
 public class ModBlocks implements ContentList {
 
@@ -49,8 +47,6 @@ public class ModBlocks implements ContentList {
     hyperMender,colossalHealingDome,gravitiumWall,gravitiumWallLarge,magneturnWall,magneturnWallLarge,
     //Distribution
     magneturnConveyor,electroConveyor,colossalDriver,
-    //Extra Distribution
-    spatialDistributor,
     //Drills
     deepOilPump,overdriveDrill,
     //Power
@@ -58,7 +54,7 @@ public class ModBlocks implements ContentList {
     //Production
     advancedPyratiteMixer,advancedBlastMixer,gasolineBarrel,cryofluidChamber,flammableLiquidChamber,phaseCaldron,molecularConverter,molecularReconstructor,magneturnSmelter,electroSmelter,molecularPhaseWeaver,plastaniumMolecularPress,
     //Turrets
-    destiny,arhiepiscop,fierySpray,renunciation,phaseFuse,slt,voltum,sunrise,   saturn,
+    destiny,arhiepiscop,fierySpray,renunciation,phaseFuse,slt,voltum,sunrise,saturn,
     //Storages
     molecularCore,coliseumCore,
     //Units
@@ -210,15 +206,6 @@ public class ModBlocks implements ContentList {
             bulletSpeed = 12.5f;
             bulletLifetime = 600;
             consumes.power(4f);
-        }};
-        //endregion
-        //region Extra Distribution
-        spatialDistributor = new Distributor("spatial-distributor"){{
-            requirements(Category.distribution, BuildVisibility.sandboxOnly, ItemStack.empty);
-            description = "[red]Warning!!!\nIts beta block of update 2.1"; //Dev
-            size = 2;
-            health = 140 * size * size;
-            range = 120f;
         }};
         //endregion
         //region Drills
@@ -678,14 +665,6 @@ public class ModBlocks implements ContentList {
                        smokeEffect = Fx.sparkShoot;
                    }}
             );
-        }};
-        slt = new SLT("slt"){{
-            requirements(Category.turret, BuildVisibility.sandboxOnly, ItemStack.empty);
-            size = 3;
-            health = 720;
-            reloadTime = 14;
-            range = 220;
-            shootType = new LaserBulletType(14);
         }};
         voltum = new PowerTurret("voltum"){{
             requirements(Category.turret, ItemStack.with(Items.copper,220,Items.titanium,140,Items.plastanium,90,ModItems.electroBrass,80));

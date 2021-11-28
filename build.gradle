@@ -85,14 +85,14 @@ task deploy(type: Jar){
 }
 task secondWait {
     doLast{
-        sleep(3 * 1000)
+        sleep(0 * 1000 + 15 * 10)
     }
 }
 task steamLaunch {
     doLast{
-        copy{
+        copy {
             from "$buildDir/libs/${project.archivesBaseName}Desktop.jar"
-            into "D:/Steam/steamapps/common/Mindustry/saves/mods"
+            into "D:\\Steam\\steamapps\\common\\Mindustry\\saves\\mods"
         }
         Desktop.desktop.browse "steam://rungameid/1127400".toURI()
     }
