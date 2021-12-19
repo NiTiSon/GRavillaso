@@ -2,6 +2,7 @@ package nitis.nickname73.Gravillaso.content;
 
 import arc.graphics.Color;
 import arc.struct.ObjectMap;
+import arc.struct.Seq;
 import mindustry.content.*;
 import mindustry.ctype.ContentList;
 import mindustry.entities.bullet.*;
@@ -29,6 +30,7 @@ import mindustry.world.blocks.production.LiquidConverter;
 import mindustry.world.blocks.production.SolidPump;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.units.RepairPoint;
+import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.draw.DrawMixer;
 import mindustry.world.draw.DrawWeave;
 import mindustry.world.meta.Attribute;
@@ -54,16 +56,15 @@ public class ModBlocks implements ContentList {
     //Production
     advancedPyratiteMixer,advancedBlastMixer,gasolineBarrel,cryofluidChamber,flammableLiquidChamber,phaseCaldron,molecularConverter,molecularReconstructor,magneturnSmelter,electroSmelter,molecularPhaseWeaver,plastaniumMolecularPress,
     //Turrets
-    destiny,arhiepiscop,fierySpray,renunciation,phaseFuse,slt,voltum,sunrise,saturn,
+    destiny,arhiepiscop,fierySpray,renunciation,phaseFuse,slt,voltum,sunrise,
     //Storages
     molecularCore,coliseumCore,
     //Units
-    repairLaser,
+    repairLaser,advancedNavalFactory,additiveReassembler, multiplicativeReassembler,
     //Ores
     oreQuartz,
     //PlanetUnlocks
-    //Creative
-    dpsDisplay;
+    _end;
 
     @Override
     public void load() {
@@ -717,7 +718,7 @@ public class ModBlocks implements ContentList {
         //region Storages
         molecularCore = new CoreBlock("molecular-core"){{
             requirements(Category.effect, ItemStack.with(Items.copper,12000,Items.lead,12000,ModItems.gravitium,6000,Items.thorium,8000,Items.silicon,10000,Items.surgeAlloy,3000));
-            this.unitType = UnitTypes.gamma;
+            this.unitType = ModUnitTypes.release;
             this.health = 8600;
             this.itemCapacity = 19000;
             this.size = 6;
@@ -727,7 +728,7 @@ public class ModBlocks implements ContentList {
         }};
         coliseumCore = new CoreBlock("coliseum-core"){{
             requirements(Category.effect, ItemStack.with(Items.copper,18000,Items.lead,14000,ModItems.gravitium,9000,Items.thorium,8000,Items.silicon,14000,Items.surgeAlloy,7000));
-            this.unitType = UnitTypes.gamma;
+            this.unitType = ModUnitTypes.update;
             this.health = 11000;
             this.itemCapacity = 25000;
             this.size = 7;
@@ -743,6 +744,23 @@ public class ModBlocks implements ContentList {
             powerUse = 2.5f;
             repairRadius = 275;
             repairSpeed = 3.5f;
+        }};
+        advancedNavalFactory = new UnitFactory("advanced-naval-factory"){{
+            requirements(Category.units, ItemStack.with(Items.copper,1));
+            plans = Seq.with(
+                    new UnitPlan(ModUnitTypes.coulomb, 60f * 75f, ItemStack.with(Items.silicon, 20, Items.metaglass, 35))
+            );
+            size = 3;
+            consumes.power(1.2f);
+            floating = true;
+        }};
+        additiveReassembler = new UnitFactory("additive-reassembler"){{
+            requirements(Category.units, ItemStack.with(Items.copper,1));
+            size = 3;
+        }};
+        multiplicativeReassembler = new UnitFactory("multiplicative-reassembler"){{
+            requirements(Category.units, ItemStack.with(Items.copper,1));
+            size = 5;
         }};
         //endregion
         //region Ores

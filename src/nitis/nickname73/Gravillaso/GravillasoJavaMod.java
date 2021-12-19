@@ -49,6 +49,10 @@ public class GravillasoJavaMod extends Mod{
         });
     }
 
+    public static String fullName(String name){
+        return "gravillaso-" + name;
+    }
+
     @Override
     public void loadContent(){
         try{
