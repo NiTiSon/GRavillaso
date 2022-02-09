@@ -33,7 +33,7 @@ import mindustry.world.Tiles;
 import nitis.nickname73.Gravillaso.content.ModBlocks;
 
 import static mindustry.Vars.*;
-
+@Deprecated
 public class GravilloPlanetGenerator extends PlanetGenerator {
 
     static final int seed = 2991;
