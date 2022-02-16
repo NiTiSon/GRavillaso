@@ -294,6 +294,7 @@ public class GRUnitTypes implements ContentList {
         }};
         joule = new UnitType("joule"){{
             constructor = UnitTypes.minke.constructor;
+            hitSize = 15.5f;
             health = 1120;
             ammoType = new PowerAmmoType(1500);
             ammoCapacity = 30;

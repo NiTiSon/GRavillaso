@@ -379,13 +379,12 @@ public class GRBlocks implements ContentList {
             phaseRadiusBoost = 120f;
             radius = 160f;
             shieldHealth = 2500f;
-            cooldownNormal = 1.5f;
-            cooldownLiquid = 1.2f;
-            cooldownBrokenBase = 0.35f;
-
-
+            cooldownNormal = 1f;
+            cooldownLiquid = 0.85f;
+            cooldownBrokenBase = 0.65f;
+            itemCapacity = 45;
             consumes.item(Items.phaseFabric).boost();
-            consumes.power(15f);
+            consumes.power(25f);
         }};
         //endregion
         //region Power

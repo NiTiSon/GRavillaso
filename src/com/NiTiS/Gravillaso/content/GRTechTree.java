@@ -149,8 +149,7 @@ public class GRTechTree implements ContentList {
         });
         margeNode(Blocks.coreShard, () ->{
             nodeSector(GRPlanets.gravillo, SectorPresets.desolateRift, Seq.with(new Research(Blocks.interplanetaryAccelerator)) , () ->{
-                //node(ModPlanets.sunCenter); In 2.4 or V8
-                nodeSector(GRSectorPresets.causticGorge,SectorPresets.desolateRift, Seq.with(new Research(GRBlocks.colossalDriver), new Research(GRBlocks.molecularCore)), ()->{
+                nodeSector(GRSectorPresets.causticGorge, SectorPresets.desolateRift, Seq.with(new Research(GRBlocks.colossalDriver), new Research(GRBlocks.molecularCore)), ()->{
                 });
             });
         });
