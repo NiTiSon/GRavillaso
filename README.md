@@ -6,13 +6,13 @@
     <img alt="Language" src="https://img.shields.io/badge/MAKE ON-JAVA-orange7?style=for-the-badge&logo=java&logoColor=fff&color=e87000">
   </a>
   <a>
-    <img alt="Stars" src="https://img.shields.io/github/stars/NickName73/GRavillaso?color=f7f144&style=for-the-badge">
+    <img alt="Stars" src="https://img.shields.io/github/stars/NickName73/GRavillaso?style=for-the-badge&color=ae0dd6">
   </a>
   <a>
-    <img alt="License" src="https://img.shields.io/github/license/NickName73/Gravillaso?style=for-the-badge">
+    <img alt="License" src="https://img.shields.io/github/license/NickName73/Gravillaso?style=for-the-badge&color=0dbda5">
   </a>
   <a>
-    <img alt="Downloads" src="https://img.shields.io/github/downloads/NickName73/GRavillaso/total?style=for-the-badge">
+    <img alt="Downloads" src="https://img.shields.io/github/downloads/NickName73/GRavillaso/total?style=for-the-badge&color=0dd632">
   </a>
 </p>
 
