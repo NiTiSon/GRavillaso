@@ -1,4 +1,4 @@
-# Gravillaso JAVA V2.1
+# GRavillaso V2
 ![logo](https://raw.githubusercontent.com/NickName73/NickName73/main/newGravillasoBanner.png)
 Gravillaso will improve your game content by adding more block and turret items. Version for Mindustry V7 You can download the version for V6 [here :)](https://github.com/NickName73/Gravillaso/archive/refs/tags/1.0.1b.zip)
 ---
