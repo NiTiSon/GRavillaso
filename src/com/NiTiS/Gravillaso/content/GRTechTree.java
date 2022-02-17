@@ -13,7 +13,7 @@ import mindustry.type.ItemStack;
 import mindustry.type.SectorPreset;
 
 public class GRTechTree implements ContentList {
-    static TechTree.TechNode context = null;
+    private static TechTree.TechNode context = null;
     @Override
     public void load(){
         margeNode(Items.titanium, ()->{
