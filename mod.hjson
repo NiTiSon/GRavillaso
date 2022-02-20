@@ -3,6 +3,6 @@ name: "gravillaso"
 author: "NiTiS (NickName73)"
 main: "com.NiTiS.Gravillaso.GRMod"
 description: "GRMod"
-version: "2 b34"
+version: "2 b35"
 minGameVersion: 134
 java: true

@@ -2,8 +2,10 @@ package com.NiTiS.Gravillaso;
 
 import arc.util.Log;
 import com.NiTiS.Gravillaso.content.*;
+import mindustry.Vars;
 import mindustry.ctype.ContentList;
 import mindustry.mod.Mod;
+import mindustry.mod.Mods;
 
 public class GRMod extends Mod {
 
@@ -25,7 +27,8 @@ public class GRMod extends Mod {
 
     @Override
     public void loadContent() {
-        Log.info("GravillasoR loading");
+        Mods.LoadedMod grmod = Vars.mods.getMod("gravillaso");
+        Log.info("GRavillaso loading");
         int loaded = 0;
         for (ContentList list : required){
             try {

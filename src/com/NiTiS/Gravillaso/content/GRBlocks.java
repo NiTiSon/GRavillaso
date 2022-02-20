@@ -14,6 +14,7 @@ import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
 import mindustry.type.UnitType;
 import mindustry.world.Block;
+import mindustry.world.blocks.Attributes;
 import mindustry.world.blocks.defense.ForceProjector;
 import mindustry.world.blocks.defense.MendProjector;
 import mindustry.world.blocks.defense.Wall;
@@ -84,6 +85,8 @@ public class GRBlocks implements ContentList {
         }};
         redSand = new Floor("red-sand"){{
             wall = redSandWall;
+            attributes.set(Attribute.heat, 0.05f);
+            attributes.set(Attribute.water, -0.05f);
             itemDrop = Items.sand;
             playerUnmineable = true;
         }};
@@ -101,6 +104,9 @@ public class GRBlocks implements ContentList {
             status = StatusEffects.melting;
             statusDuration = 247f;
             wall = burningGroundWall;
+            attributes.set(Attribute.heat, 2.75f);
+            attributes.set(Attribute.water, -3);
+            attributes.set(Attribute.oil, 0.25f);
         }};
         burningGroundWall = new StaticWall("burning-ground-wall"){{
             variants = 2;
@@ -364,7 +370,7 @@ public class GRBlocks implements ContentList {
             health = 70 * size * size;
             itemCapacity = 240;
             range = 520;
-            rotateSpeed = 0.03f;
+            rotateSpeed = 0.1f;
             translation = 7f;
             minDistribute = 40;
             knockback = 4;
@@ -491,7 +497,7 @@ public class GRBlocks implements ContentList {
             inaccuracy = 2;
             range = 180;
             powerUse = 7;
-            shootType = new LaserBulletType(45){{
+            shootType = new LaserBulletType(75){{
                 lifetime = 40;
                 length = 220;
                 width = 10;
@@ -780,6 +786,7 @@ public class GRBlocks implements ContentList {
             );
             consumes.items(with(Items.silicon, 50, Items.graphite, 20, Items.titanium, 30));
             consumes.power(4);
+            constructTime = 60 * 15;
             size = 3;
         }};
         multiplicativeReassembler = new Reconstructor("multiplicative-reassembler"){{
@@ -789,6 +796,7 @@ public class GRBlocks implements ContentList {
             );
             consumes.power(7.5f);
             consumes.items(with(Items.silicon, 140, Items.titanium, 120, GRItems.gravitium, 20));
+            constructTime = 60 * 40;
             size = 5;
         }};
         //endregion

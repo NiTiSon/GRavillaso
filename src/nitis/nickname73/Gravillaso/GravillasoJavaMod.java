@@ -56,7 +56,7 @@ public class GravillasoJavaMod extends Mod{
     @Override
     public void loadContent(){
         try{
-            LoadedMod mod = mods.locateMod("gravillaso");
+            LoadedMod mod = mods.getMod("gravillaso");
             mod.meta.displayName = "[#51158b]G[#4d2a97]r[#493fa3]a[#4554af]v[#4169bb]i[#3d7ec7]l[#3993d3]l[#35a8df]a[#31bdeb]s[#2dd2f7]o [#e5e5e5]Java";
             mod.meta.author = "[#ffea96]NickName73[]\nCREAsTIVE\n[maroon]Spriters:[]\nRadmir Yakupov\nCat fat\nVeniamin Katyrev\n[salmon]Additional Content from:[]\nTheSkyFather/Minerals";
         }catch (Exception e){
@@ -76,12 +76,6 @@ public class GravillasoJavaMod extends Mod{
             Log.err(e);
         }
         try {
-            new ModItems().load();
-        }catch (Exception e){
-            Log.err("Gravillaso Items loading failed");
-            Log.err(e);
-        }
-        try {
             new ModStatuses().load();
         }catch (Exception e){
             Log.err("Gravillaso Statuses loading failed");
@@ -94,12 +88,6 @@ public class GravillasoJavaMod extends Mod{
             Log.err(e);
         }
         try {
-            new ModBlocks().load();
-        }catch (Exception e){
-            Log.err("Gravillaso Blocks loading failed");
-            Log.err(e);
-        }
-        try {
             new ModPlanets().load();
         }catch (Exception e){
             Log.err("Gravillaso Planets loading failed");
@@ -109,12 +97,6 @@ public class GravillasoJavaMod extends Mod{
             new ModSectorPresets().load();
         }catch (Exception e){
             Log.err("Gravillaso Sectors loading failed");
-            Log.err(e);
-        }
-        try {
-            new ModTechTree().load();
-        }catch (Exception e){
-            Log.err("Gravillaso TechTree loading failed");
             Log.err(e);
         }
     }
