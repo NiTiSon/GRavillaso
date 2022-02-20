@@ -41,7 +41,7 @@ Available Languages
     <img alt="License" src="https://img.shields.io/github/license/NickName73/Gravillaso?style=for-the-badge&color=0dbda5">
   </a>
   <a>
-    <img alt="Last Downloads" src="https://img.shields.io/github/downloads-pre/NickName73/GRavillaso/latest/total?sort=semver&style=for-the-badge&color=0dd632">
+    <img alt="Last Downloads" src="https://img.shields.io/github/downloads-pre/NickName73/GRavillaso/latest/total?style=for-the-badge&color=0dd632">
   </a>
   <a>
     <img alt="Downloads" src="https://img.shields.io/github/downloads/NickName73/GRavillaso/total?style=for-the-badge&color=0dd632">
