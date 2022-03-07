@@ -23,7 +23,7 @@ ext{
 //java 8 backwards compatibility flag
 allprojects{
     tasks.withType(JavaCompile){
-        options.compilerArgs.addAll(['--release','8'])
+        options.compilerArgs.addAll(['--release','16'])
     }
 }
 dependencies{
@@ -51,7 +51,7 @@ task jarAndroid{
     }
 }
 jar{
-    archiveFileName = "${project.archivesBaseName}Desktop.jar"
+    archiveFileName = "${project.archivesBaseName}.jar"
 
     from{
         configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree(it) }
@@ -72,11 +72,11 @@ task deploy(type: Jar){
     dependsOn jar
     archiveFileName = "${project.archivesBaseName}.jar"
 
-    from{ [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
+    from{ [zipTree("$buildDir/libs/${project.archivesBaseName}.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
 
     doLast{
         delete{
-            delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar"
+            delete "$buildDir/libs/${project.archivesBaseName}.jar"
             delete "$buildDir/libs/${project.archivesBaseName}Android.jar"
         }
     }
@@ -89,7 +89,7 @@ task secondWait {
 task steamLaunch {
     doLast{
         copy {
-            from "$buildDir/libs/${project.archivesBaseName}Desktop.jar"
+            from "$buildDir/libs/${project.archivesBaseName}.jar"
             into "A:\\Apps\\steamapps\\common\\Mindustry\\saves\\mods"
         }
         Desktop.desktop.browse "steam://rungameid/1127400".toURI()

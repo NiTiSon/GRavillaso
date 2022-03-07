@@ -1,25 +1,22 @@
-package nitis.nickname73.Gravillaso.content.Blocks;
+package com.NiTiS.Gravillaso.world.blocks.campaign;
 
-import arc.Core;
 import arc.Events;
 import arc.scene.ui.layout.Table;
-import mindustry.content.Blocks;
 import mindustry.ctype.UnlockableContent;
 import mindustry.game.EventType;
 import mindustry.world.blocks.campaign.Accelerator;
 import mindustry.world.meta.BuildVisibility;
-import nitis.nickname73.Gravillaso.content.ModPlanets;
 
 import static mindustry.Vars.state;
-import static mindustry.Vars.ui;
 
-public class ContentUnlockerBlock extends Accelerator {
+public class ContentUnlocker extends Accelerator {
     public UnlockableContent unlockableContent;
-    public ContentUnlockerBlock(String name) {
+    public ContentUnlocker(String name) {
         super(name);
+        super.buildVisibility = BuildVisibility.campaignOnly;
     }
 
-    public class ContentUnlockerBlockBuild extends  Accelerator.AcceleratorBuild{
+    public class ContentUnlockerBuild extends  Accelerator.AcceleratorBuild {
         @Override
         public void buildConfiguration(Table table){
             deselect();
@@ -29,7 +26,7 @@ public class ContentUnlockerBlock extends Accelerator {
                 if(!state.isCampaign() || !consValid()) return;
             }else{ if(!consValid()) return; }
 
-            ModPlanets.gravillo.node().content.unlock(); //Unlock planet
+            unlockableContent.unlock(); //Unlock planet
 
             Events.fire(EventType.Trigger.acceleratorUse);
         }

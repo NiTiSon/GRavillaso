@@ -1,4 +1,4 @@
-package nitis.nickname73.Gravillaso.maps.generators;
+package com.NiTiS.Gravillaso.maps.generators;
 
 import arc.graphics.Color;
 import arc.math.Angles;
@@ -62,7 +62,7 @@ public class GravilloPlanetGenerator extends PlanetGenerator {
     public void generateSector(Sector sector) {
 
         //these always have bases
-        if (sector.id == 3 || sector.id == 6) {
+        if (sector.id > 10 && sector.id < 20) {
             sector.generateEnemyBase = true;
             return;
         }
@@ -95,7 +95,7 @@ public class GravilloPlanetGenerator extends PlanetGenerator {
 
     float rawHeight(Vec3 position) {
         position = Tmp.v33.set(position).scl(scl);
-        return (Mathf.pow(Simplex.noise3d(seed, 7, 0.5f, 1f / 3f, position.x, position.y, position.z), 2.3f) + waterOffset) / (1f + waterOffset);
+        return (Mathf.pow(Simplex.noise3d(seed, 4, 0.5f, 1f / 3f, position.x, position.y, position.z), 2.3f) + waterOffset) / (1f + waterOffset);
     }
 
     @Override

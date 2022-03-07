@@ -14,7 +14,6 @@ import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
 import mindustry.type.UnitType;
 import mindustry.world.Block;
-import mindustry.world.blocks.Attributes;
 import mindustry.world.blocks.defense.ForceProjector;
 import mindustry.world.blocks.defense.MendProjector;
 import mindustry.world.blocks.defense.Wall;
@@ -39,7 +38,6 @@ import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.draw.DrawMixer;
 import mindustry.world.draw.DrawWeave;
 import mindustry.world.meta.Attribute;
-import mindustry.world.meta.BuildVisibility;
 
 import static mindustry.type.ItemStack.with;
 
@@ -59,10 +57,11 @@ public class GRBlocks implements ContentList {
     //Power
     multiConnector,batteryBig,gasolineGenerator,sporeGenerator,solarArray,
     //Drills
-    deepOilPump,overdriveDrill,
+    deepOilPump,overdriveDrill;
     //Storages
-    molecularCore,coliseumCore,
+    public static CoreBlock molecularCore,coliseumCore;
     //Turrets
+    public static Block
     destiny,arhiepiscop,fierySpray,renunciation,phaseFuse,voltum,sunrise,
     //Units
     repairLaser,advancedNavalFactory,additiveReassembler, multiplicativeReassembler,

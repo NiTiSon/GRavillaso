@@ -1,13 +1,13 @@
 package com.NiTiS.Gravillaso.content;
 
 import arc.graphics.Color;
+import com.NiTiS.Gravillaso.maps.generators.GravilloPlanetGenerator;
 import mindustry.content.Planets;
 import mindustry.ctype.ContentList;
 import mindustry.graphics.Pal;
 import mindustry.graphics.g3d.HexMesh;
 import mindustry.graphics.g3d.SunMesh;
 import mindustry.type.Planet;
-import nitis.nickname73.Gravillaso.maps.generators.GravilloPlanetGenerator;
 
 public class GRPlanets implements ContentList {
 
