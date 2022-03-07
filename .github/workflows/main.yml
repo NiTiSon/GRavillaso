@@ -35,4 +35,4 @@ jobs:
           cd ..
           cd Gravillaso/
       - name: Compile Gravillaso
-        run: .\gradlew jar
+        run: ./gradlew jar
