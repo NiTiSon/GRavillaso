@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CompileFile
 
 # Controls when the workflow will run
 on:
@@ -33,7 +33,6 @@ jobs:
       - name: Clone Gravillaso
         run: |
           cd ..
-          git clone https://github.com/NickName73/Gravillaso
           cd Gravillaso/
       - name: Compile Gravillaso
         run: gradlew jar
