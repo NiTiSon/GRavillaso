@@ -1,8 +1,12 @@
-displayName: "Gravillaso"
+displayName: "Gravillaso Java"
+browserName: "Gravillaso"
 name: "gravillaso"
 author: "NiTiS (NickName73)"
+broserAuthor: "NickName73"
 main: "com.NiTiS.Gravillaso.GRMod"
 description: "GRMod"
+browserDescription: "Gravillaso Mod"
 version: "2 b35"
+browserVersion "2"
 minGameVersion: 134
 java: true
