@@ -1,1 +1,1 @@
-gradlew jar secondWait steamLaunch
+gradlew jar steamLaunch

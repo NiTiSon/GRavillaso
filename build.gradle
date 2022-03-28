@@ -7,8 +7,6 @@ version '1.0'
 targetCompatibility = 16
 sourceCompatibility = JavaVersion.VERSION_16
 
-sourceSets.main.java.srcDirs = ["src"]
-
 repositories{
     mavenCentral()
     maven{ url 'https://www.jitpack.io' }
@@ -16,14 +14,93 @@ repositories{
 
 ext{
     //the build number that this mod is made for
-    mindustryVersion = 'v134'
+    mindustryVersion = 'v135'
     jabelVersion = "0.6.0"
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
+
+    arcModule = { String name ->
+        if(name.contains(':')) name = name.split(':').last()
+        return "com.github.Anuken.Arc:$name:${mindustryVersion}"
+    }
 }
-//java 8 backwards compatibility flag
+
 allprojects{
+
+    group = "com.github.NickName73"
+
+    repositories{
+        mavenCentral()
+        maven{ url 'https://www.jitpack.io' }
+    }
+
     tasks.withType(JavaCompile){
         options.compilerArgs.addAll(['--release','16'])
+    }
+}
+
+project(":tools"){
+    apply plugin: "java"
+    compileJava.options.fork = false
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
+        compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+    }
+}
+project(":core"){
+    apply plugin: "java"
+
+    compileJava.options.fork = true
+
+    task preGen {
+        outputs.upToDateWhen { false }
+    }
+
+    dependencies {
+        compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
+        compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+        annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
+    }
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        archiveClassifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    task assetsJar(type: Jar, dependsOn: ":tools:pack") {
+        archiveClassifier = 'assets'
+        from files("assets") {
+            exclude "config", "cache", "music", "sounds"
+        }
+    }
+    artifacts {
+        archives sourcesJar
+        archives assetsJar
+    }
+    afterEvaluate {
+        task mergedJavadoc(type: Javadoc) {
+            if (true) return null;
+            def blacklist = [project(":annotations")]
+            if (findProject(":android") != null) {
+                blacklist += project(":android")
+            }
+
+            source rootProject.subprojects.collect { project ->
+                if (!blacklist.contains(project) && project.hasProperty("sourceSets")) {
+                    return project.sourceSets.main.allJava
+                }
+            }
+
+            classpath = files(rootProject.subprojects.collect { project ->
+                if (!blacklist.contains(project) && project.hasProperty("sourceSets")) {
+                    return project.sourceSets.main.compileClasspath
+                }
+            })
+            destinationDir = new File(buildDir, 'javadoc')
+        }
     }
 }
 dependencies{
@@ -53,6 +130,10 @@ task jarAndroid{
 jar{
     archiveFileName = "${project.archivesBaseName}.jar"
 
+
+    from {
+        project(":core").fileTree("build/libs/core.jar").collect { it.isDirectory() ? it : zipTree(it) }
+    }
     from{
         configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree(it) }
     }
@@ -62,8 +143,9 @@ jar{
         include "icon.png"
     }
 
-    from("assets/"){
+    from("core/assets/"){
         include "**"
+        setDuplicatesStrategy(DuplicatesStrategy.WARN) //Somewhere is double include ISSUE!!!
     }
 }
 
@@ -81,11 +163,6 @@ task deploy(type: Jar){
         }
     }
 }
-task secondWait {
-    doLast{
-        sleep(0 * 1000 + 15 * 10)
-    }
-}
 task steamLaunch {
     doLast{
         copy {
@@ -95,4 +172,7 @@ task steamLaunch {
         Desktop.desktop.browse "steam://rungameid/1127400".toURI()
     }
 }
-
+task jarAndSteamLaunch {
+    dependsOn jar
+    dependsOn steamLaunch
+}
