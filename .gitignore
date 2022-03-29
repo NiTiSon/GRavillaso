@@ -34,6 +34,7 @@ ios/robovm.properties
 packr-out/
 config/
 *.gif
+core/assets-raw/sprites_out/**
 
 version.properties
 

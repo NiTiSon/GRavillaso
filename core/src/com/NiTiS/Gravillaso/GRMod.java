@@ -1,44 +1,29 @@
 package com.NiTiS.Gravillaso;
 
 import arc.util.Log;
-import com.NiTiS.Gravillaso.content.*;
-import mindustry.Vars;
 import mindustry.ctype.ContentList;
-import mindustry.mod.Mod;
-import mindustry.mod.Mods;
+import mma.MMAMod;
 
-public class GRMod extends Mod {
+public class GRMod extends MMAMod {
 
+    @Deprecated
     public static String fullName(String name){
-        return "gravillaso-" + name;
+        return GRVars.fullName(name);
     }
-
-    private final static ContentList[] required = new ContentList[] {
-            new GRItems(),
-            new GRStatusEffects(),
-            new GRUnitTypes(),
-            new GRLiquids(),
-            new GRBlocks(),
-            new GRPlanets(),
-            new GRSectorPresets(),
-            new GRTechTree(),
-            new GRLoadouts(),
-    };
 
     @Override
     public void loadContent() {
-        Mods.LoadedMod grmod = Vars.mods.getMod("gravillaso");
         Log.info("GRavillaso loading");
         int loaded = 0;
-        for (ContentList list : required){
+        for (ContentList list : GRVars.REQUIRED){
             try {
                 list.load();
-                Log.infoTag("GR", list.getClass().getSimpleName() + " loaded!");
+                Log.infoTag(GRVars.LOGTAG, list.getClass().getSimpleName() + " loaded!");
                 loaded++;
             }catch (Exception exception){
                 Log.err(exception);
             }
         }
-        Log.infoTag("GR", String.format("Loaded %s ContentList from %s", loaded, required.length));
+        Log.infoTag(GRVars.LOGTAG, String.format("Loaded %s ContentList from %s", loaded, GRVars.REQUIRED.length));
     }
 }

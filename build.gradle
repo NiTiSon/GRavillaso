@@ -9,12 +9,21 @@ sourceCompatibility = JavaVersion.VERSION_16
 
 repositories{
     mavenCentral()
-    maven{ url 'https://www.jitpack.io' }
+    maven { url 'https://www.jitpack.io' }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://oss.sonatype.org/content/repositories/releases/" }
 }
+/*dependencies{
+    compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
+    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+    annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
 
+
+}*/
 ext{
     //the build number that this mod is made for
-    mindustryVersion = 'v135'
+    mindustryVersion = "v135"
+    zelauxCore = "8dbf4593d2e"
     jabelVersion = "0.6.0"
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
 
@@ -23,7 +32,21 @@ ext{
         return "com.github.Anuken.Arc:$name:${mindustryVersion}"
     }
 }
-
+dependencies{
+    implementation  "com.github.Zelaux.ZelauxModCore:core:$zelauxCore"
+}
+buildscript {
+    repositories{
+        mavenCentral()
+        maven{ url 'https://www.jitpack.io' }
+    }
+    dependencies {
+        classpath "com.github.Anuken.Arc:arc-core:v135"
+        classpath "com.github.Anuken.Mindustry:core:v135"
+        classpath "com.github.Anuken.Mindustry:tools:v135"
+        classpath "com.github.Anuken.Arc:packer:v135"
+    }
+}
 allprojects{
 
     group = "com.github.NickName73"
@@ -40,15 +63,17 @@ allprojects{
 
 project(":tools"){
     apply plugin: "java"
-    compileJava.options.fork = false
-
-    repositories {
-        mavenCentral()
-    }
 
     dependencies {
-        compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
-        compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation 'commons-io:commons-io:2.5'
+
+        implementation project(":core")
+
+        implementation 'com.github.javaparser:javaparser-symbol-solver-core:3.22.1'
+        implementation "com.github.Anuken.Mindustry:core:$mindustryVersion"
+        implementation "com.github.Zelaux.ZelauxModCore:tools:$zelauxCore"
+        implementation "com.github.Zelaux.ZelauxModCore:core:$zelauxCore"
     }
 }
 project(":core"){
@@ -58,12 +83,6 @@ project(":core"){
 
     task preGen {
         outputs.upToDateWhen { false }
-    }
-
-    dependencies {
-        compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
-        compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
-        annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
     }
     task sourcesJar(type: Jar, dependsOn: classes) {
         archiveClassifier = 'sources'
@@ -76,10 +95,20 @@ project(":core"){
             exclude "config", "cache", "music", "sounds"
         }
     }
+
     artifacts {
         archives sourcesJar
         archives assetsJar
     }
+
+    dependencies {
+        compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
+        compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+        implementation "com.github.Zelaux.ZelauxModCore:tools:$zelauxCore"
+        implementation "com.github.Zelaux.ZelauxModCore:core:$zelauxCore"
+        annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
+    }
+
     afterEvaluate {
         task mergedJavadoc(type: Javadoc) {
             if (true) return null;
@@ -103,10 +132,11 @@ project(":core"){
         }
     }
 }
-dependencies{
-    compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
-    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
-    annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
+configure([":core", ":tools"].collect { project(it) }) {
+    java {
+        withJavadocJar()
+        withSourcesJar()
+    }
 }
 
 task jarAndroid{
@@ -128,6 +158,8 @@ task jarAndroid{
     }
 }
 jar{
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    dependsOn "core:jar"
     archiveFileName = "${project.archivesBaseName}.jar"
 
 
@@ -145,7 +177,6 @@ jar{
 
     from("core/assets/"){
         include "**"
-        setDuplicatesStrategy(DuplicatesStrategy.WARN) //Somewhere is double include ISSUE!!!
     }
 }
 
@@ -163,7 +194,9 @@ task deploy(type: Jar){
         }
     }
 }
-task steamLaunch {
+task jarAndSteamLaunch {
+    dependsOn "tools:pack"
+    dependsOn jar
     doLast{
         copy {
             from "$buildDir/libs/${project.archivesBaseName}.jar"
@@ -171,8 +204,4 @@ task steamLaunch {
         }
         Desktop.desktop.browse "steam://rungameid/1127400".toURI()
     }
-}
-task jarAndSteamLaunch {
-    dependsOn jar
-    dependsOn steamLaunch
 }
