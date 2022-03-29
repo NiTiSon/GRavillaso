@@ -7,29 +7,136 @@ version '1.0'
 targetCompatibility = 16
 sourceCompatibility = JavaVersion.VERSION_16
 
-sourceSets.main.java.srcDirs = ["src"]
-
 repositories{
     mavenCentral()
-    maven{ url 'https://www.jitpack.io' }
+    maven { url 'https://www.jitpack.io' }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://oss.sonatype.org/content/repositories/releases/" }
 }
+/*dependencies{
+    compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
+    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+    annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
 
+
+}*/
 ext{
     //the build number that this mod is made for
-    mindustryVersion = 'v134'
+    mindustryVersion = "v135"
+    zelauxCore = "8dbf4593d2e"
     jabelVersion = "0.6.0"
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
+
+    arcModule = { String name ->
+        if(name.contains(':')) name = name.split(':').last()
+        return "com.github.Anuken.Arc:$name:${mindustryVersion}"
+    }
 }
-//java 8 backwards compatibility flag
+dependencies{
+    implementation  "com.github.Zelaux.ZelauxModCore:core:$zelauxCore"
+}
+buildscript {
+    repositories{
+        mavenCentral()
+        maven{ url 'https://www.jitpack.io' }
+    }
+    dependencies {
+        classpath "com.github.Anuken.Arc:arc-core:v135"
+        classpath "com.github.Anuken.Mindustry:core:v135"
+        classpath "com.github.Anuken.Mindustry:tools:v135"
+        classpath "com.github.Anuken.Arc:packer:v135"
+    }
+}
 allprojects{
+
+    group = "com.github.NickName73"
+
+    repositories{
+        mavenCentral()
+        maven{ url 'https://www.jitpack.io' }
+    }
+
     tasks.withType(JavaCompile){
         options.compilerArgs.addAll(['--release','16'])
     }
 }
-dependencies{
-    compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
-    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
-    annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
+
+project(":tools"){
+    apply plugin: "java"
+
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation 'commons-io:commons-io:2.5'
+
+        implementation project(":core")
+
+        implementation 'com.github.javaparser:javaparser-symbol-solver-core:3.22.1'
+        implementation "com.github.Anuken.Mindustry:core:$mindustryVersion"
+        implementation "com.github.Zelaux.ZelauxModCore:tools:$zelauxCore"
+        implementation "com.github.Zelaux.ZelauxModCore:core:$zelauxCore"
+    }
+}
+project(":core"){
+    apply plugin: "java"
+
+    compileJava.options.fork = true
+
+    task preGen {
+        outputs.upToDateWhen { false }
+    }
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        archiveClassifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    task assetsJar(type: Jar, dependsOn: ":tools:pack") {
+        archiveClassifier = 'assets'
+        from files("assets") {
+            exclude "config", "cache", "music", "sounds"
+        }
+    }
+
+    artifacts {
+        archives sourcesJar
+        archives assetsJar
+    }
+
+    dependencies {
+        compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
+        compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+        implementation "com.github.Zelaux.ZelauxModCore:tools:$zelauxCore"
+        implementation "com.github.Zelaux.ZelauxModCore:core:$zelauxCore"
+        annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
+    }
+
+    afterEvaluate {
+        task mergedJavadoc(type: Javadoc) {
+            if (true) return null;
+            def blacklist = [project(":annotations")]
+            if (findProject(":android") != null) {
+                blacklist += project(":android")
+            }
+
+            source rootProject.subprojects.collect { project ->
+                if (!blacklist.contains(project) && project.hasProperty("sourceSets")) {
+                    return project.sourceSets.main.allJava
+                }
+            }
+
+            classpath = files(rootProject.subprojects.collect { project ->
+                if (!blacklist.contains(project) && project.hasProperty("sourceSets")) {
+                    return project.sourceSets.main.compileClasspath
+                }
+            })
+            destinationDir = new File(buildDir, 'javadoc')
+        }
+    }
+}
+configure([":core", ":tools"].collect { project(it) }) {
+    java {
+        withJavadocJar()
+        withSourcesJar()
+    }
 }
 
 task jarAndroid{
@@ -51,8 +158,14 @@ task jarAndroid{
     }
 }
 jar{
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    dependsOn "core:jar"
     archiveFileName = "${project.archivesBaseName}.jar"
 
+
+    from {
+        project(":core").fileTree("build/libs/core.jar").collect { it.isDirectory() ? it : zipTree(it) }
+    }
     from{
         configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree(it) }
     }
@@ -62,7 +175,7 @@ jar{
         include "icon.png"
     }
 
-    from("assets/"){
+    from("core/assets/"){
         include "**"
     }
 }
@@ -81,12 +194,20 @@ task deploy(type: Jar){
         }
     }
 }
-task secondWait {
+task jarAndSteamLaunch {
+    dependsOn "tools:pack"
+    dependsOn "jar"
+    jar.shouldRunAfter "tools:pack"
     doLast{
-        sleep(0 * 1000 + 15 * 10)
+        copy {
+            from "$buildDir/libs/${project.archivesBaseName}.jar"
+            into "A:\\Apps\\steamapps\\common\\Mindustry\\saves\\mods"
+        }
+        Desktop.desktop.browse "steam://rungameid/1127400".toURI()
     }
 }
-task steamLaunch {
+task jarAndSteamLaunchWithoutPack {
+    dependsOn "jar"
     doLast{
         copy {
             from "$buildDir/libs/${project.archivesBaseName}.jar"
