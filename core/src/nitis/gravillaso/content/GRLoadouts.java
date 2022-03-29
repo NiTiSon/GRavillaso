@@ -1,4 +1,4 @@
-package com.NiTiS.Gravillaso.content;
+package nitis.gravillaso.content;
 
 import arc.struct.Seq;
 import mindustry.Vars;

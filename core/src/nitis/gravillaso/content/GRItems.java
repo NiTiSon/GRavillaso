@@ -1,4 +1,4 @@
-package com.NiTiS.Gravillaso.content;
+package nitis.gravillaso.content;
 
 import arc.graphics.Color;
 import mindustry.ctype.ContentList;

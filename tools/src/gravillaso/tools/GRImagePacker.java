@@ -1,6 +1,6 @@
 package gravillaso.tools;
 
-import com.NiTiS.Gravillaso.GRVars;
+import nitis.gravillaso.GRVars;
 import mindustry.ctype.Content;
 import mma.tools.ModImagePacker;
 

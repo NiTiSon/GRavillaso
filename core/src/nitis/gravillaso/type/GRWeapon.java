@@ -1,6 +1,6 @@
-package com.NiTiS.Gravillaso.type;
+package nitis.gravillaso.type;
 
-import com.NiTiS.Gravillaso.GRMod;
+import nitis.gravillaso.GRMod;
 import mindustry.type.Weapon;
 
 public class GRWeapon extends Weapon {

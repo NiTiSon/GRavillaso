@@ -1,4 +1,4 @@
-package com.NiTiS.Gravillaso.content;
+package nitis.gravillaso.content;
 
 import mindustry.content.Planets;
 import mindustry.ctype.ContentList;

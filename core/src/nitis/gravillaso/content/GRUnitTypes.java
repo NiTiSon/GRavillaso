@@ -1,9 +1,9 @@
-package com.NiTiS.Gravillaso.content;
+package nitis.gravillaso.content;
 
-import arc.Core;
 import arc.graphics.Color;
-import com.NiTiS.Gravillaso.type.GRWeapon;
+import nitis.gravillaso.type.GRWeapon;
 import mindustry.content.Fx;
+import mindustry.content.StatusEffects;
 import mindustry.content.UnitTypes;
 import mindustry.ctype.ContentList;
 import mindustry.entities.abilities.MoveLightningAbility;
@@ -11,9 +11,7 @@ import mindustry.entities.abilities.UnitSpawnAbility;
 import mindustry.entities.bullet.*;
 import mindustry.gen.Sounds;
 import mindustry.type.UnitType;
-import mindustry.content.StatusEffects;
 import mindustry.type.Weapon;
-import mindustry.type.ammo.ItemAmmoType;
 import mindustry.type.ammo.PowerAmmoType;
 import mindustry.world.meta.BlockFlag;
 
@@ -153,14 +151,13 @@ public class GRUnitTypes implements ContentList {
         }};
         zap = new UnitType("zap"){{
             constructor = UnitTypes.horizon.constructor;
-            health = 95;
+            health = 35;
             speed = 3.125f;
             accel = 0.08f;
-            drag = 0.016f;
+            drag = 0.024f;
             flying = true;
             hitSize = 5f;
             targetAir = false;
-            engineOffset = 7.8f;
             range = 140f;
             faceTarget = false;
             armor = 0;
@@ -169,7 +166,7 @@ public class GRUnitTypes implements ContentList {
             targetFlags = new BlockFlag[]{BlockFlag.factory, BlockFlag.turret, null};
             commandLimit = 5;
             circleTarget = true;
-            engineOffset = -0.2f;
+            engineOffset = -1.5f;
             abilities.add(new MoveLightningAbility(14, 12, 0.05f, 0f, 2.5f, 3f, Color.valueOf("747FFF")){{
                 bulletSpread = 90f;
                 bulletAngle = 90f;
@@ -302,7 +299,7 @@ public class GRUnitTypes implements ContentList {
             rotateShooting = false;
             clipSize = 175;
             abilities.add(new UnitSpawnAbility(zap, 60 * 25f, 0, -0.8f){{
-
+                spawnTime = 60f * 2.25f;
             }});
 
         }};

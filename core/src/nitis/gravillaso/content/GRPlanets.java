@@ -1,7 +1,7 @@
-package com.NiTiS.Gravillaso.content;
+package nitis.gravillaso.content;
 
 import arc.graphics.Color;
-import com.NiTiS.Gravillaso.maps.generators.GravilloPlanetGenerator;
+import nitis.gravillaso.maps.generators.GravilloPlanetGenerator;
 import mindustry.content.Planets;
 import mindustry.ctype.ContentList;
 import mindustry.graphics.Pal;

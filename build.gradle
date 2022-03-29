@@ -196,7 +196,8 @@ task deploy(type: Jar){
 }
 task jarAndSteamLaunch {
     dependsOn "tools:pack"
-    dependsOn jar
+    dependsOn "jar"
+    jar.shouldRunAfter "tools:pack"
     doLast{
         copy {
             from "$buildDir/libs/${project.archivesBaseName}.jar"
@@ -205,3 +206,14 @@ task jarAndSteamLaunch {
         Desktop.desktop.browse "steam://rungameid/1127400".toURI()
     }
 }
+task jarAndSteamLaunchWithoutPack {
+    dependsOn "jar"
+    doLast{
+        copy {
+            from "$buildDir/libs/${project.archivesBaseName}.jar"
+            into "A:\\Apps\\steamapps\\common\\Mindustry\\saves\\mods"
+        }
+        Desktop.desktop.browse "steam://rungameid/1127400".toURI()
+    }
+}
+

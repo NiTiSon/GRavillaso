@@ -1,4 +1,4 @@
-package com.NiTiS.Gravillaso.world.blocks.campaign;
+package nitis.gravillaso.world.blocks.campaign;
 
 import arc.Events;
 import arc.scene.ui.layout.Table;

@@ -1,4 +1,4 @@
-package com.NiTiS.Gravillaso.world.blocks.production;
+package nitis.gravillaso.world.blocks.production;
 
 import mindustry.world.blocks.production.Drill;
 

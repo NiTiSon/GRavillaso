@@ -1,9 +1,9 @@
-package com.NiTiS.Gravillaso.content;
+package nitis.gravillaso.content;
 
 import arc.graphics.Color;
 import arc.struct.ObjectMap;
 import arc.struct.Seq;
-import com.NiTiS.Gravillaso.world.blocks.production.OverdriveDrill;
+import nitis.gravillaso.world.blocks.production.OverdriveDrill;
 import mindustry.content.*;
 import mindustry.ctype.ContentList;
 import mindustry.entities.bullet.*;

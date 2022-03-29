@@ -1,4 +1,4 @@
-package com.NiTiS.Gravillaso.maps.generators;
+package nitis.gravillaso.maps.generators;
 
 import arc.graphics.Color;
 import arc.math.Angles;
@@ -15,7 +15,7 @@ import arc.util.Tmp;
 import arc.util.noise.Noise;
 import arc.util.noise.Ridged;
 import arc.util.noise.Simplex;
-import com.NiTiS.Gravillaso.content.GRBlocks;
+import nitis.gravillaso.content.GRBlocks;
 import mindustry.ai.Astar;
 import mindustry.ai.BaseRegistry;
 import mindustry.content.Blocks;
