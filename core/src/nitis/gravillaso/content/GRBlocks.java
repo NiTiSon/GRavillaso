@@ -3,8 +3,10 @@ package nitis.gravillaso.content;
 import arc.graphics.Color;
 import arc.struct.ObjectMap;
 import arc.struct.Seq;
-import nitis.gravillaso.world.blocks.production.OverdriveDrill;
-import mindustry.content.*;
+import mindustry.content.Fx;
+import mindustry.content.Items;
+import mindustry.content.Liquids;
+import mindustry.content.StatusEffects;
 import mindustry.ctype.ContentList;
 import mindustry.entities.bullet.*;
 import mindustry.gen.Sounds;
@@ -38,12 +40,16 @@ import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.draw.DrawMixer;
 import mindustry.world.draw.DrawWeave;
 import mindustry.world.meta.Attribute;
+import mindustry.world.meta.BuildVisibility;
+import nitis.gravillaso.entity.bullet.GraviBullet;
+import nitis.gravillaso.world.blocks.defence.turrets.GravityTurret;
+import nitis.gravillaso.world.blocks.gravity.GravityProjector;
+import nitis.gravillaso.world.blocks.production.OverdriveDrill;
 
 import static mindustry.type.ItemStack.with;
 
 public class GRBlocks implements ContentList {
     public static final int gravitiumDefence = 1280 ,magneturnDefence = 2300;
-    public static final Color baseHealColor = Color.valueOf("84f490"), phaseHealColor = Color.valueOf("B5ffbd");
 
     public static Block
     //Environment
@@ -52,6 +58,8 @@ public class GRBlocks implements ContentList {
     advancedPyratiteMixer,advancedBlastMixer,gasolineBarrel,cryofluidChamber,flammableLiquidChamber,phaseCaldron,molecularConverter,molecularReconstructor,magneturnSmelter,electroSmelter,molecularPhaseWeaver,plastaniumMolecularPress,
     //Defence
     gravitiumWall,gravitiumWallLarge,magneturnWall,magneturnWallLarge,hyperMender,colossalHealingDome,colossalForceProjector,
+    //Gravity
+    gravityProjector,
     //Distribution
     magneturnConveyor,electroConveyor,colossalDriver,
     //Power
@@ -63,14 +71,14 @@ public class GRBlocks implements ContentList {
     //Turrets
     public static Block
     destiny,arhiepiscop,fierySpray,renunciation,phaseFuse,voltum,sunrise,
+    //Gravity Turrets
+    slt,
     //Units
     repairLaser,advancedNavalFactory,additiveReassembler, multiplicativeReassembler,
     //Light
     sunshine,
     //PlanetUnlocks
     _end;
-    @Deprecated
-    public static Block slt;
 
     @Override
     public void load() {
@@ -315,8 +323,8 @@ public class GRBlocks implements ContentList {
             size = 3;
             health = 80 * size * size;
 
-            baseColor = baseHealColor;
-            phaseColor = phaseHealColor;
+            baseColor = GRPal.baseHealColor;
+            phaseColor = GRPal.phaseHealColor;
 
             range = 120;
             healPercent = 15;
@@ -333,8 +341,8 @@ public class GRBlocks implements ContentList {
             size = 4;
             health = 120 * size * size;
 
-            baseColor = baseHealColor;
-            phaseColor = phaseHealColor;
+            baseColor = GRPal.baseHealColor;
+            phaseColor = GRPal.phaseHealColor;
 
             range = 1200;
             healPercent = 1;
@@ -345,6 +353,17 @@ public class GRBlocks implements ContentList {
 
             consumes.item(Items.phaseFabric, 4).boost();
             consumes.power(9.5f);
+        }};
+        //endregion
+        //region Gravity
+        gravityProjector = new GravityProjector("gravity-projector"){{
+            requirements(Category.effect, BuildVisibility.sandboxOnly, ItemStack.with(Items.lead, 320, Items.plastanium, 120, GRItems.gravitium, 220));
+            health = 540;
+            itemCapacity = 15;
+            size = 3;
+
+            consumes.item(Items.phaseFabric).boost();
+            consumes.power(24.5f);
         }};
         //endregion
         //region Distribution
@@ -757,6 +776,19 @@ public class GRBlocks implements ContentList {
                 damage = 434;
                 buildingDamageMultiplier = 0.25f;
                 status = StatusEffects.shocked;
+            }};
+        }};
+        //endregion
+        //region Gravity Turrets
+        slt = new GravityTurret("slt"){{
+            requirements(Category.turret, BuildVisibility.sandboxOnly, ItemStack.with(Items.lead, 240, Items.graphite, 190, Items.metaglass, 110, Items.surgeAlloy, 70, GRItems.magneturn, 45));
+            size = 3;
+            range = 320f;
+
+            consumes.power(8.5f);
+
+            shootType = new GraviBullet(98) {{
+                speed = 14f;
             }};
         }};
         //endregion
