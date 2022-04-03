@@ -167,7 +167,7 @@ public class GRUnitTypes implements ContentList {
             commandLimit = 5;
             circleTarget = true;
             engineOffset = -1.5f;
-            abilities.add(new MoveLightningAbility(14, 12, 0.05f, 0f, 2.5f, 3f, Color.valueOf("747FFF")){{
+            abilities.add(new MoveLightningAbility(7, 9, 0.05f, 0f, 2.5f, 3f, Color.valueOf("747FFF")){{
                 bulletSpread = 90f;
                 bulletAngle = 90f;
             }});
@@ -175,13 +175,13 @@ public class GRUnitTypes implements ContentList {
                 minShootVelocity = 0.75f;
                 x = 3f;
                 shootY = 0f;
-                reload = 12f;
+                reload = 30f;
                 shootCone = 180f;
                 ejectEffect = Fx.none;
                 inaccuracy = 2f;
                 ignoreRotation = true;
                 shootSound = Sounds.none;
-                bullet = new BombBulletType(14f, 35f){{
+                bullet = new BombBulletType(12f, 12f){{
                     width = 7f;
                     height = 9f;
                     hitEffect = Fx.explosion;

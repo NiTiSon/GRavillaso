@@ -1,0 +1,145 @@
+package nitis.gravillaso.world.blocks.gravity;
+
+import arc.Core;
+import arc.func.Cons2;
+import arc.graphics.g2d.Draw;
+import arc.graphics.g2d.TextureRegion;
+import arc.math.Mathf;
+import arc.util.Tmp;
+import mindustry.Vars;
+import mindustry.game.Team;
+import mindustry.gen.Building;
+import mindustry.gen.Sounds;
+import mindustry.graphics.Drawf;
+import mindustry.logic.Ranged;
+import mindustry.ui.Bar;
+import mindustry.world.Block;
+import mindustry.world.consumers.ConsumeType;
+import mindustry.world.meta.BlockGroup;
+import mindustry.world.meta.Env;
+import nitis.gravillaso.content.GRPal;
+
+import static mindustry.Vars.indexer;
+import static mindustry.Vars.player;
+
+public class GravityProjector extends Block {
+    public final int timerUse = timers++;
+    public float phaseUseTime = 120f;
+
+    public float radius = 320f;
+    public float phaseRadius = radius * 0.25f;
+    public int additionGravity = 6200;
+    public int phaseAdditionGravity = Math.round(additionGravity * 0.25f);
+
+    public TextureRegion topRegion;
+
+    @Override
+    public boolean outputsItems(){
+        return false;
+    }
+
+    public GravityProjector(String name) {
+        super(name);
+        update = true;
+        solid = true;
+        group = BlockGroup.projectors;
+        hasPower = true;
+        hasItems = true;
+        ambientSound = Sounds.grinding;
+        ambientSoundVolume = 0.08f;
+        consumesPower = true;
+
+        envEnabled |= Env.space;
+    }
+
+    @Override
+    public void init() {
+        super.init();
+        topRegion = Core.atlas.find(name+"-top", "clear");
+    }
+
+    @Override
+    public void setBars(){
+        super.setBars();
+        bars.add("gravity", (GravityProjectorBuild build) -> new Bar("stat.gravity", GRPal.magneturnLight, () -> build.getGravityBonus() / (float)phaseAdditionGravity));
+    }
+
+    @Override
+    public void drawPlace(int x, int y, int rotation, boolean valid){
+        super.drawPlace(x, y, rotation, valid);
+
+        Draw.color(GRPal.magneturnLight);
+        Drawf.dashCircle(x * Vars.tilesize, y * Vars.tilesize, radius, GRPal.magneturnLight);
+        Draw.color();
+
+        indexer.eachBlock(
+                player.team(),
+                x * Vars.tilesize + offset,
+                y * Vars.tilesize + offset,
+                radius,
+                (build) -> build instanceof GravityModuleHolder,
+                (build) -> {
+                    Drawf.selected(build, Tmp.c1.set(GRPal.magneturn).a(Mathf.absin(4f, 1f)));
+                });
+    }
+
+    public class GravityProjectorBuild extends Building implements Ranged {
+        public boolean phaseActive = false;
+        @Override
+        public float range() {
+            return phaseActive ? phaseRadius : radius;
+        }
+
+        @Override
+        public void updateTile() {
+            super.updateTile();
+            phaseActive = consumes.get(ConsumeType.item).valid(this);
+
+            indexer.eachBlock(
+                    this.team,
+                    this.x(),
+                    this.y(),
+                    range(),
+                    (build) -> true, //Anyway check in next function SKIP
+                    (build) -> {
+                        if (build instanceof GravityUsager user) {
+                            user.applyBonus(getGravityBonus());
+                        }
+                    }
+                    );
+            if(phaseActive && timer(timerUse, phaseUseTime) && efficiency() > 0){
+                consume();
+            }
+        }
+
+        public int getGravityBonus() {
+            return phaseActive ? phaseAdditionGravity : additionGravity;
+        }
+
+        @Override
+        public void drawSelect() {
+            super.drawSelect();
+            getPotentialConnections(this.team, (b,u) -> {
+                drawConnect(b);
+            });
+        }
+
+        public void drawConnect(Building build){
+            Drawf.selected(build, Tmp.c1.set(GRPal.magneturn).a(Mathf.absin(4f, 1f)));
+        }
+        protected void getPotentialConnections(Team team, Cons2<Building, GravityUsager> others) {
+            indexer.eachBlock(
+                    team,
+                    this.x(),
+                    this.y(),
+                    range(),
+                    (build) -> true,
+                    (build) -> {
+                        if (build instanceof GravityUsager user) {
+                            others.get(build, user);
+                        }
+                    }
+                    );
+        }
+    }
+}

@@ -1,7 +1,9 @@
 package nitis.gravillaso;
 
 import arc.util.Log;
+import mindustry.content.Planets;
 import mindustry.ctype.ContentList;
+import mindustry.type.Planet;
 import mma.ModVars;
 import nitis.gravillaso.content.*;
 
@@ -47,7 +49,15 @@ public class GRVars extends ModVars {
     public String getFullName(String name) {
         return MODID + "-" + name;
     }
-
+    public static int getGravity(Planet planet) {
+        if (planet == Planets.serpulo) {
+            return 113;
+        }
+        if (planet == GRPlanets.gravillo) {
+            return 213;
+        }
+        return 110;
+    }
     static {
         instance = new GRVars();
     }
