@@ -3,25 +3,26 @@ package nitis.gravillaso.world.blocks.defence.turrets;
 import arc.Core;
 import arc.func.Func;
 import arc.math.Mathf;
+import arc.struct.Seq;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
-import mindustry.content.Planets;
+import mindustry.Vars;
 import mindustry.entities.bullet.BulletType;
-import mindustry.game.Team;
 import mindustry.gen.Building;
 import mindustry.graphics.Drawf;
+import mindustry.graphics.Pal;
 import mindustry.ui.Bar;
-import mindustry.world.Tile;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
-import nitis.gravillaso.GRVars;
+import mindustry.world.meta.Stat;
 import nitis.gravillaso.content.GRPal;
-import nitis.gravillaso.world.blocks.gravity.GravityModuleHolder;
-import nitis.gravillaso.world.blocks.gravity.GravityUsager;
-import nitis.gravillaso.world.modules.GravityModule;
+import nitis.gravillaso.world.blocks.gravity.GravityConsumer;
+import nitis.gravillaso.world.blocks.gravity.GravityProvider;
 
 public class GravityTurret extends PowerTurret {
-    public int maxGravity = 1_600;
-    public float minSpeedModifier = 0.25f;
+    public float requiredGravity = 160f;
+    public float minGravity = 20f;
+
+    public float requiredGravityToAbsorbLasers = 0.66f;
     public GravityTurret(String name) {
         super(name);
         this.absorbLasers = true;
@@ -30,8 +31,19 @@ public class GravityTurret extends PowerTurret {
     }
 
     @Override
-    public void setStats(){
+    public void drawPlace(int x, int y, int rotation, boolean valid) {
+        super.drawPlace(x, y, rotation, valid);
+
+        Drawf.dashCircle(x * Vars.tilesize, y * Vars.tilesize, range, GRPal.magneturnLight);
+        Drawf.dashCircle(x * Vars.tilesize, y * Vars.tilesize, range * getMinGravityModifier(), Pal.accent);
+    }
+    public float getMinGravityModifier() {
+        return Math.min(minGravity / requiredGravity, 1f);
+    }
+    @Override
+    public void setStats() {
         super.setStats();
+        stats.add(Stat.range, "%s~%s".formatted(range * getMinGravityModifier(), range));
     }
 
     @Override
@@ -39,95 +51,95 @@ public class GravityTurret extends PowerTurret {
         super.setBars();
         bars.add("gravity-module", e -> {
             Func<Building,Float> rat = (building) -> {
-                float ratio = 0;
-                if (building instanceof GravityModuleHolder grModule) {
-                    ratio = grModule.getGravityModule().getRatio();
+                if (e instanceof GravityTurretBuild gravityTurret) {
+                    return gravityTurret.calculateGravity();
                 }
-                return ratio;
+                return 0f;
             };
             return new Bar(
-                    () -> Core.bundle.get("bar.gravity-module").formatted(rat.get(e) * 100),
+                    () -> Core.bundle.get("bar.gravity-module").replace("%d", Math.round(rat.get(e) *100) + "" ).replace("%%", "%"),
                     () -> GRPal.magneturnLight,
                     () -> rat.get(e)
             );
         });
     }
 
-    public class GravityTurretBuild extends PowerTurretBuild implements GravityModuleHolder, GravityUsager {
-        private GravityModule gravity;
-        private int _i = 0;
-        private int allBonus;
-        @Override
-        public GravityModule getGravityModule() {
-            return gravity;
-        }
-        @Override
-        public void applyBonus(int bonus) {
-            _i++;
-            allBonus += bonus;
-        }
+    public class GravityTurretBuild extends PowerTurretBuild implements GravityConsumer {
+        private final Seq<GravityProvider> gravityProviders = new Seq<>();
+        private float currentGravity = 0f;
         @Override
         public BulletType useAmmo(){
             return shootType;
         }
 
         @Override
-        public void drawSelect(){
+        public void drawSelect() {
             Drawf.dashCircle(x, y, range(), team.color);
         }
 
         @Override
-        public void update() {
-            gravity.setValue(allBonus + GRVars.getGravity(Planets.serpulo));
-            if (_i > 0) {
-                _i = 0;
-                allBonus = 0;
+        public void updateTile() {
+            super.updateTile();
+            currentGravity = 0;
+            for (GravityProvider provider: gravityProviders) {
+                currentGravity += provider.getGravity();
             }
-            super.update();
+            gravityProviders.clear();
         }
+
         @Override
         public float range() {
-            return range * getGravityModule().getRatio();
+            return range * calculateGravity();
         }
 
+        public float getCurrentGravity() {
+            return currentGravity;
+        }
         public float speedMultiplier() {
-            return gravity.getRatio();
+            return calculateGravity();
         }
 
-        @Override
-        public Building init(Tile tile, Team team, boolean shouldAdd, int rotation) {
-            Building building = super.init(tile, team, shouldAdd, rotation);
-            this.gravity = new GravityModule(0, maxGravity);
-            return building;
+        private float calculateGravity() {
+            return Math.min(Math.max(minGravity, currentGravity) / requiredGravity, 1f);
         }
         @Override
         public boolean absorbLasers() {
-            return absorbLasers && gravity.getRatio() >= 0.25f; //When gravity exists true
+            return absorbLasers && calculateGravity() >= requiredGravityToAbsorbLasers;
         }
 
         @Override
         protected void bullet(BulletType type, float angle){
             float lifeScl = type.scaleVelocity ? Mathf.clamp(Mathf.dst(x + tr.x, y + tr.y, targetPos.x, targetPos.y) / type.range(), minRange / type.range(), range / type.range()) : 1f;
-
-            type.create(this, team, x + tr.x, y + tr.y, angle, ( 1f + Mathf.range(velocityInaccuracy) ) * speedMultiplier(), lifeScl);
+            BulletType otherType = type.copy();
+            otherType.damage *= calculateGravity();
+            otherType.create(this, team, x + tr.x, y + tr.y, angle, ( 1f + Mathf.range(velocityInaccuracy) ) * speedMultiplier(), lifeScl);
         }
 
         @Override
         public void write(Writes write) {
             super.write(write);
-            gravity.write(write);
+
         }
 
         @Override
         public void read(Reads read, byte revision) {
-            super.read(read, revision);
-            if (revision >= 1){
-                gravity = GravityModule.create(read);
+            super.read(read, (byte) 1);
+            if (revision == 2) {
+                return;
+            }
+            if (revision == 1) {
+                read.i();
+                read.i();
             }
         }
         @Override
         public byte version(){
-            return 1;
+            return 2;
+        }
+
+        @Override
+        public void connectGravityProvider(GravityProvider provider) {
+            gravityProviders.add(provider);
         }
     }
 }
