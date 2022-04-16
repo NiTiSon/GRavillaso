@@ -14,7 +14,9 @@ import mma.MMAMod;
 
 public class GRMod extends MMAMod {
     public static final boolean isBeta = true;
-    public static final String githubLink = "https://github.com/NickName73/Gravillaso";
+    public static final String GITHUB_LINK = "https://github.com/NickName73/Gravillaso";
+    public static final String GR_TAG = "NiTiS-GR";
+    public static final String GR_TAG_COLORIZED = "NiTiS-[purple]GR[]";
 
     public GRMod(){
         super();
@@ -36,7 +38,7 @@ public class GRMod extends MMAMod {
                         Core.settings.put("gravillaso-beta-show",false);
                     }).size(140f,60f).row();
                     dialog.cont.button(Icon.github, () ->{
-                        Core.app.openURI(githubLink);
+                        Core.app.openURI(GITHUB_LINK);
                     }).size(140f,60f);
                     dialog.show();
                 }
@@ -63,5 +65,11 @@ public class GRMod extends MMAMod {
             }
         }
         Log.infoTag(GRVars.LOGTAG, String.format("Loaded %s ContentList from %s", loaded, GRVars.REQUIRED.length));
+    }
+    public static void log(Object obj) {
+        log(obj.toString());
+    }
+    public static void log(String text) {
+        Log.infoTag(GR_TAG_COLORIZED, text);
     }
 }

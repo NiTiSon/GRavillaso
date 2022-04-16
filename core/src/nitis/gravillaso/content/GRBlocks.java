@@ -40,7 +40,6 @@ import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.draw.DrawMixer;
 import mindustry.world.draw.DrawWeave;
 import mindustry.world.meta.Attribute;
-import mindustry.world.meta.BuildVisibility;
 import nitis.gravillaso.entity.bullet.GraviBullet;
 import nitis.gravillaso.world.blocks.defence.turrets.GravityTurret;
 import nitis.gravillaso.world.blocks.gravity.GravityProjector;
@@ -357,7 +356,7 @@ public class GRBlocks implements ContentList {
         //endregion
         //region Gravity
         gravityProjector = new GravityProjector("gravity-projector"){{
-            requirements(Category.effect, BuildVisibility.sandboxOnly, ItemStack.with(Items.lead, 320, Items.plastanium, 120, GRItems.gravitium, 220));
+            requirements(Category.effect, ItemStack.with(Items.lead, 320, Items.plastanium, 120, GRItems.gravitium, 220));
             health = 540;
             itemCapacity = 15;
             size = 3;
@@ -781,14 +780,12 @@ public class GRBlocks implements ContentList {
         //endregion
         //region Gravity Turrets
         slt = new GravityTurret("slt"){{
-            requirements(Category.turret, BuildVisibility.sandboxOnly, ItemStack.with(Items.lead, 240, Items.graphite, 190, Items.metaglass, 110, Items.surgeAlloy, 70, GRItems.magneturn, 45));
+            requirements(Category.turret, ItemStack.with(Items.lead, 240, Items.graphite, 190, Items.metaglass, 110, Items.surgeAlloy, 70, GRItems.magneturn, 45));
             size = 3;
             range = 320f;
-
             consumes.power(8.5f);
-
             shootType = new GraviBullet(98) {{
-                speed = 14f;
+                speed = 7.5f;
             }};
         }};
         //endregion

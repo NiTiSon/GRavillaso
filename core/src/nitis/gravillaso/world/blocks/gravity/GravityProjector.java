@@ -27,9 +27,9 @@ public class GravityProjector extends Block {
     public float phaseUseTime = 120f;
 
     public float radius = 320f;
-    public float phaseRadius = radius * 0.25f;
-    public int additionGravity = 6200;
-    public int phaseAdditionGravity = Math.round(additionGravity * 0.25f);
+    public float phaseRadius = radius * 1.25f;
+    public float generatedGravity = 450f;
+    public float phaseGeneratedGravity = generatedGravity * 1.25f;
 
     public TextureRegion topRegion;
 
@@ -61,7 +61,7 @@ public class GravityProjector extends Block {
     @Override
     public void setBars(){
         super.setBars();
-        bars.add("gravity", (GravityProjectorBuild build) -> new Bar("stat.gravity", GRPal.magneturnLight, () -> build.getGravityBonus() / (float)phaseAdditionGravity));
+        bars.add("gravity", (GravityProjectorBuild build) -> new Bar("stat.gravity", GRPal.magneturnLight, () -> build.getGravity() / phaseGeneratedGravity));
     }
 
     @Override
@@ -77,13 +77,13 @@ public class GravityProjector extends Block {
                 x * Vars.tilesize + offset,
                 y * Vars.tilesize + offset,
                 radius,
-                (build) -> build instanceof GravityModuleHolder,
+                (build) -> build instanceof GravityConsumer,
                 (build) -> {
                     Drawf.selected(build, Tmp.c1.set(GRPal.magneturn).a(Mathf.absin(4f, 1f)));
                 });
     }
 
-    public class GravityProjectorBuild extends Building implements Ranged {
+    public class GravityProjectorBuild extends Building implements Ranged, GravityProvider {
         public boolean phaseActive = false;
         @Override
         public float range() {
@@ -102,8 +102,8 @@ public class GravityProjector extends Block {
                     range(),
                     (build) -> true, //Anyway check in next function SKIP
                     (build) -> {
-                        if (build instanceof GravityUsager user) {
-                            user.applyBonus(getGravityBonus());
+                        if (build instanceof GravityConsumer user) {
+                            user.connectGravityProvider(this);
                         }
                     }
                     );
@@ -112,10 +112,16 @@ public class GravityProjector extends Block {
             }
         }
 
-        public int getGravityBonus() {
-            return phaseActive ? phaseAdditionGravity : additionGravity;
+        @Override
+        public void draw() {
+            super.draw();
+            //Draw.rect(topRegion, this.x, this.y);
         }
 
+        @Override
+        public float getGravity() {
+            return phaseActive ? phaseGeneratedGravity : generatedGravity;
+        }
         @Override
         public void drawSelect() {
             super.drawSelect();
@@ -127,7 +133,7 @@ public class GravityProjector extends Block {
         public void drawConnect(Building build){
             Drawf.selected(build, Tmp.c1.set(GRPal.magneturn).a(Mathf.absin(4f, 1f)));
         }
-        protected void getPotentialConnections(Team team, Cons2<Building, GravityUsager> others) {
+        protected void getPotentialConnections(Team team, Cons2<Building, GravityConsumer> others) {
             indexer.eachBlock(
                     team,
                     this.x(),
@@ -135,7 +141,7 @@ public class GravityProjector extends Block {
                     range(),
                     (build) -> true,
                     (build) -> {
-                        if (build instanceof GravityUsager user) {
+                        if (build instanceof GravityConsumer user) {
                             others.get(build, user);
                         }
                     }
