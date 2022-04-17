@@ -36,6 +36,11 @@ May be not work on ios|android devices
 
 </div>
 
+## Software
+* Intellij idea
+* Aseprite
+* Photoshop
+
 ## Content
 * A lot of new turrets
 * Useful factory
