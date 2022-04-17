@@ -216,4 +216,9 @@ task jarAndSteamLaunchWithoutPack {
         Desktop.desktop.browse "steam://rungameid/1127400".toURI()
     }
 }
+task jarWithPack {
+    dependsOn "tools:pack"
+    dependsOn "jar"
+    jar.shouldRunAfter "tools:pack"
+}
 
