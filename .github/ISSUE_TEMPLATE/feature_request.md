@@ -2,7 +2,7 @@
 name: Feature Request
 about: Create a request for new content
 title: 'I want *THIS*'
-labels: feature request
+labels: request
 assignees: ''
 
 ---
