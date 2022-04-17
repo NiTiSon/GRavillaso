@@ -35,6 +35,8 @@ packr-out/
 config/
 *.gif
 core/assets-raw/sprites_out/**
+core/assets/sprites
+core/assets/sprites-override
 
 version.properties
 

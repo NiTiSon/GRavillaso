@@ -1,11 +1,11 @@
 package nitis.gravillaso.type;
 
-import nitis.gravillaso.GRMod;
 import mindustry.type.Weapon;
+import nitis.gravillaso.GRVars;
 
 public class GRWeapon extends Weapon {
 
     public GRWeapon(String name){
-        super(GRMod.fullName(name));
+        super(GRVars.fullName(name));
     }
 }

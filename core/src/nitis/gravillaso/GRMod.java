@@ -45,11 +45,6 @@ public class GRMod extends MMAMod {
             });
         });
     }
-    @Deprecated
-    public static String fullName(String name){
-        return GRVars.fullName(name);
-    }
-
     @Override
     public void loadContent() {
         Log.info("GRavillaso loading");
@@ -58,13 +53,11 @@ public class GRMod extends MMAMod {
         for (ContentList list : GRVars.REQUIRED){
             try {
                 list.load();
-                Log.infoTag(GRVars.LOGTAG, list.getClass().getSimpleName() + " loaded!");
+                Log.infoTag(GR_TAG_COLORIZED, list.getClass().getSimpleName() + " loaded!");
                 loaded++;
-            }catch (Exception exception){
-                GRVars.logErr(exception);
-            }
+            }catch (Exception ignore) {}
         }
-        Log.infoTag(GRVars.LOGTAG, String.format("Loaded %s ContentList from %s", loaded, GRVars.REQUIRED.length));
+        Log.infoTag(GR_TAG_COLORIZED, String.format("Loaded %s ContentList from %s", loaded, GRVars.REQUIRED.length));
     }
     public static void log(Object obj) {
         log(obj.toString());

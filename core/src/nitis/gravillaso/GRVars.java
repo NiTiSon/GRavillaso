@@ -1,15 +1,12 @@
 package nitis.gravillaso;
 
 import arc.util.Log;
-import mindustry.content.Planets;
 import mindustry.ctype.ContentList;
-import mindustry.type.Planet;
 import mma.ModVars;
 import nitis.gravillaso.content.*;
 
 public class GRVars extends ModVars {
     public final static String MODID = "gravillaso";
-    public final static String LOGTAG = "GR";
     public final static GRVars instance;
     public final static ContentList[] REQUIRED = new ContentList[] {
             new GRItems(),
@@ -29,14 +26,11 @@ public class GRVars extends ModVars {
     protected void onLoad(Runnable runnable) {
 
     }
-    public static void logErr(Throwable throwable) {
-        instance.showException(throwable);
-    }
     @Override
     protected void showException(Throwable ex) {
-        Log.errTag(LOGTAG, ex.getMessage());
+        Log.errTag(GRMod.GR_TAG_COLORIZED, ex.getMessage());
         for (StackTraceElement i : ex.getStackTrace()){
-            Log.errTag(LOGTAG, i.toString());
+            Log.errTag(GRMod.GR_TAG_COLORIZED, i.toString());
         }
     }
 
@@ -49,15 +43,7 @@ public class GRVars extends ModVars {
     public String getFullName(String name) {
         return MODID + "-" + name;
     }
-    public static int getGravity(Planet planet) {
-        if (planet == Planets.serpulo) {
-            return 113;
-        }
-        if (planet == GRPlanets.gravillo) {
-            return 213;
-        }
-        return 110;
-    }
+
     static {
         instance = new GRVars();
     }

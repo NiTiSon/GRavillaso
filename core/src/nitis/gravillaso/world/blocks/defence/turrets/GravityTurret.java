@@ -13,7 +13,11 @@ import mindustry.graphics.Drawf;
 import mindustry.graphics.Pal;
 import mindustry.ui.Bar;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
+import mindustry.world.consumers.ConsumeLiquidBase;
+import mindustry.world.consumers.ConsumeType;
 import mindustry.world.meta.Stat;
+import mindustry.world.meta.StatUnit;
+import mindustry.world.meta.StatValues;
 import nitis.gravillaso.content.GRPal;
 import nitis.gravillaso.world.blocks.gravity.GravityConsumer;
 import nitis.gravillaso.world.blocks.gravity.GravityProvider;
@@ -22,7 +26,7 @@ public class GravityTurret extends PowerTurret {
     public float requiredGravity = 160f;
     public float minGravity = 20f;
 
-    public float requiredGravityToAbsorbLasers = 0.66f;
+    public float requiredGravityToAbsorbLasers = 120f;
     public GravityTurret(String name) {
         super(name);
         this.absorbLasers = true;
@@ -42,8 +46,38 @@ public class GravityTurret extends PowerTurret {
     }
     @Override
     public void setStats() {
-        super.setStats();
-        stats.add(Stat.range, "%s~%s".formatted(range * getMinGravityModifier(), range));
+        stats.add(Stat.size, "@x@", size, size);
+
+        if(synthetic()){
+            stats.add(Stat.health, health, StatUnit.none);
+        }
+
+        if(canBeBuilt() && requirements.length > 0){
+            stats.add(Stat.buildTime, buildCost / 60, StatUnit.seconds);
+            stats.add(Stat.buildCost, StatValues.items(false, requirements));
+        }
+
+        if(instantTransfer){
+            stats.add(Stat.maxConsecutive, 2, StatUnit.none);
+        }
+
+        consumes.display(stats);
+
+        //Note: Power stats are added by the consumers.
+        if(hasLiquids) stats.add(Stat.liquidCapacity, liquidCapacity, StatUnit.liquidUnits);
+        if(hasItems && itemCapacity > 0) stats.add(Stat.itemCapacity, itemCapacity, StatUnit.items);
+
+        stats.add(Stat.range, "%s~%s".formatted(Math.round(range * getMinGravityModifier()), Math.round(range)), StatUnit.blocks);
+
+        if(acceptCoolant){
+            stats.add(Stat.booster, StatValues.boosters(reloadTime, consumes.<ConsumeLiquidBase>get(ConsumeType.liquid).amount, coolantMultiplier, true, l -> consumes.liquidfilters.get(l.id)));
+        }
+
+        stats.add(Stat.inaccuracy, (int)inaccuracy, StatUnit.degrees);
+        stats.add(Stat.reload, 60f / (reloadTime) * (alternate ? 1 : shots), StatUnit.perSecond);
+        stats.add(Stat.targetsAir, targetAir);
+        stats.add(Stat.targetsGround, targetGround);
+        if(ammoPerShot != 1) stats.add(Stat.ammoUse, ammoPerShot, StatUnit.perShot);
     }
 
     @Override
@@ -104,7 +138,7 @@ public class GravityTurret extends PowerTurret {
         }
         @Override
         public boolean absorbLasers() {
-            return absorbLasers && calculateGravity() >= requiredGravityToAbsorbLasers;
+            return absorbLasers && currentGravity >= requiredGravityToAbsorbLasers;
         }
 
         @Override

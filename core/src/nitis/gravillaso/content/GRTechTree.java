@@ -16,6 +16,9 @@ public class GRTechTree implements ContentList {
     private static TechTree.TechNode context = null;
     @Override
     public void load(){
+        margeNode(Blocks.illuminator, ()-> {
+           node(GRBlocks.sunshine);
+        });
         margeNode(Items.titanium, ()->{
             nodeProduce(GRItems.gravitium, ()->{
                 nodeProduce(GRItems.magneturn, ()->{
@@ -23,8 +26,12 @@ public class GRTechTree implements ContentList {
                 });
             });
         });
+        margeNode(Items.sand, ()->{
+            nodeProduce(GRItems.quartz);
+        });
         margeNode(Blocks.forceProjector, ()->{
             node(GRBlocks.colossalForceProjector);
+            node(GRBlocks.gravityProjector);
         });
         margeNode(Blocks.navalFactory, () ->{
             node(GRBlocks.advancedNavalFactory, ()->{
@@ -58,10 +65,12 @@ public class GRTechTree implements ContentList {
             node(GRBlocks.flammableLiquidChamber);
         });
         margeNode(Blocks.kiln, () ->{
+            node(GRBlocks.quartzKiln);
+        });
+        margeNode(Blocks.siliconSmelter, () -> {
             node(GRBlocks.molecularConverter, () ->{
                 nodeSector(GRBlocks.molecularReconstructor, GRSectorPresets.logicalCenter);
             });
-            //TODO: Advanced Kiln
         });
         margeNode(Blocks.phaseWeaver, () ->{
             node(GRBlocks.phaseCaldron);
@@ -129,6 +138,7 @@ public class GRTechTree implements ContentList {
                 node(GRBlocks.arhiepiscop, () ->{
                     node(GRBlocks.sunrise);
                 });
+                node(GRBlocks.slt);
             });
         });
         margeNode(Blocks.coreNucleus, () ->{
@@ -152,6 +162,9 @@ public class GRTechTree implements ContentList {
                 nodeSector(GRSectorPresets.causticGorge, SectorPresets.desolateRift, Seq.with(new Research(GRBlocks.colossalDriver), new Research(GRBlocks.molecularCore)), ()->{
                 });
             });
+        });
+        margeNode(SectorPresets.desolateRift, ()->{
+            nodeSector(GRSectorPresets.frozenRiver, SectorPresets.desolateRift, Seq.with(new Research(GRBlocks.molecularCore), new Research(GRBlocks.gravityProjector), new Research(GRBlocks.slt)));
         });
         margeNode(Blocks.repairTurret, () ->{
             node(GRBlocks.repairLaser);

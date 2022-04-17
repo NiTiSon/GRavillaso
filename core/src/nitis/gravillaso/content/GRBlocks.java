@@ -38,6 +38,7 @@ import mindustry.world.blocks.units.Reconstructor;
 import mindustry.world.blocks.units.RepairPoint;
 import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.draw.DrawMixer;
+import mindustry.world.draw.DrawSmelter;
 import mindustry.world.draw.DrawWeave;
 import mindustry.world.meta.Attribute;
 import nitis.gravillaso.entity.bullet.GraviBullet;
@@ -54,7 +55,7 @@ public class GRBlocks implements ContentList {
     //Environment
     oreQuartz,redSand,redSandWall,burningGround,burningGroundWall,flammableLiquidBlock,metalFloorDamagedOrange,
     //Production
-    advancedPyratiteMixer,advancedBlastMixer,gasolineBarrel,cryofluidChamber,flammableLiquidChamber,phaseCaldron,molecularConverter,molecularReconstructor,magneturnSmelter,electroSmelter,molecularPhaseWeaver,plastaniumMolecularPress,
+    advancedPyratiteMixer, advancedBlastMixer, gasolineBarrel, quartzKiln, cryofluidChamber, flammableLiquidChamber, phaseCaldron, molecularConverter, molecularReconstructor, magneturnSmelter, electroSmelter, molecularPhaseWeaver, plastaniumMolecularPress,
     //Defence
     gravitiumWall,gravitiumWallLarge,magneturnWall,magneturnWallLarge,hyperMender,colossalHealingDome,colossalForceProjector,
     //Gravity
@@ -167,6 +168,19 @@ public class GRBlocks implements ContentList {
             consumes.liquid(Liquids.oil,0.35f);
             outputLiquid = new LiquidStack(GRLiquids.gasoline,0.2f);
             updateEffect = Fx.magmasmoke;
+        }};
+        quartzKiln = new GenericCrafter("quartz-kiln") {{
+            requirements(Category.crafting, with(Items.silicon, 80, Items.lead, 120, GRItems.magneturn, 90));
+            craftEffect = Fx.smeltsmoke;
+            outputItem = new ItemStack(Items.metaglass, 2);
+            craftTime = 90f;
+            size = 3;
+            hasPower = true;
+            itemCapacity = 20;
+            drawer = new DrawSmelter();
+
+            consumes.power(8f);
+            consumes.items(with(GRItems.quartz, 4));
         }};
         cryofluidChamber = new LiquidConverter("cryofluid-chamber"){{
             requirements(Category.crafting, ItemStack.with(Items.copper,70,GRItems.magneturn,40,Items.graphite,120,Items.silicon,35,Items.metaglass,70));
@@ -784,6 +798,9 @@ public class GRBlocks implements ContentList {
             size = 3;
             range = 320f;
             consumes.power(8.5f);
+            requiredGravity = 720f;
+            minGravity = 160f;
+            requiredGravityToAbsorbLasers = 320f;
             shootType = new GraviBullet(98) {{
                 speed = 7.5f;
             }};
