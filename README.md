@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://github.com/NickName73/NickName73/blob/main/Micros/GRavillaso/v2-logo-1280x640.png?raw=true">
   <a href="https://en.wikipedia.org/wiki/Java_%28programming_language%29">
-    <img alt="Language" src="https://img.shields.io/badge/MAKE ON-JAVA-orange7?style=for-the-badge&logo=java&logoColor=fff&color=e87000">
+    <img alt="Language" src="https://img.shields.io/badge/Made%20with-java-red?style=for-the-badge&logo=java">
   </a>
   <a>
     <img alt="Stars" src="https://img.shields.io/github/stars/NickName73/GRavillaso?color=ae0dd6&label=%20&logo=github&logoColor=white&style=for-the-badge">
@@ -12,11 +12,14 @@
   <a href="https://trello.com/b/wT73AZQq/gravillaso">
     <img src="https://img.shields.io/badge/Trello-0b5394?style=for-the-badge&logo=trello&logoColor=white">
   </a>
-  <a href="https://github.com/NickName73/GRavillaso/releases/latest">
-    <img alt="Last Downloads" src="https://img.shields.io/github/downloads/NickName73/GRavillaso/latest/total?label=LATEST&style=for-the-badge&logo=docusign&logoColor=white&color=674ea7">
+    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2791921503">
+    <img alt="Steam Views" src="https://img.shields.io/steam/views/2791921503?color=blue&label=Views&logo=steam&style=for-the-badge">
   </a>
   <a href="https://github.com/NickName73/GRavillaso/releases">
     <img alt="Downloads" src="https://img.shields.io/github/downloads/NickName73/GRavillaso/total?color=0dd632&label&logo=docusign&logoColor=white&style=for-the-badge">
+  </a>
+  <a href="https://github.com/NickName73/GRavillaso/releases/latest">
+    <img alt="Last Downloads" src="https://img.shields.io/github/downloads/NickName73/GRavillaso/latest/total?label=LATEST&style=for-the-badge&logo=docusign&logoColor=white&color=674ea7">
   </a>
 </p>
 
@@ -29,13 +32,7 @@ Java version of Gravillaso Mod, if you want to play with this mod on Mindustry V
 
 </div>
 
-Links
----
-[Trello board](https://trello.com/b/wT73AZQq/gravillaso)  
-[Vkontakle](https://vk.com/gravillaso)  
-[Steam WorkShop](https://steamcommunity.com/sharedfiles/filedetails/?id=2791921503)
----
-Adds
+## Content
 * A lot of new turrets
 * Useful factory
 * Additional maps
@@ -45,7 +42,7 @@ Adds
 * New tech tier
 * Many other cool blocks
 
-Available Languages
-* English (100%) _(Original translation)_
-* Russian (100%) _(Original translation)_
-* You can add your own translation
+## Links
+[Trello board](https://trello.com/b/wT73AZQq/gravillaso)  
+[Vkontakle](https://vk.com/gravillaso)  
+[Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2791921503)
