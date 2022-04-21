@@ -24,7 +24,7 @@ jobs:
     - name: chmod
       run: chmod +x gradlew
     - name: Build mod jar
-      run: ./gradlew deployWithPack
+      run: ./gradlew buildDex
     - name: Upload built jar file
       uses: actions/upload-artifact@v2
       with:
