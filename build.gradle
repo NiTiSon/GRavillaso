@@ -191,7 +191,7 @@ jar{
 task dexify(type: Jar){
     archiveFileName.set("$artifactFilename")
 
-    final File jarArtifact = new File(tasks.jar.archiveFile.get().asFile.parent, "$artifactFilename"),
+    final File jarArtifact = new File(tasks.jar.archiveFile.get().asFile.parent, "${project.archivesBaseName}Desktop.jar"),
                dexedArtifact = new File(tasks.dexify.getTemporaryDir(), "dexed.jar")
 
 
