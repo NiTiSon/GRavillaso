@@ -194,6 +194,13 @@ task deploy(type: Jar){
         }
     }
 }
+
+task deployWithPack(type: Jar){
+    dependsOn "tools:pack"
+    dependsOn "deploy"
+    deploy.shouldRunAfter "tools:pack"
+}
+
 task jarAndSteamLaunch {
     dependsOn "tools:pack"
     dependsOn "jar"
