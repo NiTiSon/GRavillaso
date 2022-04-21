@@ -202,7 +202,7 @@ task dexify(type: Jar){
 
         exec{
             workingDir dexedArtifact.parent
-            def command = ["d8", "--min-api", pMinApi]
+            def command = ["d8", "--min-api", "$d8MinApi"]
             for(def file : files){
                 command += "--classpath"
                 command += file.path
