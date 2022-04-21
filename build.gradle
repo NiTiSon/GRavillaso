@@ -191,6 +191,39 @@ jar{
     }
 }
 
+task dexify(type: Jar){
+    archiveFileName.set(pArtifactFilename)
+
+    final File jarArtifact = new File(tasks.jar.archiveFile.get().asFile.parent, "raw-$pArtifactFilename"),
+               dexedArtifact = new File(tasks.dexify.getTemporaryDir(), "dexed.jar")
+
+
+    doFirst{
+        //collect dependencies needed for desugaring
+        def files = (configurations.compileClasspath.asList() + configurations.runtimeClasspath.asList() + [new File("$sdkRoot/platforms/android-$sdkVersion/android.jar")])
+
+        exec{
+            workingDir dexedArtifact.parent
+            def command = ["d8", "--min-api", pMinApi]
+            for(def file : files){
+                command += "--classpath"
+                command += file.path
+            }
+
+            command += ["--output", dexedArtifact, jarArtifact]
+
+            if(isWindows){
+                commandLine("cmd", "/c", *command)
+            }else{
+                commandLine(*command)
+            }
+        }
+    }
+
+    from(zipTree(jarArtifact), zipTree(dexedArtifact))
+}
+task buildDex dependsOn "build", "dexify"
+
 task deploy(type: Jar){
     dependsOn jarAndroid
     dependsOn jar
