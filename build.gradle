@@ -32,6 +32,10 @@ ext{
         if(name.contains(':')) name = name.split(':').last()
         return "com.github.Anuken.Arc:$name:${mindustryVersion}"
     }
+    doExec = { cmd ->
+        def proc = cmd.execute(null, new File("$buildDir/libs"))
+        proc.waitForProcessOutput(System.out, System.err)
+    }
 }
 dependencies{
     implementation  "com.github.Zelaux.ZelauxModCore:core:$zelauxCore"
