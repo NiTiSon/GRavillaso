@@ -5,7 +5,7 @@ apply plugin: "java"
 version '1.0'
 
 
-jar.archiveFileName.set("raw-$artifactFilename");
+jar.archiveFileName.set("$artifactFilename");
 
 targetCompatibility = 16
 sourceCompatibility = JavaVersion.VERSION_16
