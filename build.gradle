@@ -59,6 +59,13 @@ allprojects{
 
     tasks.withType(JavaCompile){
         options.compilerArgs.addAll(['--release','16'])
+        
+        options.compilerArgs += ["-Xlint:deprecation"]
+
+        options.forkOptions.jvmArgs.addAll([
+                '--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED',
+                '--add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED'
+        ])
     }
 }
 
