@@ -191,11 +191,10 @@ jar{
     }
 }
 
-/*
 task dexify(type: Jar){
     archiveFileName.set(ArtifactFilename)
 
-    final File jarArtifact = new File(tasks.jar.archiveFile.get().asFile.parent, "raw-$pArtifactFilename"),
+    final File jarArtifact = new File(tasks.jar.archiveFile.get().asFile.parent, "raw-$artifactFilename"),
                dexedArtifact = new File(tasks.dexify.getTemporaryDir(), "dexed.jar")
 
 
@@ -223,8 +222,8 @@ task dexify(type: Jar){
 
     from(zipTree(jarArtifact), zipTree(dexedArtifact))
 }
+
 task buildDex dependsOn "build", "dexify"
-*/
 
 task deploy(type: Jar){
     dependsOn jarAndroid
