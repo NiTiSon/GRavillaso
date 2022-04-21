@@ -4,6 +4,9 @@ apply plugin: "java"
 
 version '1.0'
 
+
+jar.archiveFileName.set("raw-$artifactFilename");
+
 targetCompatibility = 16
 sourceCompatibility = JavaVersion.VERSION_16
 
@@ -13,13 +16,7 @@ repositories{
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     maven { url "https://oss.sonatype.org/content/repositories/releases/" }
 }
-/*dependencies{
-    compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
-    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
-    annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
 
-
-}*/
 ext{
     //the build number that this mod is made for
     mindustryVersion = "v135"
@@ -192,7 +189,7 @@ jar{
 }
 
 task dexify(type: Jar){
-    archiveFileName.set(ArtifactFilename)
+    archiveFileName.set("$artifactFilename")
 
     final File jarArtifact = new File(tasks.jar.archiveFile.get().asFile.parent, "raw-$artifactFilename"),
                dexedArtifact = new File(tasks.dexify.getTemporaryDir(), "dexed.jar")
