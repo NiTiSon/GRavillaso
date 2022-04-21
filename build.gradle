@@ -182,6 +182,7 @@ jar{
 
 task deploy(type: Jar){
     dependsOn jarAndroid
+    dependsOn jar
     archiveFileName = "${project.archivesBaseName}.jar"
 
     from{ [zipTree("$buildDir/libs/${project.archivesBaseName}.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
