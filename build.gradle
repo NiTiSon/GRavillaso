@@ -6,6 +6,7 @@ version '1.0'
 
 
 jar.archiveFileName.set("$artifactFilename");
+def isWindows = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("windows");
 
 targetCompatibility = 16
 sourceCompatibility = JavaVersion.VERSION_16
