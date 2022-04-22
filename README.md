@@ -69,10 +69,12 @@ May be not work on ios|android devices
 ### Via Github Actions
 1. Go to [Actions Page](https://github.com/NickName73/GRavillaso/actions)
 2. Open the last workflow with a green ✅
-3. Download `GRavillaso.jar` file bellow artifacts label
-4. Open Mindustry 
-5. Open mod menu
-6. Click **Import Mod**
+3. Download `GRavillaso` zip file bellow artifacts label
+4. Unpack downloaded file 
+5. Open Mindustry 
+6. Open mod menu
+7. Click **Import Mod**
+8. Select ***unpacked*** file
 
 ### Via Steam Workshop
 1. Go to [GRavillaso Steam Page](https://steamcommunity.com/sharedfiles/filedetails/?id=2791921503)
