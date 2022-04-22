@@ -51,6 +51,31 @@ May be not work on ios|android devices
 * New tech tier
 * Many other cool blocks
 
+## Install
+ 
+### Via Mod Browser
+1. Open mod menu
+2. Go to mod browser
+3. Select `GRavillaso` and download
+
+### Via Github Releases
+1. Go to [Release Page](https://github.com/NickName73/GRavillaso/releases)
+2. Select required version
+3. Click **Assets** and download `GRavillaso.jar`
+4. Open Mindustry 
+5. Open mod menu
+6. Click **Import Mod**
+
+### Via Github Actions
+1. Go to [Actions Page](https://github.com/NickName73/GRavillaso/actions)
+2. Open the last workflow with a green ✅
+3. Download `GRavillaso.jar` file bellow artifacts label
+4. Open Mindustry 
+5. Open mod menu
+6. Click **Import Mod**
+
+### Via Steam Workshop
+
 ## Links
 [Trello board](https://trello.com/b/wT73AZQq/gravillaso)  
 [Vkontakle](https://vk.com/gravillaso)  
