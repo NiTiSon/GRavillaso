@@ -22,7 +22,7 @@ ext{
     //the build number that this mod is made for
     mindustryVersion = "v135"
     zelauxCore = "8dbf4593d2e"
-    jabelVersion = "0.6.0"
+    jabelVersion = "0.7.0"
     sdkVersion = "30"
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
 
