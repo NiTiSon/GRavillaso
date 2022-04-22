@@ -51,6 +51,7 @@ buildscript {
     }
 }
 allprojects{
+    apply plugin: "java"
 
     group = "com.github.NickName73"
 
@@ -72,8 +73,6 @@ allprojects{
 }
 
 project(":tools"){
-    apply plugin: "java"
-
     dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
         implementation 'commons-io:commons-io:2.5'
@@ -87,8 +86,6 @@ project(":tools"){
     }
 }
 project(":core"){
-    apply plugin: "java"
-
     compileJava.options.fork = true
 
     task preGen {
@@ -189,40 +186,6 @@ jar{
     }
 }
 
-task dexify(type: Jar){
-    archiveFileName.set("$artifactFilename")
-
-    final File jarArtifact = new File(tasks.jar.archiveFile.get().asFile.parent, "${project.archivesBaseName}Desktop.jar"),
-               dexedArtifact = new File(tasks.dexify.getTemporaryDir(), "dexed.jar")
-
-
-    doFirst{
-        //collect dependencies needed for desugaring
-        def files = (configurations.compileClasspath.asList() + configurations.runtimeClasspath.asList() + [new File("$sdkRoot/platforms/android-$sdkVersion/android.jar")])
-
-        exec{
-            workingDir dexedArtifact.parent
-            def command = ["d8", "--min-api", "$d8MinApi"]
-            for(def file : files){
-                command += "--classpath"
-                command += file.path
-            }
-
-            command += ["--output", dexedArtifact, jarArtifact]
-
-            if(isWindows){
-                commandLine("cmd", "/c", *command)
-            }else{
-                commandLine(*command)
-            }
-        }
-    }
-
-    from(zipTree(jarArtifact), zipTree(dexedArtifact))
-}
-
-task buildDex dependsOn "build", "dexify"
-
 task deploy(type: Jar){
     dependsOn jarAndroid
     dependsOn jar
@@ -231,10 +194,12 @@ task deploy(type: Jar){
     from{ [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
 
     doLast{
+/*
         delete{
             delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar"
             delete "$buildDir/libs/${project.archivesBaseName}Android.jar"
         }
+*/
     }
 }
 
@@ -242,29 +207,6 @@ task deployWithPack(type: Jar){
     dependsOn "tools:pack"
     dependsOn "deploy"
     deploy.shouldRunAfter "tools:pack"
-}
-
-task jarAndSteamLaunch {
-    dependsOn "tools:pack"
-    dependsOn "jar"
-    jar.shouldRunAfter "tools:pack"
-    doLast{
-        copy {
-            from "$buildDir/libs/${project.archivesBaseName}.jar"
-            into "A:\\Apps\\steamapps\\common\\Mindustry\\saves\\mods"
-        }
-        Desktop.desktop.browse "steam://rungameid/1127400".toURI()
-    }
-}
-task jarAndSteamLaunchWithoutPack {
-    dependsOn "jar"
-    doLast{
-        copy {
-            from "$buildDir/libs/${project.archivesBaseName}.jar"
-            into "A:\\Apps\\steamapps\\common\\Mindustry\\saves\\mods"
-        }
-        Desktop.desktop.browse "steam://rungameid/1127400".toURI()
-    }
 }
 task jarWithPack {
     dependsOn "tools:pack"
