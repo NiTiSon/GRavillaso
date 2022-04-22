@@ -224,7 +224,7 @@ task jarWithPack {
     dependsOn "jar"
     jar.shouldRunAfter "tools:pack"
 }
-task publishing {
+publishing {
     publications {
         maven(MavenPublication) {
 		from components.java
