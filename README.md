@@ -75,6 +75,9 @@ May be not work on ios|android devices
 6. Click **Import Mod**
 
 ### Via Steam Workshop
+1. Go to [GRavillaso Steam Page](https://steamcommunity.com/sharedfiles/filedetails/?id=2791921503)
+2. Select subscribe 
+3. Restart Mindustry
 
 ## Links
 [Trello board](https://trello.com/b/wT73AZQq/gravillaso)  
