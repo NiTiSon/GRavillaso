@@ -1,6 +1,13 @@
 name: Build
 
-on: [push]
+on:
+  push:
+    branches: ["main", "singleton", "java"]
+    paths:
+    - "**.java"
+    - "core/"
+    - "build.gradle"
+    - "**.gradle"
 
 jobs:
   buildJar:
