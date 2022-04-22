@@ -8,6 +8,7 @@ on:
     - "core/"
     - "build.gradle"
     - "**.gradle"
+    - ".github/workflows/build.yml"
 
 jobs:
   buildJar:
@@ -31,7 +32,7 @@ jobs:
     - name: chmod
       run: chmod +x gradlew
     - name: Build mod jar
-      run: ./gradlew jarWithPack dexify
+      run: ./gradlew deployWithPack
     - name: Upload built jar file
       uses: actions/upload-artifact@v2
       with:
