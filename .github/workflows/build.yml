@@ -5,10 +5,13 @@ on:
     branches: ["main", "singleton", "java"]
     paths:
     - "**.java"
+    - "**.properties"
     - "core/"
     - "build.gradle"
     - "**.gradle"
     - ".github/workflows/build.yml"
+
+  workflow_dispatch:
 
 jobs:
   buildJar:
