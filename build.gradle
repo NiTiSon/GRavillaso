@@ -195,6 +195,7 @@ jar {
         include "mod.hjson"
         include "mod.json"
         include "icon.png"
+        include "classes.dex"
     }
 
     from("core/assets/") {
