@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  rawBuild:
+  OnlyPCBuild:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -34,7 +34,7 @@ jobs:
     - name: chmod
       run: chmod +x gradlew
     - name: Build mod jar
-      run: ./gradlew deploy
+      run: ./gradlew deployPackPCONLY
     - name: Upload built jar file
       uses: actions/upload-artifact@v2
       with:
@@ -42,7 +42,7 @@ jobs:
         path: build/libs/${{ github.event.repository.name }}.jar
 
    
-  buildJar:
+  Build:
     runs-on: ubuntu-latest
 
     steps:
@@ -63,7 +63,7 @@ jobs:
     - name: chmod
       run: chmod +x gradlew
     - name: Build mod jar
-      run: ./gradlew deployWithPack
+      run: ./gradlew deployPack
     - name: Upload built jar file
       uses: actions/upload-artifact@v2
       with:

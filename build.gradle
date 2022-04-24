@@ -1,84 +1,163 @@
-import java.awt.Desktop
-
-apply plugin: "java"
-
-version '1.0'
-
-targetCompatibility = 16
-sourceCompatibility = JavaVersion.VERSION_16
-
-repositories{
-    mavenCentral()
-    maven { url 'https://www.jitpack.io' }
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-    maven { url "https://oss.sonatype.org/content/repositories/releases/" }
-}
-
-ext{
-    //the build number that this mod is made for
-    mindustryVersion = "v135"
-    zelauxCore = "8dbf4593d2e"
-    jabelVersion = "0.7.0"
-    sdkVersion = "30"
-    sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
-
-    arcModule = { String name ->
-        if(name.contains(':')) name = name.split(':').last()
-        return "com.github.Anuken.Arc:$name:${mindustryVersion}"
-    }
-    doExec = { cmd ->
-        def proc = cmd.execute(null, new File("$buildDir/libs"))
-        proc.waitForProcessOutput(System.out, System.err)
-    }
-}
-dependencies{
-    implementation  "com.github.Zelaux.ZelauxModCore:core:$zelauxCore"
-}
 buildscript {
     repositories{
         mavenCentral()
         maven{ url 'https://www.jitpack.io' }
     }
     dependencies {
-        classpath "com.github.Anuken.Arc:arc-core:v135"
-        classpath "com.github.Anuken.Mindustry:core:v135"
-        classpath "com.github.Anuken.Mindustry:tools:v135"
-        classpath "com.github.Anuken.Arc:packer:v135"
+        classpath "com.github.Anuken.Arc:arc-core:v$mindustryVersion"
+        classpath "com.github.Anuken.Mindustry:core:v$mindustryVersion"
+        classpath "com.github.Anuken.Mindustry:tools:v$mindustryVersion"
+        classpath "com.github.Anuken.Arc:packer:v$mindustryVersion"
     }
 }
-allprojects{
+
+plugins{
+    id "java"
+}
+
+repositories{
+    mavenCentral()
+    maven{url "https://jitpack.io"}
+}
+
+dependencies{
+    annotationProcessor 'com.github.Anuken:jabel:$jabelVersion'
+    implementation "com.github.Anuken.Mindustry:core:$mindustryVersion"
+}
+
+ext{
+    sdkRoot = System.getenv("ANDROID_HOME")
+    sdkVersion = '32'
+
+    doExec = { cmd ->
+        def proc = cmd.execute(null, new File("$buildDir/libs"))
+        proc.waitForProcessOutput(System.out, System.err)
+    }
+}
+
+/// ----------------------------------------------------------
+
+task jarAndroid {
+    dependsOn "jar"
+
+    doLast {
+        //collect dependencies needed for desugaring
+        def files = (
+                project(":core").configurations.compileClasspath.asList() +
+                        project(":core").configurations.runtimeClasspath.asList() +
+                        configurations.runtimeClasspath.asList() +
+                        [new File("$sdkRoot/platforms/android-$sdkVersion/android.jar")]
+        )
+        def dependencies = files.collect { "--classpath $it.path" }.join(" ")
+
+        //dex and desugar files - this requires d8 in your PATH
+        doExec("d8 $dependencies --min-api 14 --output ${project.archivesBaseName}Android.jar ${project.archivesBaseName}Desktop.jar")
+    }
+}
+jar {
+    dependsOn "core:jar"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archiveFileName = "${project.archivesBaseName}Desktop.jar"
+    from {
+        project(":core").fileTree("build/libs/core.jar").collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    from(rootDir) {
+        include "mod.hjson"
+        include "mod.json"
+        include "icon.png"
+    }
+
+    from("core/assets/") {
+        include "**"
+    }
+}
+task pack() {
+    dependsOn "tools:jar"
+    dependsOn jar
+}
+task deploy(type: Jar) {
+    dependsOn jar
+    dependsOn jarAndroid
+    archiveFileName = "${project.archivesBaseName}.jar"
+
+    from { [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
+
+    doLast {
+        delete { delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar" }
+        delete { delete "$buildDir/libs/${project.archivesBaseName}Android.jar" }
+    }
+}
+task deployPack(type: Jar) {
+    dependsOn pack
+    dependsOn jar
+    dependsOn jarAndroid
+    archiveFileName = "${project.archivesBaseName}.jar"
+
+    from { [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
+
+    doLast {
+        delete { delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar" }
+        delete { delete "$buildDir/libs/${project.archivesBaseName}Android.jar" }
+    }
+}
+task deployPCONLY(type: Jar) {
+    dependsOn jar
+    archiveFileName = "${project.archivesBaseName}-DesktopOnly.jar"
+
+    from { [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar")] }
+
+    doLast {
+        delete { delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar" }
+    }
+}
+task deployPackPCONLY(type: Jar) {
+    dependsOn pack
+    dependsOn jar
+    archiveFileName = "${project.archivesBaseName}-DesktopOnly.jar"
+
+    from { [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar")] }
+
+    doLast {
+        delete { delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar" }
+    }
+}
+
+/// ----------------------------------------------------------
+
+tasks.withType(JavaCompile){
+    targetCompatibility = 16
+    sourceCompatibility = JavaVersion.VERSION_16
+    options.encoding = "UTF-8"
+    options.compilerArgs += ["-Xlint:deprecation"]
+    compileJava.options.fork = true
+    doFirst{
+        options.compilerArgs = options.compilerArgs.findAll{it != '--enable-preview' }
+    }
+}
+allprojects {
     apply plugin: "java"
 
-    group = "com.github.NickName73"
-
-    repositories{
+    repositories {
         mavenCentral()
         maven{ url 'https://www.jitpack.io' }
     }
-    apply plugin: 'maven-publish'
 
-    repositories {
-        mavenLocal()
-        google()
-        mavenCentral()
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
-        maven { url 'https://jitpack.io' }
-    }
+    targetCompatibility = 16
+    sourceCompatibility = JavaVersion.VERSION_16
 
-    tasks.withType(JavaCompile){
+    tasks.withType(JavaCompile) {
         options.compilerArgs.addAll(['--release','16'])
-        
-        options.compilerArgs += ["-Xlint:deprecation"]
-
-        options.forkOptions.jvmArgs.addAll([
-                '--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED',
-                '--add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED'
-        ])
+    }
+    java {
+        withJavadocJar()
+        withSourcesJar()
     }
 }
-
-project(":tools"){
+project(":tools") {
     dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
         implementation 'commons-io:commons-io:2.5'
@@ -87,18 +166,19 @@ project(":tools"){
 
         implementation 'com.github.javaparser:javaparser-symbol-solver-core:3.22.1'
         implementation "com.github.Anuken.Mindustry:core:$mindustryVersion"
-        implementation "com.github.Zelaux.ZelauxModCore:tools:$zelauxCore"
-        implementation "com.github.Zelaux.ZelauxModCore:core:$zelauxCore"
+        implementation "com.github.Zelaux.ZelauxModCore:tools:$zelauxCoreVersion"
+        implementation "com.github.Zelaux.ZelauxModCore:core:$zelauxCoreVersion"
     }
 }
-project(":core"){
- 
+project(":core") {
+    apply plugin: "java"
+
     compileJava.options.fork = true
 
     task preGen {
         outputs.upToDateWhen { false }
     }
-    task sourcesJar(type: Jar, dependsOn: classes) {
+    task sourceJar(type: Jar, dependsOn: classes) {
         archiveClassifier = 'sources'
         from sourceSets.main.allSource
     }
@@ -111,15 +191,14 @@ project(":core"){
     }
 
     artifacts {
-        archives sourcesJar
+        archives sourceJar
         archives assetsJar
     }
 
     dependencies {
         compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
         compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
-        implementation "com.github.Zelaux.ZelauxModCore:tools:$zelauxCore"
-        implementation "com.github.Zelaux.ZelauxModCore:core:$zelauxCore"
+        implementation "com.github.Zelaux.ZelauxModCore:core:$zelauxCoreVersion"
         annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
     }
 
@@ -146,90 +225,3 @@ project(":core"){
         }
     }
 }
-configure([":core", ":tools"].collect { project(it) }) {
-    java {
-        withJavadocJar()
-        withSourcesJar()
-    }
-
-    publishing {
-        publications {
-            maven(MavenPublication) {
-                from components.java
-            }
-        }
-    }
-}
-
-task jarAndroid {
-    dependsOn "jar"
-
-    doLast {
-        //collect dependencies needed for desugaring
-        def files = (
-                project(":core").configurations.compileClasspath.asList() +
-                        project(":core").configurations.runtimeClasspath.asList() +
-                        configurations.runtimeClasspath.asList() +
-                        [new File("$sdkRoot/platforms/android-$sdkVersion/android.jar")]
-        )
-        def dependencies = files.collect { "--classpath $it.path" }.join(" ")
-
-        //dex and desugar files - this requires d8 in your PATH
-        doExec("d8 $dependencies --min-api 14 --output ${project.archivesBaseName}Android.jar ${project.archivesBaseName}Desktop.jar")
-    }
-}
-jar {
-    dependsOn "core:jar"
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    archiveFileName = "${project.archivesBaseName}Desktop.jar"
-    from {
-//        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-        project(":core").fileTree("build/libs/core.jar").collect { it.isDirectory() ? it : zipTree(it) }
-    }
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-//        project(":core").fileTree("build/libs/core.jar").collect { it.isDirectory() ? it : zipTree(it) }
-    }
-
-    from(rootDir) {
-        include "mod.hjson"
-        include "mod.json"
-        include "icon.png"
-        include "classes.dex"
-    }
-
-    from("core/assets/") {
-        include "**"
-    }
-}
-task deploy(type: Jar) {
-    dependsOn jarAndroid
-    dependsOn jar
-    archiveFileName = "${project.archivesBaseName}.jar"
-
-    from { [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
-
-    doLast {
-        delete { delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar" }
-        delete { delete "$buildDir/libs/${project.archivesBaseName}Android.jar" }
-    }
-}
-
-task deployWithPack(type: Jar){
-    dependsOn "tools:pack"
-    dependsOn "deploy"
-    deploy.shouldRunAfter "tools:pack"
-}
-task jarWithPack {
-    dependsOn "tools:pack"
-    dependsOn "jar"
-    jar.shouldRunAfter "tools:pack"
-}
-publishing {
-    publications {
-        maven(MavenPublication) {
-		from components.java
-        }
-    }
-}
-

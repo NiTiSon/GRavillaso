@@ -1,11 +1,12 @@
-sourceSets.main.java.srcDirs = ["src/"]
-
 import arc.files.Fi
 import arc.graphics.Color
 import arc.graphics.Pixmap
 import arc.struct.IntIntMap
 import arc.struct.IntMap
 import arc.util.async.Threads
+
+sourceSets.main.java.srcDirs = ["src/"]
+
 
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
