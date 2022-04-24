@@ -75,9 +75,27 @@ jar {
         include "**"
     }
 }
-task pack() {
-    dependsOn "tools:jar"
-    dependsOn jar
+task pack(type: Jar) {
+    dependsOn "core:jar"
+    dependsOn "tools:pack"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archiveFileName = "${project.archivesBaseName}Desktop.jar"
+    from {
+        project(":core").fileTree("build/libs/core.jar").collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    from(rootDir) {
+        include "mod.hjson"
+        include "mod.json"
+        include "icon.png"
+    }
+
+    from("core/assets/") {
+        include "**"
+    }
 }
 task deploy(type: Jar) {
     dependsOn jar
@@ -93,7 +111,6 @@ task deploy(type: Jar) {
 }
 task deployPack(type: Jar) {
     dependsOn pack
-    dependsOn jar
     dependsOn jarAndroid
     archiveFileName = "${project.archivesBaseName}.jar"
 
@@ -116,7 +133,6 @@ task deployPCONLY(type: Jar) {
 }
 task deployPackPCONLY(type: Jar) {
     dependsOn pack
-    dependsOn jar
     archiveFileName = "${project.archivesBaseName}-DesktopOnly.jar"
 
     from { [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar")] }
