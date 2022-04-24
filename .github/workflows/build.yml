@@ -39,7 +39,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: raw-${{ github.event.repository.name }}
-        path: build/libs/${{ github.event.repository.name }}.jar
+        path: build/libs/GRavillaso-DesktopOnly.jar
 
    
   Build:
@@ -68,4 +68,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: ${{ github.event.repository.name }}
-        path: build/libs/${{ github.event.repository.name }}.jar
+        path: build/libs/**.jar
