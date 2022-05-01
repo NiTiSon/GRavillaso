@@ -25,12 +25,12 @@ jobs:
     - name: chmod
       run: chmod +x gradlew
     - name: Build mod jar
-      run: ./gradlew deployPackPCONLY
+      run: ./gradlew build
     - name: Upload built jar file
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ github.event.repository.name }}-DesktopOnly
-        path: build/libs/GRavillaso-DesktopOnly.jar
+        name: ${{ github.event.repository.name }}.jar
+        path: build/libs/raw-*.jar
 
    
   Build:
@@ -54,9 +54,9 @@ jobs:
     - name: chmod
       run: chmod +x gradlew
     - name: Build mod jar
-      run: ./gradlew deployPack
+      run: ./gradlew buildDex
     - name: Upload built jar file
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ github.event.repository.name }}
-        path: build/libs/**.jar
+        name: Android-${{ github.event.repository.name }}.jar
+        path: build/libs/GRavillaso.jar
