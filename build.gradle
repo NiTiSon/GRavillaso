@@ -27,7 +27,7 @@ repositories{
 
 dependencies{
     annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
-    implementation "com.github.Anuken.Mindustry:core:$mindustryVersion"
+    compileClasspath "com.github.Anuken.Mindustry:core:$mindustryVersion"
 }
 
 ext{
@@ -41,6 +41,10 @@ def isWindows = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains(
 
 jar {
     dependsOn "core:jar"
+    compileJava {
+        targetCompatibility = 16
+        sourceCompatibility = JavaVersion.VERSION_16
+    }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from {
         project(":core").fileTree("build/libs/core.jar").collect { it.isDirectory() ? it : zipTree(it) }
@@ -75,11 +79,16 @@ task dexify(type: Jar){
             def command = ["d8", "--min-api", "14"]
             for(def file : files){
                 command += "--classpath"
+                println "Path to class: " + file.path
                 command += file.path
             }
 
             command += ["--output", dexedArtifact, jarArtifact]
-
+            for (def str : command) {
+                print " " + str.toString();
+            }
+            println ""
+            println "Command are: " + command
             if(isWindows){
                 commandLine("cmd", "/c", *command)
             }else{
@@ -101,21 +110,6 @@ task buildMove(dependsOn: build){
         }
     }
 }
-
-tasks.withType(JavaCompile){
-    targetCompatibility = 8
-    sourceCompatibility = JavaVersion.VERSION_14
-    options.encoding = "UTF-8"
-    options.compilerArgs += ["-Xlint:deprecation"]
-    if(JavaVersion.current() != JavaVersion.VERSION_1_8){
-        options.compilerArgs.addAll(['--release', '8', '--enable-preview'])
-    }
-    compileJava.options.fork = true
-    doFirst{
-        options.compilerArgs = options.compilerArgs.findAll{it != '--enable-preview' }
-    }
-}
-
 allprojects {
     apply plugin: "java"
 
@@ -138,6 +132,12 @@ allprojects {
 project(":tools") {
     dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+        implementation project(":core")
+
+        runtimeClasspath "com.github.Anuken.Mindustry:core:v$mindustryVersion"
+        implementation "com.github.Zelaux.ZelauxModCore:tools:$zelauxCoreVersion"
+        implementation "com.github.Zelaux.ZelauxModCore:core:$zelauxCoreVersion"
     }
 }
 project(":core") {
@@ -166,8 +166,8 @@ project(":core") {
     }
 
     dependencies {
-        compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
-        compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+        compileClasspath "com.github.Anuken.Arc:arc-core:$mindustryVersion"
+        compileClasspath "com.github.Anuken.Mindustry:core:$mindustryVersion"
         implementation "com.github.Zelaux.ZelauxModCore:core:$zelauxCoreVersion"
         annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
     }
