@@ -135,7 +135,8 @@ project(":tools") {
 
         implementation project(":core")
 
-        runtimeClasspath "com.github.Anuken.Mindustry:core:v$mindustryVersion"
+        implementation 'com.github.javaparser:javaparser-symbol-solver-core:3.22.1'
+        implementation "com.github.Anuken.Mindustry:core:$mindustryVersion"
         implementation "com.github.Zelaux.ZelauxModCore:tools:$zelauxCoreVersion"
         implementation "com.github.Zelaux.ZelauxModCore:core:$zelauxCoreVersion"
     }
