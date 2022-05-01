@@ -11,8 +11,13 @@ buildscript {
     }
 }
 
-plugins{
+plugins {
     id "java"
+}
+
+sourceSets.main{
+    java.srcDir("src/")
+    resources.srcDir("assets/")
 }
 
 repositories{
@@ -21,38 +26,22 @@ repositories{
 }
 
 dependencies{
-    annotationProcessor 'com.github.Anuken:jabel:$jabelVersion'
+    annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
     implementation "com.github.Anuken.Mindustry:core:$mindustryVersion"
 }
 
 ext{
     sdkRoot = System.getenv("ANDROID_HOME")
+    sdkVersion = '30'
 }
 
-/// ----------------------------------------------------------
+jar.archiveFileName.set("raw-$artifactName");
 
-task jarAndroid {
-    dependsOn "jar"
+def isWindows = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("windows");
 
-    doLast {
-        if(!sdkRoot || !new File(sdkRoot).exists()) throw new GradleException("No valid Android SDK found. Ensure that ANDROID_HOME is set to your Android SDK directory.");
-
-        def platformRoot = new File("$sdkRoot/platforms/").listFiles().sort().reverse().find{ f -> new File(f, "android.jar").exists()}
-
-        if(!platformRoot) throw new GradleException("No android.jar found. Ensure that you have an Android platform installed.")
-
-        //collect dependencies needed for desugaring
-        def dependencies = (configurations.compileClasspath.asList() + configurations.runtimeClasspath.asList() + [new File(platformRoot, "android.jar")]).collect{ "--classpath $it.path" }.join(" ")
-
-        //dex and desugar files - this requires d8 in your PATH
-        "d8 $dependencies --min-api 14 --output ${project.archivesBaseName}Android.jar ${project.archivesBaseName}Desktop.jar"
-                .execute(null, new File("$buildDir/libs")).waitForProcessOutput(System.out, System.err)
-    }
-}
 jar {
     dependsOn "core:jar"
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    archiveFileName = "${project.archivesBaseName}Desktop.jar"
     from {
         project(":core").fileTree("build/libs/core.jar").collect { it.isDirectory() ? it : zipTree(it) }
     }
@@ -70,85 +59,63 @@ jar {
         include "**"
     }
 }
-task pack(type: Jar) {
-    dependsOn "tools:pack"
-    dependsOn "core:jar"
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    archiveFileName = "${project.archivesBaseName}Desktop.jar"
-    from {
-        project(":core").fileTree("build/libs/core.jar").collect { it.isDirectory() ? it : zipTree(it) }
+
+task dexify(type: Jar){
+    archiveFileName.set(artifactName)
+
+    final File jarArtifact = new File(tasks.jar.archiveFile.get().asFile.parent, "raw-$artifactName"),
+               dexedArtifact = new File(tasks.dexify.getTemporaryDir(), "dexed.jar")
+
+
+    doFirst{
+        def files = (configurations.compileClasspath.asList() + configurations.runtimeClasspath.asList() + [new File("$sdkRoot/platforms/android-$sdkVersion/android.jar")])
+
+        exec{
+            workingDir dexedArtifact.parent
+            def command = ["d8", "--min-api", "14"]
+            for(def file : files){
+                command += "--classpath"
+                command += file.path
+            }
+
+            command += ["--output", dexedArtifact, jarArtifact]
+
+            if(isWindows){
+                commandLine("cmd", "/c", *command)
+            }else{
+                commandLine(*command)
+            }
+        }
     }
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
 
-    from(rootDir) {
-        include "mod.hjson"
-        include "mod.json"
-        include "icon.png"
-    }
-
-    from("core/assets/") {
-        include "**"
-    }
-}
-task deploy(type: Jar) {
-    dependsOn jar
-    dependsOn jarAndroid
-    archiveFileName = "${project.archivesBaseName}.jar"
-
-    from { [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
-
-    doLast {
-        delete { delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar" }
-        delete { delete "$buildDir/libs/${project.archivesBaseName}Android.jar" }
-    }
-}
-task deployPack(type: Jar) {
-    dependsOn pack
-    dependsOn jarAndroid
-    archiveFileName = "${project.archivesBaseName}.jar"
-
-    from { [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
-
-    doLast {
-        delete { delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar" }
-        delete { delete "$buildDir/libs/${project.archivesBaseName}Android.jar" }
-    }
-}
-task deployPCONLY(type: Jar) {
-    dependsOn jar
-    archiveFileName = "${project.archivesBaseName}-DesktopOnly.jar"
-
-    from { [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar")] }
-
-    doLast {
-        delete { delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar" }
-    }
-}
-task deployPackPCONLY(type: Jar) {
-    dependsOn pack
-    archiveFileName = "${project.archivesBaseName}-DesktopOnly.jar"
-
-    from { [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar")] }
-
-    doLast {
-        delete { delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar" }
-    }
+    from(zipTree(jarArtifact), zipTree(dexedArtifact))
 }
 
-/// ----------------------------------------------------------
+task buildDex dependsOn "build", "dexify"
+
+task buildMove(dependsOn: build){
+    doLast{
+        copy{
+            from "build/libs/raw-GRavillaso.jar"
+            into System.getenv("MINDUSTRY_MODS_HOME")
+        }
+    }
+}
 
 tasks.withType(JavaCompile){
-    targetCompatibility = 16
-    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = 8
+    sourceCompatibility = JavaVersion.VERSION_14
     options.encoding = "UTF-8"
     options.compilerArgs += ["-Xlint:deprecation"]
+    if(JavaVersion.current() != JavaVersion.VERSION_1_8){
+        options.compilerArgs.addAll(['--release', '8', '--enable-preview'])
+    }
     compileJava.options.fork = true
     doFirst{
         options.compilerArgs = options.compilerArgs.findAll{it != '--enable-preview' }
     }
 }
+
 allprojects {
     apply plugin: "java"
 
@@ -171,14 +138,6 @@ allprojects {
 project(":tools") {
     dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
-        implementation 'commons-io:commons-io:2.5'
-
-        implementation project(":core")
-
-        implementation 'com.github.javaparser:javaparser-symbol-solver-core:3.22.1'
-        implementation "com.github.Anuken.Mindustry:core:$mindustryVersion"
-        implementation "com.github.Zelaux.ZelauxModCore:tools:$zelauxCoreVersion"
-        implementation "com.github.Zelaux.ZelauxModCore:core:$zelauxCoreVersion"
     }
 }
 project(":core") {
