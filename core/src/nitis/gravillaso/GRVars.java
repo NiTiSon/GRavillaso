@@ -28,10 +28,7 @@ public class GRVars extends ModVars {
     }
     @Override
     protected void showException(Throwable ex) {
-        Log.errTag(GRMod.GR_TAG_COLORIZED, ex.getMessage());
-        for (StackTraceElement i : ex.getStackTrace()){
-            Log.errTag(GRMod.GR_TAG_COLORIZED, i.toString());
-        }
+        Log.err(ex);
     }
 
     @Override

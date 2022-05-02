@@ -13,10 +13,9 @@ import mindustry.ui.dialogs.BaseDialog;
 import mma.MMAMod;
 
 public class GRMod extends MMAMod {
-    public static final boolean isBeta = true;
-    public static final String GITHUB_LINK = "https://github.com/NickName73/Gravillaso";
-    public static final String GR_TAG = "NiTiS-GR";
-    public static final String GR_TAG_COLORIZED = "NiTiS-[purple]GR[]";
+    private static final boolean isBeta = true;
+    private static final String GITHUB_LINK = "https://github.com/NickName73/Gravillaso";
+    private static final String GR_TAG_COLORIZED = "NiTiS-[purple]GR[]";
 
     public GRMod(){
         super();
@@ -30,9 +29,8 @@ public class GRMod extends MMAMod {
                     dialog.cont.add().size(20f).row();
                     dialog.cont.add(Core.bundle.format("@gravillaso-beta.description")).row();
                     dialog.cont.add().size(20f).row();
-                    dialog.cont.button(Core.bundle.format("ok"), () ->{
-                        dialog.hide();
-                    }).size(140f,60f).center().row();
+                    dialog.cont.button(Core.bundle.format("ok"), dialog::hide)
+                            .size(140f,60f).center().row();
                     dialog.cont.button(Core.bundle.format("@gravillaso-hide"), () ->{
                         dialog.hide();
                         Core.settings.put("gravillaso-beta-show",false);

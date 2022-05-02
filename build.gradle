@@ -1,3 +1,5 @@
+import java.awt.Desktop
+
 buildscript {
     repositories{
         mavenCentral()
@@ -28,6 +30,7 @@ repositories{
 dependencies{
     annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
     compileClasspath "com.github.Anuken.Mindustry:core:$mindustryVersion"
+    implementation  "com.github.Zelaux.ZelauxModCore:core:$zelauxCoreVersion"
 }
 
 ext{
@@ -102,12 +105,14 @@ task dexify(type: Jar){
 
 task buildDex dependsOn "build", "dexify"
 
-task buildMove(dependsOn: build){
-    doLast{
-        copy{
-            from "build/libs/raw-GRavillaso.jar"
-            into System.getenv("MINDUSTRY_MODS_HOME")
+task buildLaunch {
+    dependsOn "build"
+    doLast {
+        copy {
+            from "$buildDir/libs/raw-${project.archivesBaseName}.jar"
+            into System.getenv("MINDUSTRY_MODS")
         }
+        Desktop.desktop.browse "steam://rungameid/1127400".toURI()
     }
 }
 allprojects {
