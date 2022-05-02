@@ -78,9 +78,7 @@ public class GravityProjector extends Block {
                 y * Vars.tilesize + offset,
                 radius,
                 (build) -> build instanceof GravityConsumer,
-                (build) -> {
-                    Drawf.selected(build, Tmp.c1.set(GRPal.magneturn).a(Mathf.absin(4f, 1f)));
-                });
+                (build) -> Drawf.selected(build, Tmp.c1.set(GRPal.magneturn).a(Mathf.absin(4f, 1f))));
     }
 
     public class GravityProjectorBuild extends Building implements Ranged, GravityProvider {
@@ -125,9 +123,7 @@ public class GravityProjector extends Block {
         @Override
         public void drawSelect() {
             super.drawSelect();
-            getPotentialConnections(this.team, (b,u) -> {
-                drawConnect(b);
-            });
+            getPotentialConnections(this.team, (b,u) -> drawConnect(b));
         }
 
         public void drawConnect(Building build){

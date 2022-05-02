@@ -8,7 +8,7 @@ import mindustry.type.StatusEffect;
 public class GRStatusEffects implements ContentList {
 
     public static StatusEffect
-    broken,pressure;
+    broken, pressure;
 
     @Override
     public void load() {

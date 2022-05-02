@@ -797,11 +797,14 @@ public class GRBlocks implements ContentList {
             requirements(Category.turret, ItemStack.with(Items.lead, 240, Items.graphite, 190, Items.metaglass, 110, Items.surgeAlloy, 70, GRItems.magneturn, 45));
             size = 3;
             range = 320f;
-            consumes.power(8.5f);
+            consumesPower = true;
+            powerUse = 12f;
             requiredGravity = 720f;
             minGravity = 160f;
             requiredGravityToAbsorbLasers = 320f;
-            shootType = new GraviBullet(98) {{
+            shootY = -6;
+            coolantMultiplier = 3.5f;
+            shootType = new GraviBullet(72) {{
                 speed = 7.5f;
             }};
         }};

@@ -2,11 +2,14 @@ package nitis.gravillaso.world.blocks.defence.turrets;
 
 import arc.Core;
 import arc.func.Func;
+import arc.graphics.g2d.Draw;
+import arc.graphics.g2d.TextureRegion;
 import arc.math.Mathf;
 import arc.struct.Seq;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
 import mindustry.Vars;
+import mindustry.entities.Units;
 import mindustry.entities.bullet.BulletType;
 import mindustry.gen.Building;
 import mindustry.graphics.Drawf;
@@ -25,13 +28,21 @@ import nitis.gravillaso.world.blocks.gravity.GravityProvider;
 public class GravityTurret extends PowerTurret {
     public float requiredGravity = 160f;
     public float minGravity = 20f;
-
+    /**Shoot position at Y */
+    public float shootY = 0f;
+    public TextureRegion gravityRegion;
     public float requiredGravityToAbsorbLasers = 120f;
     public GravityTurret(String name) {
         super(name);
         this.absorbLasers = true;
         this.consumesPower = true;
         update = true;
+    }
+
+    @Override
+    public void load() {
+        super.load();
+        gravityRegion = Core.atlas.find(this.name + "-gravity", "error");
     }
 
     @Override
@@ -86,7 +97,7 @@ public class GravityTurret extends PowerTurret {
         bars.add("gravity-module", e -> {
             Func<Building,Float> rat = (building) -> {
                 if (e instanceof GravityTurretBuild gravityTurret) {
-                    return gravityTurret.calculateGravity();
+                    return gravityTurret.gravityRatio();
                 }
                 return 0f;
             };
@@ -96,6 +107,10 @@ public class GravityTurret extends PowerTurret {
                     () -> rat.get(e)
             );
         });
+    }
+    @Override
+    public TextureRegion[] icons() {
+        return new TextureRegion[]{baseRegion, region};
     }
 
     public class GravityTurretBuild extends PowerTurretBuild implements GravityConsumer {
@@ -123,18 +138,26 @@ public class GravityTurret extends PowerTurret {
 
         @Override
         public float range() {
-            return range * calculateGravity();
+            return range * gravityRatio();
         }
 
-        public float getCurrentGravity() {
+        @Override
+        public float gravity() {
             return currentGravity;
         }
-        public float speedMultiplier() {
-            return calculateGravity();
+
+        @Override
+        public float maxGravity() {
+            return requiredGravity;
         }
 
-        private float calculateGravity() {
-            return Math.min(Math.max(minGravity, currentGravity) / requiredGravity, 1f);
+        @Override
+        public float minGravity() {
+            return minGravity;
+        }
+
+        public float speedMultiplier() {
+            return gravityRatio();
         }
         @Override
         public boolean absorbLasers() {
@@ -145,14 +168,43 @@ public class GravityTurret extends PowerTurret {
         protected void bullet(BulletType type, float angle){
             float lifeScl = type.scaleVelocity ? Mathf.clamp(Mathf.dst(x + tr.x, y + tr.y, targetPos.x, targetPos.y) / type.range(), minRange / type.range(), range / type.range()) : 1f;
             BulletType otherType = type.copy();
-            otherType.damage *= calculateGravity();
-            otherType.create(this, team, x + tr.x, y + tr.y, angle, ( 1f + Mathf.range(velocityInaccuracy) ) * speedMultiplier(), lifeScl);
+            otherType.damage *= gravityRatio();
+            tr.trns(rotation, shootLength + shootY, Mathf.range(xRand));
+            otherType.create(
+                    this,
+                    team,
+                    x + tr.x,
+                    y + tr.y,
+                    angle,
+                    ( 1f + Mathf.range(velocityInaccuracy) ) * speedMultiplier(),
+                    lifeScl
+            );
         }
+        @Override
+        protected void findTarget(){
+            float _range = range();
+            if(targetAir && !targetGround){
+                target = Units.bestEnemy(team, x, y, _range, e -> !e.dead() && !e.isGrounded(), unitSort);
+            }else{
+                target = Units.bestTarget(team, x, y, _range, e -> !e.dead() && (e.isGrounded() || targetAir) && (!e.isGrounded() || targetGround), b -> targetGround, unitSort);
 
+                if(target == null && canHeal()){
+                    target = Units.findAllyTile(team, x, y, _range, b -> b.damaged() && b != this);
+                }
+            }
+        }
         @Override
         public void write(Writes write) {
             super.write(write);
 
+        }
+
+        @Override
+        public void draw() {
+            super.draw();
+            Draw.alpha(gravityRatio());
+            Draw.rect(gravityRegion, x + tr2.x, y + tr2.y, rotation - 90);
+            Draw.alpha(1f);
         }
 
         @Override
