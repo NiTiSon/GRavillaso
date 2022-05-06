@@ -111,16 +111,11 @@ task dexify(type: Jar) {
             def command = ["d8", "--min-api", "14"]
             for(def file : files){
                 command += "--classpath"
-                println "Path to class: " + file.path
                 command += file.path
             }
 
             command += ["--output", dexedArtifact, jarArtifact]
-            for (def str : command) {
-                print " " + str.toString();
-            }
-            println ""
-            println "Command are: " + command
+
             if(isWindows){
                 commandLine("cmd", *command)
             }else{
