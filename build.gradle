@@ -36,6 +36,11 @@ dependencies{
 ext{
     sdkRoot = System.getenv("ANDROID_HOME")
     sdkVersion = '30'
+
+    doExec = { cmd ->
+        def proc = cmd.execute(null, new File("$buildDir/libs"))
+        proc.waitForProcessOutput(System.out, System.err)
+    }
 }
 
 
