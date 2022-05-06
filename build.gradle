@@ -104,6 +104,10 @@ task dexify(type: Jar) {
 
 
     doFirst{
+        if (dexedArtifact.exists()) {
+            dexedArtifact.createNewFile()
+        }
+
         def files = (configurations.compileClasspath.asList() + configurations.runtimeClasspath.asList() + [new File("$sdkRoot/platforms/android-$sdkVersion/android.jar")])
 
         exec{
