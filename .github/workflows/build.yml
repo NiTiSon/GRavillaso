@@ -34,7 +34,7 @@ jobs:
 
    
   Build:
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
 
     steps:
     - uses: actions/checkout@v1
@@ -51,8 +51,6 @@ jobs:
     - name: Add Android SDK to PATH
       run: echo "${ANDROID_HOME}/build-tools/30.0.0" >> $GITHUB_PATH
 
-    - name: chmod
-      run: chmod +x gradlew
     - name: Build mod jar
       run: ./gradlew compileDex
     - name: Upload built jar file
