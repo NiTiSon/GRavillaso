@@ -100,8 +100,8 @@ public class GravityProjector extends Block {
                     range(),
                     (build) -> true, //Anyway check in next function SKIP
                     (build) -> {
-                        if (build instanceof GravityConsumer user) {
-                            user.connectGravityProvider(this);
+                        if (build instanceof GravityConsumer) {
+                            ((GravityConsumer)build).connectGravityProvider(this);
                         }
                     }
                     );
@@ -137,8 +137,8 @@ public class GravityProjector extends Block {
                     range(),
                     (build) -> true,
                     (build) -> {
-                        if (build instanceof GravityConsumer user) {
-                            others.get(build, user);
+                        if (build instanceof GravityConsumer) {
+                            others.get(build, (GravityConsumer)build);
                         }
                     }
                     );

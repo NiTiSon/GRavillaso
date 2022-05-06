@@ -18,19 +18,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Set up JDK 17
+    - name: Set up JDK 15
       uses: actions/setup-java@v1
       with:
-        java-version: 17
+        java-version: 15
     - name: chmod
       run: chmod +x gradlew
     - name: Build mod jar
-      run: ./gradlew build
+      run: ./gradlew compile
     - name: Upload built jar file
       uses: actions/upload-artifact@v2
       with:
         name: ${{ github.event.repository.name }}.jar
-        path: build/libs/raw-*.jar
+        path: build/libs/*-Desktop.jar
 
    
   Build:
@@ -38,10 +38,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Set up JDK 17
+    - name: Set up JDK 15
       uses: actions/setup-java@v1
       with:
-        java-version: 17
+        java-version: 15
     - name: Setup Android SDK Tools
       uses: android-actions/setup-android@v2.0.1
       env:
@@ -54,7 +54,7 @@ jobs:
     - name: chmod
       run: chmod +x gradlew
     - name: Build mod jar
-      run: ./gradlew buildDex
+      run: ./gradlew compileDex
     - name: Upload built jar file
       uses: actions/upload-artifact@v2
       with:

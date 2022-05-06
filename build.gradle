@@ -38,14 +38,43 @@ ext{
     sdkVersion = '30'
 }
 
-jar.archiveFileName.set("raw-$artifactName");
 
 def isWindows = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("windows");
 
+jar.archiveFileName.set("${project.name}-Desktop.jar")
+
 jar {
     dependsOn "core:jar"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+
+
+    from {
+        project(":core").fileTree("build/libs/core.jar").collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    from(rootDir) {
+        include "mod.hjson"
+        include "mod.json"
+        include "icon.png"
+    }
+
+    from("core/assets/") {
+        include "**"
+    }
+}
+
+task compile(type: Jar) {
+    dependsOn "tools:pack"
+    dependsOn "core:jar"
+
+    archiveFileName.set("${project.name}-Desktop.jar")
+
     compileJava {
-        targetCompatibility = 16
+        targetCompatibility = 15
         sourceCompatibility = JavaVersion.VERSION_16
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
@@ -67,10 +96,10 @@ jar {
     }
 }
 
-task dexify(type: Jar){
+task dexify(type: Jar) {
     archiveFileName.set(artifactName)
 
-    final File jarArtifact = new File(tasks.jar.archiveFile.get().asFile.parent, "raw-$artifactName"),
+    final File jarArtifact = new File(tasks.jar.archiveFile.get().asFile.parent, "${project.name}-Desktop.jar"),
                dexedArtifact = new File(tasks.dexify.getTemporaryDir(), "dexed.jar")
 
 
@@ -104,14 +133,16 @@ task dexify(type: Jar){
 }
 
 task buildDex dependsOn "build", "dexify"
+task compileDex dependsOn "compile", "dexify"
 
-task buildLaunch {
+task compileLaunch {
     dependsOn "build"
     doLast {
         copy {
-            from "$buildDir/libs/raw-${project.archivesBaseName}.jar"
+            from "$buildDir/libs/${project.name}-Desktop.jar"
             into System.getenv("MINDUSTRY_MODS")
         }
+
         Desktop.desktop.browse "steam://rungameid/1127400".toURI()
     }
 }
@@ -123,11 +154,10 @@ allprojects {
         maven{ url 'https://www.jitpack.io' }
     }
 
-    targetCompatibility = 16
-    sourceCompatibility = JavaVersion.VERSION_16
-
     tasks.withType(JavaCompile) {
-        options.compilerArgs.addAll(['--release','16'])
+        targetCompatibility = 15
+        sourceCompatibility = JavaVersion.VERSION_16
+        options.compilerArgs.addAll(['--release','15'])
     }
     java {
         withJavadocJar()
