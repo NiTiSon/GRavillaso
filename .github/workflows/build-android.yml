@@ -36,7 +36,9 @@ jobs:
       run: echo "${ANDROID_HOME}/build-tools/30.0.0" >> $GITHUB_PATH
 
     - name: chmod
-      run: chmod +x gradlew
+      run: |
+        chmod +x gradlew
+        chmod +x d8
 
     - name: Build mod jar
       run: ./gradlew compileDex
