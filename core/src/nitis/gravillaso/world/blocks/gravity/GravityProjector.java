@@ -137,8 +137,8 @@ public class GravityProjector extends Block {
                     range(),
                     (build) -> true,
                     (build) -> {
-                        if (build instanceof GravityConsumer) {
-                            others.get(build, (GravityConsumer)build);
+                        if (build instanceof GravityConsumer consumer) {
+                            others.get(build, consumer);
                         }
                     }
                     );

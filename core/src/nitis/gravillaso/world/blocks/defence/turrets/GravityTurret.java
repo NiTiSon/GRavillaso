@@ -96,8 +96,8 @@ public class GravityTurret extends PowerTurret {
         super.setBars();
         bars.add("gravity-module", e -> {
             Func<Building,Float> rat = (building) -> {
-                if (e instanceof GravityTurretBuild) {
-                    return ((GravityTurretBuild)building).gravityRatio();
+                if (e instanceof GravityTurretBuild gravityTurret) {
+                    return gravityTurret.gravityRatio();
                 }
                 return 0f;
             };
