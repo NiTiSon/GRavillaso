@@ -118,7 +118,8 @@ task dexify(type: Jar){
 
             command += ["--output", dexedArtifact, jarArtifact]
 
-            standardOutput(System.out)
+            standardOutput System.out
+            errorOutput System.err
 
             if(isWindows){
                 commandLine("cmd", "/c", *command)
