@@ -32,7 +32,7 @@ Java version of Gravillaso Mod, if you want to play with this mod on Mindustry V
   
 For raw builds you can find it at the [Actions](https://github.com/NickName73/GRavillaso/actions) tab and open the last workflow with a green ✅. The zip will contain the latest unreleased build of GRavillaso which you should install with caution since it may crashes your game.
   
-May be not work on ios|android devices
+May be not work on ios devices
 
 </div>
 
