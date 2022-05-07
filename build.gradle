@@ -78,10 +78,6 @@ task compile(type: Jar) {
 
     archiveFileName.set("${project.name}-Desktop.jar")
 
-    compileJava {
-        targetCompatibility = 15
-        sourceCompatibility = JavaVersion.VERSION_16
-    }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from {
         project(":core").fileTree("build/libs/core.jar").collect { it.isDirectory() ? it : zipTree(it) }
@@ -101,18 +97,14 @@ task compile(type: Jar) {
     }
 }
 
-task dexify(type: Jar) {
-    archiveFileName.set(artifactName)
+task dexify(type: Jar){
+    archiveFileName.set("${project.name}.jar")
 
     final File jarArtifact = new File(tasks.jar.archiveFile.get().asFile.parent, "${project.name}-Desktop.jar"),
                dexedArtifact = new File(tasks.dexify.getTemporaryDir(), "dexed.jar")
 
 
     doFirst{
-        if (dexedArtifact.exists()) {
-            dexedArtifact.createNewFile()
-        }
-
         def files = (configurations.compileClasspath.asList() + configurations.runtimeClasspath.asList() + [new File("$sdkRoot/platforms/android-$sdkVersion/android.jar")])
 
         exec{
@@ -126,7 +118,7 @@ task dexify(type: Jar) {
             command += ["--output", dexedArtifact, jarArtifact]
 
             if(isWindows){
-                commandLine("cmd", *command)
+                commandLine("cmd", "/c", *command)
             }else{
                 commandLine(*command)
             }
@@ -140,7 +132,7 @@ task buildDex dependsOn "build", "dexify"
 task compileDex dependsOn "compile", "dexify"
 
 task compileLaunch {
-    dependsOn "build"
+    dependsOn "compile"
     doLast {
         copy {
             from "$buildDir/libs/${project.name}-Desktop.jar"
