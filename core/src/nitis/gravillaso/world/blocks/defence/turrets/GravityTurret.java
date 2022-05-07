@@ -78,7 +78,7 @@ public class GravityTurret extends PowerTurret {
         if(hasLiquids) stats.add(Stat.liquidCapacity, liquidCapacity, StatUnit.liquidUnits);
         if(hasItems && itemCapacity > 0) stats.add(Stat.itemCapacity, itemCapacity, StatUnit.items);
 
-        stats.add(Stat.range, "%s~%s".formatted(Math.round(range * getMinGravityModifier()), Math.round(range)), StatUnit.blocks);
+        stats.add(Stat.range, String.format("%s~%s", Math.round(range * getMinGravityModifier()), Math.round(range)), StatUnit.blocks);
 
         if(acceptCoolant){
             stats.add(Stat.booster, StatValues.boosters(reloadTime, consumes.<ConsumeLiquidBase>get(ConsumeType.liquid).amount, coolantMultiplier, true, l -> consumes.liquidfilters.get(l.id)));

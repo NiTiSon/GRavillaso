@@ -37,11 +37,6 @@ dependencies{
 ext{
     sdkRoot = System.getenv("ANDROID_HOME")
     sdkVersion = '30'
-
-    doExec = { cmd ->
-        def proc = cmd.execute(null, new File("$buildDir/libs"))
-        proc.waitForProcessOutput(System.out, System.err)
-    }
 }
 
 
@@ -155,9 +150,9 @@ allprojects {
     }
 
     tasks.withType(JavaCompile) {
-        targetCompatibility = 15
+        targetCompatibility = 14
         sourceCompatibility = JavaVersion.VERSION_16
-        options.compilerArgs.addAll(['--release','15'])
+        options.compilerArgs.addAll(['--release','14'])
     }
     java {
         withJavadocJar()
