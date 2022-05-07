@@ -94,17 +94,17 @@ public class GravityTurret extends PowerTurret {
     @Override
     public void setBars() {
         super.setBars();
-        bars.add("gravity-module", e -> {
+        bars.add("gravity-module", build -> {
             Func<Building,Float> rat = (building) -> {
-                if (e instanceof GravityTurretBuild gravityTurret) {
-                    return gravityTurret.gravityRatio();
+                if (build instanceof GravityTurretBuild) {
+                    return ((GravityTurretBuild)build).gravityRatio();
                 }
                 return 0f;
             };
             return new Bar(
-                    () -> Core.bundle.get("bar.gravity-module").replace("%d", Math.round(rat.get(e) *100) + "" ).replace("%%", "%"),
+                    () -> Core.bundle.get("bar.gravity-module").replace("%d", Math.round(rat.get(build) *100) + "" ).replace("%%", "%"),
                     () -> GRPal.magneturnLight,
-                    () -> rat.get(e)
+                    () -> rat.get(build)
             );
         });
     }

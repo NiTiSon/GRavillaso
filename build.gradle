@@ -150,9 +150,9 @@ allprojects {
     }
 
     tasks.withType(JavaCompile) {
-        targetCompatibility = 14
-        sourceCompatibility = JavaVersion.VERSION_16
-        options.compilerArgs.addAll(['--release','14'])
+        targetCompatibility = 8
+        sourceCompatibility = JavaVersion.VERSION_13
+        options.compilerArgs.addAll(['--release','8'])
     }
     java {
         withJavadocJar()
