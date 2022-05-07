@@ -53,28 +53,28 @@ public class GRBlocks implements ContentList {
 
     public static Block
     //Environment
-    oreQuartz,redSand,redSandWall,burningGround,burningGroundWall,flammableLiquidBlock,metalFloorDamagedOrange,
+    oreQuartz, redSand, redSandWall, burningGround, burningGroundWall, flammableLiquidBlock, metalFloorDamagedOrange,
     //Production
     advancedPyratiteMixer, advancedBlastMixer, gasolineBarrel, quartzKiln, cryofluidChamber, flammableLiquidChamber, phaseCaldron, molecularConverter, molecularReconstructor, magneturnSmelter, electroSmelter, molecularPhaseWeaver, plastaniumMolecularPress,
     //Defence
-    gravitiumWall,gravitiumWallLarge,magneturnWall,magneturnWallLarge,hyperMender,colossalHealingDome,colossalForceProjector,
+    gravitiumWall, gravitiumWallLarge, magneturnWall, magneturnWallLarge, hyperMender, colossalHealingDome, colossalForceProjector,
     //Gravity
     gravityProjector,
     //Distribution
-    magneturnConveyor,electroConveyor,colossalDriver,
+    magneturnConveyor, electroConveyor, colossalDriver,
     //Power
-    multiConnector,batteryBig,gasolineGenerator,sporeGenerator,solarArray,
+    multiConnector, batteryBig, gasolineGenerator, sporeGenerator, solarArray,
     //Drills
-    deepOilPump,overdriveDrill;
+    deepOilPump, overdriveDrill;
     //Storages
-    public static CoreBlock molecularCore,coliseumCore;
+    public static CoreBlock molecularCore, coliseumCore;
     //Turrets
     public static Block
-    destiny,arhiepiscop,fierySpray,renunciation,phaseFuse,voltum,sunrise,
+    destiny, arhiepiscop, fierySpray, renunciation, phaseFuse, voltum, sunrise,
     //Gravity Turrets
     slt,
     //Units
-    repairLaser,advancedNavalFactory,additiveReassembler, multiplicativeReassembler,
+    repairLaser, advancedNavalFactory, additiveReassembler, multiplicativeReassembler,
     //Light
     sunshine,
     //PlanetUnlocks
@@ -726,7 +726,7 @@ public class GRBlocks implements ContentList {
             reloadTime = 90;
             consumes.power(5.5f);
             ammoTypes = ObjectMap.of(
-                    Items.phaseFabric, new ShrapnelBulletType(){{
+                    Items.phaseFabric, new ShrapnelBulletType() {{
                         length = 200;
                         damage = 220;
                         width = 17.5f;
@@ -799,13 +799,16 @@ public class GRBlocks implements ContentList {
             range = 320f;
             consumesPower = true;
             powerUse = 12f;
-            requiredGravity = 720f;
             minGravity = 160f;
-            requiredGravityToAbsorbLasers = 320f;
             shootY = -6;
             coolantMultiplier = 3.5f;
+
+            requiredGravity = 720f;
+            requiredGravityToAbsorbLasers = 320f;
+
             shootType = new GraviBullet(72) {{
                 speed = 7.5f;
+                lifetime = 45f;
             }};
         }};
         //endregion

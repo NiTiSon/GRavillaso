@@ -1,19 +1,24 @@
 package nitis.gravillaso.content;
 
 import arc.graphics.Color;
-import nitis.gravillaso.type.GRWeapon;
+import arc.struct.ObjectSet;
 import mindustry.content.Fx;
 import mindustry.content.StatusEffects;
 import mindustry.content.UnitTypes;
 import mindustry.ctype.ContentList;
 import mindustry.entities.abilities.MoveLightningAbility;
 import mindustry.entities.abilities.UnitSpawnAbility;
-import mindustry.entities.bullet.*;
+import mindustry.entities.bullet.BombBulletType;
+import mindustry.entities.bullet.LaserBulletType;
+import mindustry.entities.bullet.LightningBulletType;
+import mindustry.entities.bullet.MissileBulletType;
 import mindustry.gen.Sounds;
 import mindustry.type.UnitType;
 import mindustry.type.Weapon;
 import mindustry.type.ammo.PowerAmmoType;
 import mindustry.world.meta.BlockFlag;
+import nitis.gravillaso.entity.bullet.GraviBullet;
+import nitis.gravillaso.type.GRWeapon;
 
 public class GRUnitTypes implements ContentList {
 
@@ -24,7 +29,7 @@ public class GRUnitTypes implements ContentList {
     @Override
     public void load() {
         release = new UnitType("release") {{
-            onTitleScreen = false;
+            onTitleScreen = true;
             hitSize = 6.8f;
             health = 320;
             fallSpeed = 0.025f;
@@ -62,7 +67,6 @@ public class GRUnitTypes implements ContentList {
                     smokeEffect = Fx.shootSmallSmoke;
                     homingPower = 0.25f;
                     buildingDamageMultiplier = 0.1f;
-                    status = GRStatusEffects.broken;
                 }};
             }});
         }};
@@ -82,69 +86,29 @@ public class GRUnitTypes implements ContentList {
             range = 45f;
             buildSpeed = 2.25f;
             mineSpeed = 11;
-            rotateSpeed = 9.5f;
+            rotateSpeed = 5.5f;
             mineTier = 4;
             itemCapacity = 120;
             weapons.add(
-                    new GRWeapon("south") {{
+                    new GRWeapon("shocker") {{ //south -> shocker
                         rotate = true;
+                        top = true;
                         rotateSpeed = 40;
-                        flipSprite = false;
-                        x = 9;
-                        inaccuracy = 4;
-                        y = -5.5f;
+                        x = -6.25f;
+                        y = -5.25f;
                         reload = 10;
                         mirror = true;
+                        ejectEffect = Fx.casing2;
                         shootSound = Sounds.shoot;
-                        bullet = new BasicBulletType() {{
+                        bullet = new GraviBullet(25) {{
                             buildingDamageMultiplier = 0.25f;
-                            lifetime = 40;
-                            speed = 8;
-                            damage = 22;
                             width = 9;
-                            height = 9;
-                            hitSound = Sounds.explosion;
-                            despawnEffect = Fx.explosion;
-                            hitEffect = Fx.explosion;
-                            shootEffect = Fx.lightningShoot;
-                            smokeEffect = Fx.shootSmallSmoke;
-                            homingPower = 0.1f;
-                        }};
+                            height = 11;
+                            speed = 8f;
+                            lifetime = 30f;
 
-                    }},
-                    new GRWeapon("violence") {{
-                        rotate = false;
-                        rotateSpeed = 60;
-                        flipSprite = false;
-                        x = 0;
-                        y = 2;
-                        inaccuracy = 0;
-                        reload = 120;
-                        shots = 1;
-                        mirror = false;
-                        shootSound = Sounds.bigshot;
-                        bullet = new BasicBulletType() {{
-                            buildingDamageMultiplier = 0.25f;
-                            lifetime = 40;
-                            speed = 2.25f;
-                            damage = 24;
-                            width = 9;
-                            height = 9;
-                            hitSound = Sounds.explosion;
-                            despawnEffect = Fx.explosion;
-                            hitEffect = Fx.explosion;
-                            shootEffect = Fx.lightningShoot;
-                            smokeEffect = Fx.shootSmallSmoke;
-                            homingPower = 0.1f;
-                            fragCone = 360;
-                            fragBullet = new LightningBulletType() {{
-                                damage = 42;
-                                buildingDamageMultiplier = 0.75f;
-                                status = StatusEffects.shocked;
-                                lightningLength = 14;
-                                lightningLengthRand = 20;
-                                lightColor = Color.valueOf("#1995b0");
-                            }};
+                            status = StatusEffects.shocked;
+                            hitEffect = Fx.flakExplosion;
                         }};
                     }}
             );
@@ -246,6 +210,9 @@ public class GRUnitTypes implements ContentList {
 
             trailLength = 40;
             trailScl = 1.9f;
+
+            immunities = ObjectSet.with(StatusEffects.shocked);
+
             ammoType = new PowerAmmoType(700);
             ammoCapacity = 20;
             weapons.add(
@@ -295,6 +262,8 @@ public class GRUnitTypes implements ContentList {
             health = 1120;
             ammoType = new PowerAmmoType(1500);
             ammoCapacity = 30;
+
+            immunities = ObjectSet.with(StatusEffects.shocked);
 
             rotateShooting = false;
             clipSize = 175;

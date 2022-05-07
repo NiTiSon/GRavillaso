@@ -141,6 +141,17 @@ task compileLaunch {
         Desktop.desktop.browse "steam://rungameid/1127400".toURI()
     }
 }
+task buildLaunch {
+    dependsOn "build"
+    doLast {
+        copy {
+            from "$buildDir/libs/${project.name}-Desktop.jar"
+            into System.getenv("MINDUSTRY_MODS")
+        }
+
+        Desktop.desktop.browse "steam://rungameid/1127400".toURI()
+    }
+}
 allprojects {
     apply plugin: "java"
 
