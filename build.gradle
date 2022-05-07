@@ -15,6 +15,7 @@ buildscript {
 
 plugins {
     id "java"
+    id "maven-publish"
 }
 
 sourceSets.main{
