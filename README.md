@@ -61,7 +61,7 @@ May be not work on ios devices
 ### Via Github Releases
 1. Go to [Release Page](https://github.com/NickName73/GRavillaso/releases)
 2. Select required version
-3. Click **Assets** and download `GRavillaso.jar`
+3. Click **Assets** and download `GRavillaso.jar` (or `GRavillaso-Desktop.jar` for pc only)
 4. Open Mindustry 
 5. Open mod menu
 6. Click **Import Mod**
