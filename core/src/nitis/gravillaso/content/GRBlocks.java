@@ -65,11 +65,10 @@ public class GRBlocks implements ContentList {
     //Power
     multiConnector, batteryBig, gasolineGenerator, sporeGenerator, solarArray,
     //Drills
-    deepOilPump, overdriveDrill;
+    deepOilPump, overdriveDrill,
     //Storages
-    public static CoreBlock molecularCore, coliseumCore;
+    molecularCore, coliseumCore,
     //Turrets
-    public static Block
     destiny, arhiepiscop, fierySpray, renunciation, phaseFuse, voltum, sunrise,
     //Gravity Turrets
     slt,
@@ -211,11 +210,11 @@ public class GRBlocks implements ContentList {
             requirements(Category.crafting, ItemStack.with(Items.titanium,75,Items.metaglass,20,Items.thorium,60,Items.silicon,160));
             size = 2;
             health = 60 * size * size;
-            drawer = new DrawMixer();
+            drawer = new DrawMixer(true);
             craftTime = 90;
             liquidCapacity = 20;
             itemCapacity = 15;
-            updateEffect = Fx.magmasmoke;
+            updateEffect = GRFx.phaseBurn;
             consumes.power(6.5f);
             consumes.item(Items.phaseFabric,1);
             consumes.liquid(Liquids.cryofluid,0.15f);
@@ -505,7 +504,7 @@ public class GRBlocks implements ContentList {
             this.health = 8600;
             this.itemCapacity = 19000;
             this.size = 6;
-            //this.thrusterLength = 8.5F; WTF
+            //this.thrusterLength = 8.5F;
             this.unitCapModifier = 34;
             this.researchCostMultiplier = 0.2F;
         }};

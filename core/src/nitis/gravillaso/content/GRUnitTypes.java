@@ -29,24 +29,34 @@ public class GRUnitTypes implements ContentList {
     @Override
     public void load() {
         release = new UnitType("release") {{
-            onTitleScreen = true;
-            hitSize = 6.8f;
+            constructor = UnitTypes.gamma.constructor;
             health = 320;
+            commandLimit = 6;
+            flying = true;
+            onTitleScreen = true;
+
+            rotateShooting = false;
+            rotateSpeed = 8.6f;
+
+            miningRange *= 1.5f;
+            mineSpeed = 9.0f;
+            itemCapacity = 90;
+
+            hitSize = 11.5f;
+
             fallSpeed = 0.025f;
             engineOffset = 9;
             engineSize = 3.2f;
-            commandLimit = 6;
-            flying = true;
+
             speed = 3.7f;
             drag = 0.1f;
             range = 30;
             accel = 0.35f;
+
+
+
             buildSpeed = 1.35f;
-            rotateSpeed = 8.6f;
-            mineSpeed = 9.0f;
-            itemCapacity = 90;
-            rotateShooting = false;
-            constructor = UnitTypes.gamma.constructor;
+
             weapons.add(new GRWeapon("south") {{
                 rotate = true;
                 rotateSpeed = 60f;
@@ -66,31 +76,37 @@ public class GRUnitTypes implements ContentList {
                     hitSound = Sounds.explosion;
                     smokeEffect = Fx.shootSmallSmoke;
                     homingPower = 0.25f;
-                    buildingDamageMultiplier = 0.1f;
+                    buildingDamageMultiplier = 0.10f;
                 }};
             }});
         }};
         update = new UnitType("update") {{
-            onTitleScreen = false;
-            hitSize = 7.2f;
-            health = 460;
             constructor = UnitTypes.gamma.constructor;
+            health = 460;
+            commandLimit = 8;
+            flying = true;
+            onTitleScreen = false;
+
+            rotateShooting = false;
+            rotateSpeed = 5.5f;
+
+            miningRange *= 2;
+            mineSpeed = 11;
+            mineTier = 4;
+            itemCapacity = 120;
+
+            buildSpeed = 2.25f;
+
+            hitSize = 10f;
+
             speed = 4.5f;
             fallSpeed = 0.058f;
             accel = 0.25f;
             engineOffset = 9;
             engineSize = 3.2f;
-            commandLimit = 8;
-            flying = true;
             drag = 0.125f;
             range = 45f;
-            buildSpeed = 2.25f;
-            mineSpeed = 11;
-            rotateSpeed = 5.5f;
-            mineTier = 4;
-            itemCapacity = 120;
-            weapons.add(
-                    new GRWeapon("shocker") {{ //south -> shocker
+            weapons.add(new GRWeapon("shocker") {{ //south -> shocker
                         rotate = true;
                         top = true;
                         rotateSpeed = 40;
@@ -100,8 +116,8 @@ public class GRUnitTypes implements ContentList {
                         mirror = true;
                         ejectEffect = Fx.casing2;
                         shootSound = Sounds.shoot;
-                        bullet = new GraviBullet(25) {{
-                            buildingDamageMultiplier = 0.25f;
+                        bullet = new GraviBullet(24) {{
+                            buildingDamageMultiplier = 0.20f;
                             width = 9;
                             height = 11;
                             speed = 8f;
@@ -113,7 +129,7 @@ public class GRUnitTypes implements ContentList {
                     }}
             );
         }};
-        zap = new UnitType("zap"){{
+        zap = new UnitType("zap"){{ // TODO: Delete zap and add coulomb normal ability
             constructor = UnitTypes.horizon.constructor;
             health = 35;
             speed = 3.125f;
@@ -130,7 +146,7 @@ public class GRUnitTypes implements ContentList {
             targetFlags = new BlockFlag[]{BlockFlag.factory, BlockFlag.turret, null};
             commandLimit = 5;
             circleTarget = true;
-            engineOffset = -1.5f;
+            engineOffset = 120f;
             abilities.add(new MoveLightningAbility(7, 9, 0.05f, 0f, 2.5f, 3f, Color.valueOf("747FFF")){{
                 bulletSpread = 90f;
                 bulletAngle = 90f;

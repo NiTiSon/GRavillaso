@@ -5,6 +5,6 @@ author: "NickName73 (NiTiS-Dev)"
 browserAuthor: "NickName73"
 main: "nitis.gravillaso.GRMod"
 description: "GRavillaso Mod based to improve basic content & add new things"
-version: "2 b40"
+version: "2 b41"
 minGameVersion: "135"
 java: true
