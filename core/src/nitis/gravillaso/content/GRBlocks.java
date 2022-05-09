@@ -41,8 +41,11 @@ import mindustry.world.draw.DrawMixer;
 import mindustry.world.draw.DrawSmelter;
 import mindustry.world.draw.DrawWeave;
 import mindustry.world.meta.Attribute;
+import mindustry.world.meta.BuildVisibility;
 import nitis.gravillaso.entity.bullet.GraviBullet;
+import nitis.gravillaso.type.ConvertRecipe;
 import nitis.gravillaso.world.blocks.defence.turrets.GravityTurret;
+import nitis.gravillaso.world.blocks.gravity.GASaC;
 import nitis.gravillaso.world.blocks.gravity.GravityProjector;
 import nitis.gravillaso.world.blocks.production.OverdriveDrill;
 
@@ -76,6 +79,8 @@ public class GRBlocks implements ContentList {
     repairLaser, advancedNavalFactory, additiveReassembler, multiplicativeReassembler,
     //Light
     sunshine,
+    // Atomic
+    gasac,
     //PlanetUnlocks
     _end;
 
@@ -858,6 +863,18 @@ public class GRBlocks implements ContentList {
             health = 60 * size * size;
             brightness = 0.9f;
             consumes.power(0.166667f);
+        }};
+        //endregion
+        //region Atomic
+        gasac = new GASaC("gasac") {{
+            requirements(
+                    Category.crafting,
+                    BuildVisibility.hidden,
+                    ItemStack.with(Items.copper, 9800, Items.silicon, 7250, Items.plastanium, 5200
+                    ));
+            size = 5;
+            recipes = ConvertRecipe.with();
+            health = 320 * size * size;
         }};
         //endregion
     }

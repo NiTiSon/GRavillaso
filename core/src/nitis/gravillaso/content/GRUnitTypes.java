@@ -146,7 +146,7 @@ public class GRUnitTypes implements ContentList {
             targetFlags = new BlockFlag[]{BlockFlag.factory, BlockFlag.turret, null};
             commandLimit = 5;
             circleTarget = true;
-            engineOffset = 120f;
+            engineOffset = 4.75f;
             abilities.add(new MoveLightningAbility(7, 9, 0.05f, 0f, 2.5f, 3f, Color.valueOf("747FFF")){{
                 bulletSpread = 90f;
                 bulletAngle = 90f;
