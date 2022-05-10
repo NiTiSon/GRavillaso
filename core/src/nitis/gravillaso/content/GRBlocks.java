@@ -405,7 +405,7 @@ public class GRBlocks implements ContentList {
             health = 70 * size * size;
             itemCapacity = 240;
             range = 520;
-            rotateSpeed = 0.1f;
+            rotateSpeed = 0.3f;
             translation = 7f;
             minDistribute = 40;
             knockback = 4;
