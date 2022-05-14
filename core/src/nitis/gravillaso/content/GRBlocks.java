@@ -29,10 +29,7 @@ import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.environment.StaticWall;
 import mindustry.world.blocks.power.*;
-import mindustry.world.blocks.production.AttributeCrafter;
-import mindustry.world.blocks.production.GenericCrafter;
-import mindustry.world.blocks.production.LiquidConverter;
-import mindustry.world.blocks.production.SolidPump;
+import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.units.Reconstructor;
 import mindustry.world.blocks.units.RepairPoint;
@@ -47,7 +44,7 @@ import nitis.gravillaso.type.ConvertRecipe;
 import nitis.gravillaso.world.blocks.defence.turrets.GravityTurret;
 import nitis.gravillaso.world.blocks.gravity.GASaC;
 import nitis.gravillaso.world.blocks.gravity.GravityProjector;
-import nitis.gravillaso.world.blocks.production.OverdriveDrill;
+import nitis.gravillaso.world.blocks.production.AreaDrill;
 
 import static mindustry.type.ItemStack.with;
 
@@ -68,7 +65,7 @@ public class GRBlocks implements ContentList {
     //Power
     multiConnector, batteryBig, gasolineGenerator, sporeGenerator, solarArray,
     //Drills
-    deepOilPump, overdriveDrill,
+    deepOilPump, deepEscalator, overdriveDrill,
     //Storages
     molecularCore, coliseumCore,
     //Turrets
@@ -97,7 +94,7 @@ public class GRBlocks implements ContentList {
         redSand = new Floor("red-sand"){{
             wall = redSandWall;
             attributes.set(Attribute.heat, 0.05f);
-            attributes.set(Attribute.water, -0.05f);
+            attributes.set(Attribute.water, -0.10f);
             itemDrop = Items.sand;
             playerUnmineable = true;
         }};
@@ -486,7 +483,7 @@ public class GRBlocks implements ContentList {
             attribute = Attribute.spores;
             updateEffect = Fx.pulverize;
         }};
-        overdriveDrill = new OverdriveDrill("overdrive-drill"){{
+        overdriveDrill = new Drill("overdrive-drill"){{
             requirements(Category.production, ItemStack.with(Items.titanium, 90, Items.thorium, 75, Items.plastanium, 55, GRItems.gravitium, 55, Items.silicon, 120));
             size = 4;
             tier = 4;
@@ -500,6 +497,30 @@ public class GRBlocks implements ContentList {
             rotateSpeed = 7;
             consumes.power(3.5f);
             consumes.liquid(Liquids.water,0.18f).boost();
+        }};
+        deepEscalator = new AreaDrill("deep-escalator"){{
+            requirements(
+                    Category.production,
+                    BuildVisibility.sandboxOnly,
+                    ItemStack.with(
+                            Items.titanium, 90,
+                            Items.thorium, 75,
+                            Items.plastanium, 55,
+                            GRItems.gravitium, 55,
+                            Items.silicon, 120
+                    ));
+            size = 3;
+            tier = 3;
+            health = 75 * size * size;
+            drawRim = false;
+            drillTime = 187;
+            itemCapacity = 20;
+            liquidCapacity = 20;
+            liquidBoostIntensity = 2;
+            warmupSpeed = 0.01f;
+            rotateSpeed = 7;
+            consumes.power(5.5f);
+            consumes.liquid(Liquids.water,0.22f).boost();
         }};
         //endregion
         //region Storages
