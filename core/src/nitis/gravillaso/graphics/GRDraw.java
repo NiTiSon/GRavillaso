@@ -1,6 +1,6 @@
 package nitis.gravillaso.graphics;
 
-public class GRDraw {
+public final class GRDraw {
 //    public static void selected(int x, int y, Block block, Color color){
 //        Draw.color(color);
 //        for(int i = 0; i < 4; i++){

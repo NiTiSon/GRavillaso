@@ -38,7 +38,6 @@ public class GravityTurret extends PowerTurret {
         this.consumesPower = true;
         update = true;
     }
-
     @Override
     public void load() {
         super.load();
@@ -150,7 +149,6 @@ public class GravityTurret extends PowerTurret {
         public float maxGravity() {
             return requiredGravity;
         }
-
         @Override
         public float minGravity() {
             return minGravity;

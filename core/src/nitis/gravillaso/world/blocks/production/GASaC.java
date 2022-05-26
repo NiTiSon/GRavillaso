@@ -1,4 +1,4 @@
-package nitis.gravillaso.world.blocks.gravity;
+package nitis.gravillaso.world.blocks.production;
 
 import arc.Core;
 import arc.func.Func;
@@ -8,6 +8,8 @@ import mindustry.ui.Bar;
 import mindustry.world.blocks.production.GenericCrafter;
 import nitis.gravillaso.content.GRPal;
 import nitis.gravillaso.type.ConvertRecipe;
+import nitis.gravillaso.world.blocks.gravity.GravityConsumer;
+import nitis.gravillaso.world.blocks.gravity.GravityProvider;
 
 public class GASaC extends GenericCrafter {
     protected ConvertRecipe[] recipes;

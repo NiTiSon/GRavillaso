@@ -1,7 +1,8 @@
-package nitis.gravillaso.world.blocks.gravity;
+package nitis.gravillaso.world.blocks.defence;
 
 import arc.Core;
 import arc.func.Cons2;
+import arc.graphics.Color;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.TextureRegion;
 import arc.math.Mathf;
@@ -18,6 +19,8 @@ import mindustry.world.consumers.ConsumeType;
 import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.Env;
 import nitis.gravillaso.content.GRPal;
+import nitis.gravillaso.world.blocks.gravity.GravityConsumer;
+import nitis.gravillaso.world.blocks.gravity.GravityProvider;
 
 import static mindustry.Vars.indexer;
 import static mindustry.Vars.player;
@@ -81,6 +84,12 @@ public class GravityProjector extends Block {
                 (build) -> Drawf.selected(build, Tmp.c1.set(GRPal.magneturn).a(Mathf.absin(4f, 1f))));
     }
 
+    @Override
+    protected TextureRegion[] icons() {
+        super.icons();
+        return new TextureRegion[] {Core.atlas.find(name), Core.atlas.find(name + "-top")};
+    }
+
     public class GravityProjectorBuild extends Building implements Ranged, GravityProvider {
         public boolean phaseActive = false;
         @Override
@@ -113,7 +122,16 @@ public class GravityProjector extends Block {
         @Override
         public void draw() {
             super.draw();
-            //Draw.rect(topRegion, this.x, this.y);
+            float eff = getGravity() / phaseGeneratedGravity;
+            if (eff > 1) {
+                Draw.color(GRPal.magneturn, Color.white, eff - 1);
+            } else {
+                Draw.color(Color.darkGray, GRPal.magneturn, eff);
+            }
+
+            Draw.rect(topRegion, this.x, this.y);
+
+            Draw.color();
         }
 
         @Override

@@ -42,8 +42,8 @@ import mindustry.world.meta.BuildVisibility;
 import nitis.gravillaso.entity.bullet.GraviBullet;
 import nitis.gravillaso.type.ConvertRecipe;
 import nitis.gravillaso.world.blocks.defence.turrets.GravityTurret;
-import nitis.gravillaso.world.blocks.gravity.GASaC;
-import nitis.gravillaso.world.blocks.gravity.GravityProjector;
+import nitis.gravillaso.world.blocks.production.GASaC;
+import nitis.gravillaso.world.blocks.defence.GravityProjector;
 import nitis.gravillaso.world.blocks.production.AreaDrill;
 
 import static mindustry.type.ItemStack.with;

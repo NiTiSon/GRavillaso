@@ -5,6 +5,8 @@ import mindustry.graphics.Drawf;
 
 import mindustry.graphics.Pal;
 import mindustry.world.blocks.production.Drill;
+import nitis.gravillaso.content.GRPal;
+
 /**Mine ore inside area */
 public class AreaDrill extends Drill {
     protected int areaSize = 3;
@@ -12,7 +14,9 @@ public class AreaDrill extends Drill {
     @Override
     public void drawPlace(int x, int y, int rotation, boolean valid) {
         super.drawPlace(x, y, rotation, valid);
-        Drawf.square(x, y, Vars.tilesize * (areaSize + size) , rotation * 90, Pal.place);
+
+        Drawf.dashCircle(x * Vars.tilesize, y * Vars.tilesize, 40, GRPal.magneturnLight);
+        Drawf.dashCircle(x * Vars.tilesize, y * Vars.tilesize, 44, Pal.accent);
     }
 
     public AreaDrill(String name) {
